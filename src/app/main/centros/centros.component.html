@@ -42,7 +42,7 @@
     <tfoot>
 	<tr>
       <td colspan="12" style="text-align:center">
-        <button class="btn btn-primary btn-md" >Add center&nbsp;<span class="glyphicon glyphicon-home" (click)="addCenterFunction()"></span></button>
+        <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addcenter" >Add center&nbsp;<span class="glyphicon glyphicon-home" (click)="addCenterFunction()"></span></button>
       </td>
     </tr>	
     <tr>
@@ -1278,6 +1278,24 @@
 								<div class="modal-footer ">
 									<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
 									<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+								</div>
+					</div>
+			</div>
+	</div>
+	
+	<div class="modal fade" id="addcenter" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+			  <div class="modal-dialog">
+					<div class="modal-content">
+								 <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 class="modal-title custom_align" id="Heading">New center</h4>
+								</div>
+								<div class="modal-body"> 
+									<div class="alert alert-info"><span class="glyphicon glyphicon-indent-left"></span>&nbsp;What is the name of the new center?</div>
+									<input type="text" class="form-control" id="" placeholder="New name">
+								</div>
+								<div class="modal-footer ">
+									<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Save</button>
 								</div>
 					</div>
 			</div>
