@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kids&Us</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="assets/bootstrap-social.css" rel="stylesheet" >
+  <!--<link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style_centros.css">
+  <link rel="stylesheet" href="assets/style_contacts.css">-->
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <!--<script type="text/javascript">/*Script necesario para que los enlaces de la barra de navegación queden activos al pulsar sobre ellos*/
+  $(document).ready(function () {
+        $('ul.navbar-nav > li').click(function (e) {
+            e.preventDefault();
+            $('ul.navbar-nav > li').removeClass('active');
+            $(this).addClass('active');                
+        });            
+    });
+  </script>
+  <script type="text/javascript">/*Script necesario para que los enlaces de la barra de navegación miren la URL y activen el enlace adecuado*/
+    $(document).ready(function () {
+        var url = window.location;
+        $('ul.navbar-nav a[href="'+ url +'"]').parent().addClass('active');
+        $('ul.navbar-nav a').filter(function() {
+             return this.href == url;
+        }).parent().addClass('active');
+    });
+</script>--> 
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

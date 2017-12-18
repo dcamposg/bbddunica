@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+
+.navbar{
+	border-radius: 0px !important;
+	height:auto;
+	font-size: 18px;
+	border-bottom:2px solid  #E71E73 !important;
+	/*border-top:5px solid  #E71E73 !important;*/
+	/*background: #FFF !important;*/
+	/*background: linear-gradient(-70deg, #E71E73, white);*/
+	background: linear-gradient(to left, #FF0A6D, #FF153D, #FF153D, #FF6A34, #EFA41E, #86DE02, #01F6C9);
+}
+.navbar-inverse .navbar-brand {
+    /*background: #FFF !important;*/
+	height: 100% !important;
+}
+.navbar img{
+	width:145px;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #FFF !important;
+	padding-top: 15px !important;
+    padding-bottom: 15px !important;
+	margin: 15px !important;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #000 !important;
+}
+.navbar-inverse .navbar-toggle{
+	    border-color: #FFF !important;
+		margin-top: 30px !important;
+		background: transparent !important;
+		
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #FFF !important;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: transparent !important;
+}
+.navbar ul{
+	margin-top: 20px;
+}
+.navbar-inverse .navbar-nav>.active>a{
+    background-color: #000 !important;
+	border-radius: 25px;
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover{
+    color: #000 !important;
+	background-color: #FFF !important;
+}
+
+
+
+@media (max-width: 1130px) {
+    .navbar-inverse .navbar-header {
+        float: none;
+    }
+    .navbar-inverse .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-inverse .navbar-toggle {
+        display: block;
+    }
+    .navbar-inverse .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-inverse .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-inverse .navbar-nav {
+        float: none!important;
+		margin-top: 7.5px;
+	}
+    .navbar-inverse .collapse.in{
+  		display:block !important;
+	}
+}

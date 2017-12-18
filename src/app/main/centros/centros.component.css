@@ -1,0 +1,219 @@
+.container {
+	margin-top: 125px;
+	width: 95% !important;
+}
+
+.tab-content{
+	margin-top: -50px;
+}
+
+
+/* CUSTOM TAB PILLS*/
+span.round-tabs{
+    width: 125px;
+    height: 70px;
+    line-height: 45px;
+    display: inline-block;
+    border-radius: 20px;
+    background: white;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+span.round-tabs.one{
+    color: rgb(34, 194, 34);border: 2px solid rgb(34, 194, 34);
+}
+
+li.active span.round-tabs.one{
+    background: rgb(34, 194, 34) !important;
+    border: 2px solid #ddd;
+    color: #fff;
+}
+
+span.round-tabs.two{
+    color: #febe29;border: 2px solid #febe29;
+}
+
+li.active span.round-tabs.two{
+    background: #febe29 !important;
+    border: 2px solid #ddd;
+    color: #fff;
+}
+
+span.round-tabs.three{
+    color: #3e5e9a;border: 2px solid #3e5e9a;
+}
+
+li.active span.round-tabs.three{
+    background: #3e5e9a !important;
+    border: 2px solid #ddd;
+    color: #fff;
+}
+
+span.round-tabs.four{
+    color: #f1685e;border: 2px solid #f1685e;
+}
+
+li.active span.round-tabs.four{
+    background: #f1685e !important;
+    border: 2px solid #ddd;
+    color: #fff;
+}
+
+span.round-tabs.five{
+    color: #D22EE6;border: 2px solid #D22EE6;
+}
+
+li.active span.round-tabs.five{
+    background: #D22EE6 !important;
+    border: 2px solid #ddd;
+    color: #fff;
+}
+
+.nav-tabs {
+    border-bottom: none !important;
+}
+
+.nav-tabs > li {
+    width: 20%;
+}
+
+.nav-tabs > li a{
+   width: 220px;
+   height: 70px;
+   margin: auto;
+   border-radius: 100%;
+}
+
+.nav-tabs > li a:hover{
+    color: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: transparent !important;
+	cursor: pointer !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.tab-pane{
+	position: relative;
+	padding-top: 50px;
+}
+.tab-content .head{
+    font-size: 25px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+.nav-tabs .texticontab{
+	margin-top:-20px;
+}
+
+.bottomtab{
+	margin-top: 15px;
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+@media screen and (max-width: 800px) {
+		span.round-tabs{
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 25px;
+		}
+		.nav-tabs > li a{
+		   width: 50px;
+		   height: 50px;
+		}
+		.nav-tabs .texticontab{
+			display: none;
+		}
+}
+
+
+/* CUSTOM SLIDE */
+input[type=checkbox] {
+	visibility: hidden;
+}
+.generalcustomSlide0, .generalcustomSlide1, .generalcustomSlide2, .generalcustomSlide3, .generalcustomSlide4, .generalcustomSlide5, .generalcustomSlide6, .generalcustomSlide7, .generalcustomSlide8, .generalcustomSlide9, .sociedadcustomSlide0, .sociedadcustomSlide1, .sociedadcustomSlide2{
+	width: 80px;
+	height: 26px;
+	background: #333;
+	/*margin: 20px auto;*/
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	position: relative;
+
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.generalcustomSlide0:after, .generalcustomSlide1:after, .generalcustomSlide2:after, .generalcustomSlide3:after, .generalcustomSlide4:after, .generalcustomSlide5:after, .generalcustomSlide6:after, .generalcustomSlide7:after, .generalcustomSlide8:after, .generalcustomSlide9:after, .sociedadcustomSlide0:after, .sociedadcustomSlide1:after, .sociedadcustomSlide2:after {
+	content: 'NO';
+	font: 12px/26px Arial, sans-serif;
+	color: #fff;
+	position: absolute;
+	right: 10px;
+	z-index: 0;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+}
+
+.generalcustomSlide0:before, .generalcustomSlide1:before, .generalcustomSlide2:before, .generalcustomSlide3:before, .generalcustomSlide4:before, .generalcustomSlide5:before, .generalcustomSlide6:before, .generalcustomSlide7:before, .generalcustomSlide8:before, .generalcustomSlide9:before, .sociedadcustomSlide0:before, .sociedadcustomSlide1:before, .sociedadcustomSlide2:before{
+	content: 'YES';
+	font: 12px/26px Arial, sans-serif;
+	color: #6FE104;
+	position: absolute;
+	left: 10px;
+	z-index: 0;
+	font-weight: bold;
+}
+
+.generalcustomSlide0 label , .generalcustomSlide1 label , .generalcustomSlide2 label, .generalcustomSlide3 label, .generalcustomSlide4 label, .generalcustomSlide5 label, .generalcustomSlide6 label, .generalcustomSlide7 label, .generalcustomSlide8 label, .generalcustomSlide9 label, .sociedadcustomSlide0 label , .sociedadcustomSlide1 label, .sociedadcustomSlide2 label {
+	display: block;
+	width: 34px;
+	height: 20px;
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	-ms-transition: all .4s ease;
+	transition: all .4s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	z-index: 1;
+
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	background: #fcfff4;
+
+	background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+
+.generalcustomSlide0 input[type=checkbox]:checked + label, .generalcustomSlide1 input[type=checkbox]:checked + label, .generalcustomSlide2 input[type=checkbox]:checked + label, .generalcustomSlide3 input[type=checkbox]:checked + label, .generalcustomSlide4 input[type=checkbox]:checked + label, .generalcustomSlide5 input[type=checkbox]:checked + label, .generalcustomSlide6 input[type=checkbox]:checked + label, .generalcustomSlide7 input[type=checkbox]:checked + label, .generalcustomSlide8 input[type=checkbox]:checked + label, .generalcustomSlide9 input[type=checkbox]:checked + label, .sociedadcustomSlide0 input[type=checkbox]:checked + label , .sociedadcustomSlide1 input[type=checkbox]:checked + label, .sociedadcustomSlide2 input[type=checkbox]:checked + label  {
+	left: 43px;
+}
+
