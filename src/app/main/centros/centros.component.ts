@@ -10,7 +10,7 @@ export class CentrosComponent implements OnInit {
 
   public data: any[];
   public filterQuery = "";
-  public rowsOnPage = 5;
+  public rowsOnPage = 10;
   public sortBy = "id";
   public sortOrder = "asc";
   private showId = false;
@@ -21,7 +21,7 @@ export class CentrosComponent implements OnInit {
   constructor(private _http: Http) { }
 
     ngOnInit(): void {
-    this._http.get("assets/data.json")
+    this._http.get("assets/data_center.json")
       .subscribe((data)=> {
         setTimeout(()=> {
           this.data = data.json();

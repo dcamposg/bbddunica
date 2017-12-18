@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'dataFilterCentro'
+  name: 'dataFilterContacto'
 })
-export class DataFilterCentroPipe implements PipeTransform {
+export class DataFilterContactoPipe implements PipeTransform {
 
   /*transform(array: any[], query: string, hidden: string): any { //Se pasa el campo hidden (employee, employee,...) para distinguir los distintos campos de búsqueda
     if (query) {
@@ -12,7 +12,7 @@ export class DataFilterCentroPipe implements PipeTransform {
     return array;
   }*/
   
-    transform(items: any[], id: string, name: string, cif: number, country: string){
+    transform(items: any[], id: string, name: string, lastname: string, email: string){
         if (items && items.length){
             return items.filter(item =>{
                 if (id && item.id!=id){
@@ -21,10 +21,10 @@ export class DataFilterCentroPipe implements PipeTransform {
                 if (name && item.name.toLowerCase().indexOf(name.toLowerCase()) === -1){
                     return false;
                 }
-				if (cif && item.cif!=cif){
+                if (lastname && item.lastname.toLowerCase().indexOf(lastname.toLowerCase()) === -1){
                     return false;
                 }
-				if (country && item.country.toLowerCase().indexOf(country.toLowerCase()) === -1){
+				if (email && item.email.toLowerCase().indexOf(email.toLowerCase()) === -1){
                     return false;
                 }
                 return true;

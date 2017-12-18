@@ -8,6 +8,7 @@ import { AppRoutes } from './app.routing';
 import { AuthenticationGuard } from './common/guards/authentication-guard';
 import * as c from './';
 import { DataFilterCentroPipe } from './pipes/data-filter-centro.pipe';
+import { DataFilterContactoPipe } from './pipes/data-filter-contacto.pipe';
 import { DataTableModule } from 'angular2-datatable';
 import { FormsModule } from '@angular/forms';
 
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     c.EntidadesFiscalesComponent,
 	c.SeguridadComponent,
 	c.DummyComponent,
-	DataFilterCentroPipe
+	DataFilterCentroPipe,
+	DataFilterContactoPipe
   ],
   providers: [
     Adal4Service,
