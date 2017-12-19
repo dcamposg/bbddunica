@@ -3,8 +3,27 @@
 	width: 95% !important;
 }
 
+.navtab{
+    margin-left: -50px;
+    margin-top: -20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    position: fixed;
+    z-index: 2;
+    background: #FFF;
+}
+
 .tab-content{
-	margin-top: -50px;
+	margin-top: 100px;
+}
+
+@media screen and (max-width: 800px) {
+	.tab-content{
+		margin-top: 130px;
+	}
+	.center-name-title{
+		font-size: 25px;
+	}
 }
 
 
@@ -209,7 +228,7 @@ input[type=checkbox] {
 	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
 	background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
 	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
 }
 

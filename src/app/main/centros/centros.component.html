@@ -58,23 +58,33 @@
 
 <div class="container" *ngIf="showCenter">
 
-<h1>NOMBRE COMERCIAL DEL CENTRO / MASTER</h1>
-                    <div class="board-inner">
-						<ul class="nav nav-tabs" id="myTab">
-							<li class="active"><a href="#general" data-toggle="tab"><span class="round-tabs one"><i class="glyphicon glyphicon-home"></i><p class="texticontab">General</p></span></a></li>
-							<li><a href="#contacts" data-toggle="tab"> <span class="round-tabs two"><i class="glyphicon glyphicon-user"></i><p class="texticontab">Contactos</p></span></a></li>
-							<li><a href="#sociedad" data-toggle="tab"><span class="round-tabs three"><i class="glyphicon glyphicon-credit-card"></i><p class="texticontab">Sociedad</p></span></a></li>
-							<li><a href="#coordinacion" data-toggle="tab"><span class="round-tabs four"><i class="glyphicon glyphicon-stats"></i><p class="texticontab">Coordinación</p></span></a></li>
-							<li><a href="#masters" data-toggle="tab"><span class="round-tabs five"><i class="glyphicon glyphicon-stats"></i><p class="texticontab">Master</p></span></a></li>							
-						</ul>
-					</div>
-					
-					<hr class="bottomtab">
+								  <div class="navtab">
+									<div class="row" style="padding:10px;">
+												   <div class="col-sm-7">
+														<h1 class="center-name-title">NOMBRE COMERCIAL DEL CENTRO / MASTER</h1>
+												   </div> 
+												   <div class="col-sm-5">
+													    <div class="board-inner">
+															<ul class="nav nav-tabs" id="myTab">
+																<li class="active"><a href="#general" data-toggle="tab"><span class="round-tabs one"><i class="glyphicon glyphicon-home"></i><p class="texticontab">General</p></span></a></li>
+																<li><a href="#contacts" data-toggle="tab"> <span class="round-tabs two"><i class="glyphicon glyphicon-user"></i><p class="texticontab">Contactos</p></span></a></li>
+																<li><a href="#sociedad" data-toggle="tab"><span class="round-tabs three"><i class="glyphicon glyphicon-credit-card"></i><p class="texticontab">Sociedad</p></span></a></li>
+																<li><a href="#coordinacion" data-toggle="tab"><span class="round-tabs four"><i class="glyphicon glyphicon-stats"></i><p class="texticontab">Coordinación</p></span></a></li>
+																<li><a href="#masters" data-toggle="tab"><span class="round-tabs five"><i class="glyphicon glyphicon-stats"></i><p class="texticontab">Master</p></span></a></li>							
+															</ul>
+														</div>																	
+												   </div>
+									</div>
+									<hr class="bottomtab">	
+								   </div>
 
                      <div class="tab-content">
 							  <div class="tab-pane fade in active" id="general">
 									<div class="content">
 									<div class="row" style="padding:10px;">
+									    <div class="panel panel-default">
+										  <div class="panel-heading">Datos generales del centro</div>
+										  <div class="panel-body">
 												   <div class="col-sm-3">
 																<form>
 																	<div class="form-group">
@@ -125,7 +135,20 @@
 																	<div class="form-group">
 																		<label>Coordinador KIDS</label>
 																		<input type="text" class="form-control" id="" placeholder="Coordinador KIDS">
-																	</div>							
+																	</div>
+																	<div class="row" style="padding:0px;">
+																		<div class="col-sm-6">
+																			<div class="form-group">									
+																				<label>Master</label>
+																			</div>
+																		</div>
+																		<div class="col-sm-6">
+																			<div class="form-group generalcustomSlide1">									
+																				<input type="checkbox" value="None" id="generalcustomSlide1" name="check" />
+																				<label for="generalcustomSlide1"></label>
+																			</div>
+																		</div>										
+																	</div>																		
 																</form>	 	  
 												   </div>
 												   <div class="col-sm-3">
@@ -143,10 +166,18 @@
 																		<input type="number" class="form-control" id="" placeholder="Código MURANO">
 																	</div>								
 																</form>  
-												   </div>
+												   </div>											
+										  </div>
+										</div>
+
 									</div>
 									<div class="row" style="padding:10px;">
-												   <div class="col-sm-3">
+										   <div class="col-sm-6">
+										  <div class="panel panel-default">
+										  <div class="panel-heading">Datos comunicación</div>
+										  <div class="panel-body">
+										  <div class="row" style="padding:10px;">
+												   <div class="col-sm-6">
 																<form>
 																	<div class="form-group">
 																		<label>Teléfono principal</label>
@@ -162,7 +193,7 @@
 																	</div>								
 																</form>	 		   
 												   </div>
-												   <div class="col-sm-3">
+												   <div class="col-sm-6">
 																<form>
 																	<div class="form-group">
 																		<label>Idioma soporte</label>
@@ -174,25 +205,17 @@
 																	</div>								
 																</form>	 		   
 												   </div>
-												   <div class="col-sm-3">
+													</div>
+												</div>
+										  </div>
+										</div>
+												   <div class="col-sm-6">
+													<div class="panel panel-default">
+														<div class="panel-heading"></div>
+														<div class="panel-body">
 																<form>
-																	<div class="row" style="padding:0px;">
-																		<div class="col-sm-6">
-																			<div class="form-group">									
-																				<label>Master</label>
-																			</div>
-																		</div>
-																		<div class="col-sm-6">
-																			<div class="form-group generalcustomSlide1">									
-																				<input type="checkbox" value="None" id="generalcustomSlide1" name="check" />
-																				<label for="generalcustomSlide1"></label>
-																			</div>
-																		</div>										
-																	</div>								
-																</form>	 		   
-												   </div>
-												   <div class="col-sm-3">
-																<form>
+																<div class="row" style="padding:0px;">
+																<div class="col-sm-6">
 																	<div class="row" style="padding:0px;">
 																		<div class="col-sm-6">
 																			<div class="form-group">									
@@ -232,6 +255,8 @@
 																			</div>
 																		</div>										
 																	</div>	
+																	</div>
+																	<div class="col-sm-6">
 																	<div class="row" style="padding:0px;">
 																		<div class="col-sm-6">
 																			<div class="form-group">									
@@ -270,14 +295,21 @@
 																				<label for="generalcustomSlide7"></label>
 																			</div>
 																		</div>										
-																	</div>											
-																</form>								
-												   </div>			   
+																	</div>
+																</div>
+																</div>
+																</form>	
+														  </div>
+														</div>																	
+												   </div>									  		   
 									</div>
 									<div class="row" style="padding:10px;">
 													<div class="col-sm-6">
 																		 <div class="row" style="margin-bottom:20px;">
 																			   <div class="col-sm-6">
+																			       <div class="panel panel-default">
+																					  <div class="panel-heading">Direcciones</div>
+																					  <div class="panel-body">
 																							<form>
 																								<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
@@ -317,22 +349,31 @@
 																										</div>
 																									</div>										
 																								</div>
-																							</form>				   
+																							</form>																						  
+																					  </div>
+																					</div>			   
 																			   </div>
 																			   <div class="col-sm-6">
-																					<label>Redes sociales</label>
-																					<ul style="list-style-type: none;">
-																					  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-instagram"><span class="fa fa-instagram"></span>Instagram</a></li>
-																					  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-linkedin"><span class="fa fa-linkedin"></span>Linkedin</a></li>
-																					  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-facebook"><span class="fa fa-facebook"></span>Facebook</a></li>
-																					  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span>Twitter</a></li>
-																					  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-youtube"><span class="fa fa-youtube-play"></span>Youtube</a></li>
-																					  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-reddit"><span class="fa fa-reddit"></span>Blog</a></li>
-																					</ul> 			
+																			       <div class="panel panel-default">
+																					  <div class="panel-heading">Redes sociales</div>
+																					  <div class="panel-body">
+																							<ul style="list-style-type: none;">
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-instagram"><span class="fa fa-instagram"></span>Instagram</a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-linkedin"><span class="fa fa-linkedin"></span>Linkedin</a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-facebook"><span class="fa fa-facebook"></span>Facebook</a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span>Twitter</a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-youtube"><span class="fa fa-youtube-play"></span>Youtube</a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-reddit"><span class="fa fa-reddit"></span>Blog</a></li>
+																							</ul> 																					  
+																					  </div>
+																					</div>			
 																			   </div>
 																			</div>
 																	 
 																			<div class="row" style="margin-bottom:20px;">
+																			    <div class="panel panel-default">
+																				  <div class="panel-heading">Datos del local</div>
+																				  <div class="panel-body">
 																			   <div class="col-sm-6">
 																							<form>
 																								<div class="form-group">
@@ -380,16 +421,22 @@
 																									<input type="date" class="form-control" id="">
 																								  </div>								  
 																							</form>			   
-																			   </div>
+																			   </div>																				  
+																				  </div>
+																				</div>
 																			</div>
 													</div>
 													<div class="col-sm-6">
-																			 <h2>Exclusivity zone</h2>
+													    <div class="panel panel-default">
+														  <div class="panel-heading">Exclusivity zone</div>
+														  <div class="panel-body">
 																			 <div style="text-align: center;">
 																				<p><b>AREA OF TERRITORIAL EXCLUSIVITY</b></p>
 																				<p>Texto de la zona de exclusividad.</p>
 																				<img src="https://i.pinimg.com/736x/30/58/9f/30589f731f65728ddb8e207a09e48987.jpg" alt="Mountain View" width="90%">		
-																			 </div>
+																			 </div>														  
+														  </div>
+														</div>
 													 </div>
 									</div>
 									</div>	
@@ -398,6 +445,9 @@
 								  <div class="content">			
 									<div class="row" style="padding:10px;">
 												   <div class="col-sm-6">
+												   		<div class="panel panel-default">
+														  <div class="panel-heading">Contacto 1</div>
+														  <div class="panel-body">
 														<div class="row" style="padding:10px;">
 															<div class="col-sm-4">
 																<form>
@@ -486,9 +536,14 @@
 																	</div>																		
 																</form>
 															</div>															
+														</div>														  
+														  </div>
 														</div>
 												   </div>
 												   <div class="col-sm-6">
+												   		<div class="panel panel-default">
+														  <div class="panel-heading">Contacto 2</div>
+														  <div class="panel-body">
 														<div class="row" style="padding:10px;">
 															<div class="col-sm-4">
 																<form>
@@ -577,9 +632,14 @@
 																	</div>																		
 																</form>
 															</div>															
+														</div>														  
+														  </div>
 														</div>
 												   </div>
 												   <div class="col-sm-6">
+												   		<div class="panel panel-default">
+														  <div class="panel-heading">Contacto 3</div>
+														  <div class="panel-body">
 														<div class="row" style="padding:10px;">
 															<div class="col-sm-4">
 																<form>
@@ -652,7 +712,7 @@
 																	</div>
 																	<div class="form-group">
 																		<label>Email personal</label>
-																		<input type="text" class="form-control" id="" placeholder="Email personal">
+																		<input type="date" class="form-control" id="" placeholder="Email personal">
 																	</div>
 																	<div class="form-group">
 																		<label>Observaciones</label>
@@ -668,14 +728,20 @@
 																	</div>																		
 																</form>
 															</div>															
+														</div>														  
+														  </div>
 														</div>
 												   </div>												   
+												   
 									</div>												   
 								</div>
 							  </div>
 							  <div class="tab-pane fade" id="sociedad">
 									<div class="content">
 									<div class="row" style="padding:10px;">
+									    <div class="panel panel-default">
+										  <div class="panel-heading">Datos generales sociedad</div>
+										  <div class="panel-body">
 												   <div class="col-sm-3">
 																<form>															
 																	<div class="form-group">
@@ -753,11 +819,16 @@
 																		</div>										
 																	</div>																		
 																</form>  
-												   </div>												   
+												   </div>										  
+										  </div>
+										</div>												   
 									</div>
 									<div class="row" style="padding:10px;">
 													<div class="col-sm-7">
 																		 <div class="row" style="margin-bottom:20px;">
+																		     <div class="panel panel-default">
+																				  <div class="panel-heading">Royalties</div>
+																				  <div class="panel-body">
 																			   <div class="col-sm-4">
 																							<form>
 																								<div class="form-group">
@@ -797,11 +868,15 @@
 																									<input type="number" class="form-control" id="" placeholder="">
 																								</div>
 																							</form>				
-																			   </div>																			   
+																			   </div>																				  
+																				  </div>
+																				</div>																			   
 																			</div>
 																	 
 																			<div class="row" style="margin-bottom:20px;">
-																			<h2>Datos de la participación</h2>
+																			    <div class="panel panel-default">
+																				  <div class="panel-heading">Datos de la participación</div>
+																				  <div class="panel-body">
 																			   <div class="col-sm-6">
 																							<form>
 																								<div class="form-group">
@@ -875,41 +950,76 @@
 																									<input type="number" class="form-control" id="">
 																								  </div>																								  
 																							</form>			   
-																			   </div>
-																			</div>
-																			<div class="row" style="margin-bottom:20px;">
-																			<h2>Otros centros con mismo CIF</h2>
-																			   <div class="col-sm-12">
-																								<table class="table table-hover">
-																									<thead>
-																									  <tr>
-																										<th>Nombre del centro</th>
-																										<th>Ciudad</th>
-																									  </tr>
-																									</thead>
-																									<tbody>
-																									  <tr>
-																										<td>Kids and Us 1</td>
-																										<td>Madrid</td>
-																									  </tr>
-																									  <tr>
-																										<td>Kids and Us 1</td>
-																										<td>Barcelona</td>
-																									  </tr>				  
-																									</tbody>
-																								  </table>
+																			   </div>																				  
+																				  </div>
 																				</div>
-																			</div>																			
+																			</div>																		
 													</div>
 													<div class="col-sm-5">
-																			 <h2>Exclusivity zone</h2>
+													    <div class="panel panel-default">
+														  <div class="panel-heading">Exclusivity zone</div>
+														  <div class="panel-body">
 																			 <div style="text-align: center;">
 																				<p><b>AREA OF TERRITORIAL EXCLUSIVITY</b></p>
 																				<p>Texto de la zona de exclusividad.</p>
 																				<img src="https://i.pinimg.com/736x/30/58/9f/30589f731f65728ddb8e207a09e48987.jpg" alt="Mountain View" width="90%">		
-																			 </div>
+																			 </div>														  
+														  </div>
+														</div>
 													 </div>
 									</div>
+									<div class="row" style="margin-bottom:20px;">
+									   <div class="col-sm-6">
+									       <div class="panel panel-default">
+											  <div class="panel-heading">Otros centros con mismo CIF</div>
+											  <div class="panel-body">
+														<table class="table table-hover">
+															<thead>
+															  <tr>
+																<th>Nombre del centro</th>
+																<th>Ciudad</th>
+															  </tr>
+															</thead>
+															<tbody>
+															  <tr>
+																<td>Kids and Us 1</td>
+																<td>Madrid</td>
+															  </tr>
+															  <tr>
+																<td>Kids and Us 2</td>
+																<td>Barcelona</td>
+															  </tr>				  
+															</tbody>
+														  </table>											  
+											  </div>
+											</div>
+										</div>																		
+									   <div class="col-sm-6">
+									       <div class="panel panel-default">
+											  <div class="panel-heading">Centros vinculados</div>
+											  <div class="panel-body">
+														<table class="table table-hover">
+															<thead>
+															  <tr>
+																<th>Nombre del centro</th>
+																<th>Ciudad</th>
+															  </tr>
+															</thead>
+															<tbody>
+															  <tr>
+																<td>Kids and Us 3</td>
+																<td>Madrid</td>
+															  </tr>
+															  <tr>
+																<td>Kids and Us 4</td>
+																<td>Barcelona</td>
+															  </tr>				  
+															</tbody>
+														  </table>											  
+											  </div>
+											</div>
+										</div>																			
+									</div>										
 									</div>	
 							  </div>
 							  <div class="tab-pane fade" id="coordinacion">
@@ -917,6 +1027,9 @@
 									<div class="row" style="padding:10px;">
 												   <div class="col-sm-6">
 												   		<div class="col-sm-12"  style="padding-bottom:30px;">
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Datos generales coordinación</div>
+															  <div class="panel-body">
 															    <form>
 																	<div class="form-group">
 																		<label>Capacidad total de aulas</label>
@@ -938,63 +1051,77 @@
 																		<label>Metros cuadrados totales</label>
 																		<input type="number" class="form-control" id="" placeholder="">
 																	</div>																	
-																</form>	
+																</form>																  
+															  </div>
+															</div>
 														</div>
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
-															<div class="form-group">
-																<label>Notas MOS año pasado</label>
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Notas MOS año pasado</div>
+															  <div class="panel-body">
+																	<table class="table table-hover">
+																		<thead>
+																		  <tr>
+																			<th>Concepto</th>
+																			<th>Nota</th>
+																		  </tr>
+																		</thead>
+																		<tbody>
+																		  <tr>
+																			<td>Aulas</td>
+																			<td>8</td>
+																		  </tr>
+																		  <tr>
+																			<td>Pedagogía</td>
+																			<td>9</td>
+																		  </tr>				  
+																		</tbody>
+																	 </table>															  
+															  </div>
 															</div>	
-															<table class="table table-hover">
-																<thead>
-																  <tr>
-																	<th>Concepto</th>
-																	<th>Nota</th>
-																  </tr>
-																</thead>
-																<tbody>
-																  <tr>
-																	<td>Aulas</td>
-																	<td>8</td>
-																  </tr>
-																  <tr>
-																	<td>Pedagogía</td>
-																	<td>9</td>
-																  </tr>				  
-																</tbody>
-															 </table>
-															<div class="form-group">
-																<label>Notas MOS último trimestre año actual</label>
-															</div>	
-															<table class="table table-hover">
-																<thead>
-																  <tr>
-																	<th>Concepto</th>
-																	<th>Nota</th>
-																  </tr>
-																</thead>
-																<tbody>
-																  <tr>
-																	<td>Aulas</td>
-																	<td>7</td>
-																  </tr>
-																  <tr>
-																	<td>Pedagogía</td>
-																	<td>7</td>
-																  </tr>				  
-																</tbody>
-															 </table>
-															 <form>
-																	<div class="form-group">
-																		<label>Ratio de retencion del centro</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>
-																	<div class="form-group">
-																		<label>Ratio de fidelización de marca</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>																	
-																</form>																 
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Notas MOS último trimestre</div>
+															  <div class="panel-body">
+																	<table class="table table-hover">
+																		<thead>
+																		  <tr>
+																			<th>Concepto</th>
+																			<th>Nota</th>
+																		  </tr>
+																		</thead>
+																		<tbody>
+																		  <tr>
+																			<td>Aulas</td>
+																			<td>7</td>
+																		  </tr>
+																		  <tr>
+																			<td>Pedagogía</td>
+																			<td>7</td>
+																		  </tr>				  
+																		</tbody>
+																	 </table>															  
+															  </div>
+															</div>
+															<div class="panel panel-default">
+															  <div class="panel-heading">Ratios</div>
+															  <div class="panel-body">
+																		<form>
+																			<div class="form-group">
+																				<label>Ratio de retencion del centro</label>
+																				<input type="number" class="form-control" id="" placeholder="">
+																			</div>
+																			<div class="form-group">
+																				<label>Ratio de fidelización de marca</label>
+																				<input type="number" class="form-control" id="" placeholder="">
+																			</div>																	
+																		</form>																  
+															  </div>
+															</div>																													 
 														</div>	
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Folletos</div>
+															  <div class="panel-body">
 															    <form>
 																	<div class="form-group">
 																		<label>Cantidad de folletos último año</label>
@@ -1025,10 +1152,14 @@
 																			  </tr>																			  
 																			</tbody>
 																		 </table>																	
-																</form>														 
+																</form>																  
+															  </div>
+															</div>													 
 														</div>
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
-														<h2>Microsite</h2>
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Microsite</div>
+															  <div class="panel-body">
 															    <form>
 																	<div class="form-group">
 																		<label>Dirección</label>
@@ -1042,28 +1173,77 @@
 																		<label>Password</label>
 																		<input type="text" class="form-control" id="" placeholder="Password">
 																	</div>																	
-																</form>	
+																</form>																  
+															  </div>
+															</div>
 														</div>														
 												   </div>
 												   <div class="col-sm-6">
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
-															    <form>
-																	<div class="form-group">
-																		<label>Nº cursos centro abierto</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>																
-																</form>	
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Otros datos del centro</div>
+															  <div class="panel-body">
+																	<form>
+																		<div class="form-group">
+																			<label>Nº cursos centro abierto</label>
+																			<input type="number" class="form-control" id="" placeholder="">
+																		</div>
+																		<div class="form-group">
+																			<label>Nº alumnos actual</label>
+																			<input type="number" class="form-control" id="" placeholder="">
+																		</div>
+																		<div class="form-group">
+																			<label>Nº centros extraescolares</label>
+																			<input type="number" class="form-control" id="" placeholder="">
+																		</div>
+																		<div class="form-group">
+																			<label>Nº guarderías</label>
+																			<input type="number" class="form-control" id="" placeholder="">
+																		</div>
+																		<div class="form-group">
+																			<label>Nº alumnos externos</label>
+																			<input type="number" class="form-control" id="" placeholder="">
+																		</div>
+																		<div class="form-group">
+																			<label>Nº profesores</label>
+																			<input type="number" class="form-control" id="" placeholder="">
+																		</div>																		
+																	</form>																  
+															  </div>
+															</div>
 														</div>	
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
-															    <form>
-																	<div class="form-group">
-																		<label>Nº alumnos actual</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>
-																	<div class="form-group">
-																		<label>Business plan</label>
-																	</div>																		
-																		<table class="table table-hover">
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Business plan</div>
+															  <div class="panel-body">
+																	<table class="table table-hover">
+																			<thead>
+																			  <tr>
+																				<th>Año</th>
+																				<th>Nºalumnos</th>
+																			  </tr>
+																			</thead>
+																			<tbody>
+																			  <tr>
+																				<td>2020</td>
+																				<td>70</td>
+																			  </tr>
+																			  <tr>
+																				<td>2019</td>
+																				<td>50</td>
+																			  </tr>	
+																			  <tr>
+																				<td>2018</td>
+																				<td>45</td>
+																			  </tr>																			  
+																			</tbody>
+																		 </table>															  
+															  </div>
+															</div>
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Objetivo coordinación</div>
+															  <div class="panel-body">
+																	<table class="table table-hover">
 																			<thead>
 																			  <tr>
 																				<th>Año</th>
@@ -1084,72 +1264,34 @@
 																				<td>45</td>
 																			  </tr>																			  
 																			</tbody>
-																		 </table>
-																	<div class="form-group">
-																		<label>Objetivo coordinación</label>
-																	</div>
-																		<table class="table table-hover">
-																			<thead>
-																			  <tr>
-																				<th>Año</th>
-																				<th>Nºalumnos</th>
-																			  </tr>
-																			</thead>
-																			<tbody>
-																			  <tr>
-																				<td>2016</td>
-																				<td>80</td>
-																			  </tr>
-																			  <tr>
-																				<td>2015</td>
-																				<td>60</td>
-																			  </tr>	
-																			  <tr>
-																				<td>2014</td>
-																				<td>35</td>
-																			  </tr>																			  
-																			</tbody>
-																		 </table>																	
-																	<div class="form-group">
-																		<label>Nº centros extraescolares</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>
-																	<div class="form-group">
-																		<label>Nº guarderías</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>
-																	<div class="form-group">
-																		<label>Nº alumnos externos</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>																		
-																</form>	
+																		 </table>															  
+															  </div>
+															</div>
 														</div>	
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
-															    <form>
-																	<div class="form-group">
-																		<label>Nº profesores</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>																	
-																</form>
-															<h2>Tabla de precios curso actual</h2>
-															<table class="table table-hover">
-																<thead>
-																  <tr>
-																	<th>Mini KIDS</th>
-																	<th>KIDS</th>
-																	<th>TandT</th>
-																  </tr>
-																</thead>
-																<tbody>
-																  <tr>
-																	<td>10</td>
-																	<td>20</td>
-																	<td>30</td>
-																  </tr>			  
-																</tbody>
-															 </table>																
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Tabla de precios curso actual</div>
+															  <div class="panel-body">
+																	<table class="table table-hover">
+																		<thead>
+																		  <tr>
+																			<th>Mini KIDS</th>
+																			<th>KIDS</th>
+																			<th>TandT</th>
+																		  </tr>
+																		</thead>
+																		<tbody>
+																		  <tr>
+																			<td>10</td>
+																			<td>20</td>
+																			<td>30</td>
+																		  </tr>			  
+																		</tbody>
+																	 </table>															  
+															  </div>
+															</div>																
 														</div>	
-												   		<div class="col-sm-12" style="padding-bottom:30px;">
+												   		<!--<div class="col-sm-12" style="padding-bottom:30px;">
 														<h2>Formación</h2>
 															    <form>
 																	<div class="form-group">
@@ -1165,7 +1307,7 @@
 																		<input type="text" class="form-control" id="" placeholder="Responsable formación">
 																	</div>																	
 																</form>	
-														</div>															
+														</div>-->															
 												   </div>												   
 									</div>
 								  </div>
@@ -1174,31 +1316,36 @@
 								  <div class="content">
 									<div class="row" style="padding:10px;">
 												   <div class="col-sm-6">
-														<div class="col-sm-12"  style="padding-bottom:30px;">
-															    <form>
-																	<div class="form-group">
-																		<label>Fecha canon entrada</label>
-																		<input type="date" class="form-control" id="" placeholder="">
-																	</div>
-																	<div class="form-group">
-																		<label>Importe canon entrada</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>
-																	<div class="form-group">
-																	  <label>Información sobre el pago</label>
-																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
-																	</div>
-																	<div class="form-group">
-																		<label>Evolución en función de los centros</label>
-																		<input type="text" class="form-control" id="" placeholder="?????????">
-																	</div>																	
-																</form>	
+												   		<div class="panel panel-default">
+														  <div class="panel-heading">Datos generales del Master</div>
+														  <div class="panel-body">
+																<div class="col-sm-12"  style="padding-bottom:30px;">
+																		<form>
+																			<div class="form-group">
+																				<label>Fecha canon entrada</label>
+																				<input type="date" class="form-control" id="" placeholder="">
+																			</div>
+																			<div class="form-group">
+																				<label>Importe canon entrada</label>
+																				<input type="number" class="form-control" id="" placeholder="">
+																			</div>
+																			<div class="form-group">
+																			  <label>Información sobre el pago</label>
+																			  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
+																			</div>
+																			<div class="form-group">
+																				<label>Evolución en función de los centros</label>
+																				<input type="text" class="form-control" id="" placeholder="?????????">
+																			</div>																	
+																		</form>	
+																</div>														  
+														  </div>
 														</div>
 												   </div> 
 												   <div class="col-sm-6">
-															<div class="form-group">
-																<label>Notas MOF</label>
-															</div>	
+												       <div class="panel panel-default">
+														  <div class="panel-heading">Notas MOF</div>
+														  <div class="panel-body">
 															<table class="table table-hover">
 																<thead>
 																  <tr>
@@ -1216,49 +1363,65 @@
 																	<td>7</td>
 																  </tr>				  
 																</tbody>
-															 </table>
-															<div class="form-group">
-															  <label>Plan de expansión según contrato</label>
-															  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
+															 </table>														  
+														  </div>
+														</div>
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Plan de expansión según contrato</div>
+															  <div class="panel-body">
+																	<div class="form-group">
+																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
+																	</div>															  
+															  </div>
 															</div>
-															<div class="form-group">
-															  <label>Observaciones particulares</label>
-															  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
-															</div>																	
+														    <div class="panel panel-default">
+															  <div class="panel-heading">Observaciones particulares</div>
+															  <div class="panel-body">
+																	<div class="form-group">
+																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
+																	</div>														  
+															  </div>
+															</div>																																
 												   </div>
 									</div>
-										<h2>Centros de MASTER</h2>
-											<table class="table table-hover">
-												<thead>
-												  <tr>
-													<th>Nombre del centro</th>
-													<th>Año de apertura</th>
-													<th>Royalties</th>													
-												  </tr>
-												</thead>
-												<tbody>
-												  <tr>
-													<td>Centro1</td>
-													<td>2014</td>
-													<td>xxxxxxxxx</td>
-												  </tr>
-												  <tr>
-													<td>Centro2</td>
-													<td>2015</td>
-													<td>xxxxxxxxx</td>
-												  </tr>
-												  <tr>
-													<td>Centro3</td>
-													<td>2015</td>
-													<td>xxxxxxxxx</td>
-												  </tr>
-												  <tr>
-													<td>Centro4</td>
-													<td>2016</td>
-													<td>xxxxxxxxx</td>
-												  </tr>												  			  
-												</tbody>
-											 </table>
+									<div class="row" style="padding:10px;">
+											<div class="panel panel-default">
+											  <div class="panel-heading">Centros asociados al Master</div>
+											  <div class="panel-body">
+													<table class="table table-hover">
+														<thead>
+														  <tr>
+															<th>Nombre del centro</th>
+															<th>Año de apertura</th>
+															<th>Royalties</th>													
+														  </tr>
+														</thead>
+														<tbody>
+														  <tr>
+															<td>Centro1</td>
+															<td>2014</td>
+															<td>xxxxxxxxx</td>
+														  </tr>
+														  <tr>
+															<td>Centro2</td>
+															<td>2015</td>
+															<td>xxxxxxxxx</td>
+														  </tr>
+														  <tr>
+															<td>Centro3</td>
+															<td>2015</td>
+															<td>xxxxxxxxx</td>
+														  </tr>
+														  <tr>
+															<td>Centro4</td>
+															<td>2016</td>
+															<td>xxxxxxxxx</td>
+														  </tr>												  			  
+														</tbody>
+													 </table>											  
+											  </div>
+											</div>
+									</div>
 								   </div>
 							  </div>							  
 					 </div>
