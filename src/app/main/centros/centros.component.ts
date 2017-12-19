@@ -23,9 +23,7 @@ export class CentrosComponent implements OnInit {
     ngOnInit(): void {
     this._http.get("assets/data_center.json")
       .subscribe((data)=> {
-        setTimeout(()=> {
           this.data = data.json();
-        }, 2000);
       });
   }
   

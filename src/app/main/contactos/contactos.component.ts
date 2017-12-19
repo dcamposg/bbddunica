@@ -23,9 +23,7 @@ export class ContactosComponent implements OnInit {
     ngOnInit(): void {
     this._http.get("assets/data_contact.json")
       .subscribe((data)=> {
-        setTimeout(()=> {
           this.data = data.json();
-        }, 2000);
       });
   }
   

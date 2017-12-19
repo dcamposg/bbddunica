@@ -2,36 +2,4 @@
 <p>
   seguridad works!
 </p>
-	<button onclick="prueba();">Click me</button>
-	<table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Show</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Show</th>
-            </tr>
-        </tfoot>
-    <tbody>
-    <tr *ngFor="let item of data; let last = last">
-      <td>{{item.id}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.lastname}}</td>
-      <td>{{item.email}}</td>
-	  <td>{{item.email}}</td>
-		<span *ngIf="last">{{ngForCallback()}}</span>
-    </tr>
-    </tbody>
-  </table>
-
 </div>
