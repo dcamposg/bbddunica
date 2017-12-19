@@ -159,7 +159,7 @@ li.active span.round-tabs.five{
 
 
 /* CUSTOM SLIDE */
-input[type=checkbox] {
+.generalcustomSlide0 input[type=checkbox], .generalcustomSlide1 input[type=checkbox], .generalcustomSlide2 input[type=checkbox], .generalcustomSlide3 input[type=checkbox], .generalcustomSlide4 input[type=checkbox], .generalcustomSlide5 input[type=checkbox], .generalcustomSlide6 input[type=checkbox], .generalcustomSlide7 input[type=checkbox], .generalcustomSlide8 input[type=checkbox], .generalcustomSlide9 input[type=checkbox], .sociedadcustomSlide0 input[type=checkbox] , .sociedadcustomSlide1 input[type=checkbox], .sociedadcustomSlide2 input[type=checkbox] {
 	visibility: hidden;
 }
 .generalcustomSlide0, .generalcustomSlide1, .generalcustomSlide2, .generalcustomSlide3, .generalcustomSlide4, .generalcustomSlide5, .generalcustomSlide6, .generalcustomSlide7, .generalcustomSlide8, .generalcustomSlide9, .sociedadcustomSlide0, .sociedadcustomSlide1, .sociedadcustomSlide2{

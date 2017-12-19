@@ -1,5 +1,40 @@
-<div class="container">
+<!--<div class="container">
 <p>
   seguridad works!
 </p>
+</div>-->
+<div class="container" *ngIf="showTableCenter">
+ 
+<table id="example" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>CIF</th>
+                <th>Country</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>CIF</th>
+                <th>Country</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    <tbody>
+    <tr *ngFor="let item of data">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.cif}}</td>
+      <td>{{item.country}}</td>
+	  <td  style="text-align:center">
+		<button style="margin-right: 15px;" class="btn btn-success btn-xs" ><span class="glyphicon glyphicon-pencil" (click)="showCenterFunction()"></span></button>
+		<button style="margin-right: 15px;" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
+	  </td>
+    </tr>
+    </tbody>
+    </table>
 </div>

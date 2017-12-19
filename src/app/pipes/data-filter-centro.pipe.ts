@@ -21,7 +21,7 @@ export class DataFilterCentroPipe implements PipeTransform {
                 if (name && item.name.toLowerCase().indexOf(name.toLowerCase()) === -1){
                     return false;
                 }
-				if (cif && item.cif!=cif){
+				if (cif && (item.cif+'').indexOf(cif+'') === -1){
                     return false;
                 }
 				if (country && item.country.toLowerCase().indexOf(country.toLowerCase()) === -1){
