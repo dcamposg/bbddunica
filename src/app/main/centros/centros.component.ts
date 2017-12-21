@@ -94,6 +94,7 @@ export class CentrosComponent implements OnInit {
 	this._http.get("http://212.36.69.111:99/bbddunica/api/centers/6")
 	  .subscribe((data)=> {
 			this.centers = data.json();
+			//this.centers['kids'] = 'N'; //Con esto vemos que podemos acceder al valor de un campo concreto. A partir de ello tendremos que hacer una funcion para interpretar los checkbox.
 			console.log(this.centers);
 	this.showCenter = true;
 	this.showTableCenter = false;			

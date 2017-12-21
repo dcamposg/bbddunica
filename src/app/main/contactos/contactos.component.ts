@@ -9,6 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class ContactosComponent implements OnInit {
 
+  public contact: object;
   public data: any[];
   public filterQuery = "";
   public rowsOnPage = 10;
@@ -29,8 +30,14 @@ export class ContactosComponent implements OnInit {
   }
   
   showContactFunction(){
-	this.showContact = true;
-	this.showTableContacts = false;
+  
+  	this._http.get("http://212.36.69.111:99/bbddunica/api/contacts/4")
+	  .subscribe((data)=> {
+			this.contact = data.json();
+			console.log(this.contact);
+			this.showContact = true;
+			this.showTableContacts = false;			
+	  });
   }
   
   goCenter(id_center){

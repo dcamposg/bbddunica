@@ -97,81 +97,77 @@
 									</div>
 									<div class="col-sm-4">
 										<form>
-											<!--<div class="form-group">
-												<label>Nombre del centro:</label>
-												<input type="text" class="form-control" id="" placeholder="Centro ????????">
-											</div>-->
 											<div class="form-group">
 												<label>DNI / NIF:</label>
-												<input type="text" class="form-control" id="" placeholder="DNI">
+												<input type="text" class="form-control" id="dni" placeholder="DNI" value="{{contact.dninif}}">
 											</div>
 											<div class="form-group">
-												<label>Nombre</label>
-												<input type="text" class="form-control" id="" placeholder="Nombre">
+												<label>Firstname</label>
+												<input type="text" class="form-control" id="firstname" placeholder="Firstname" value="{{contact.firstname}}">
 											</div>
 											<div class="form-group">
-												<label>Apellido1</label>
-												<input type="text" class="form-control" id="" placeholder="Apellido1">
+												<label>Lastname 1</label>
+												<input type="text" class="form-control" id="lastname1" placeholder="Lastname1" value="{{contact.lastname1}}">
 											</div>
 											<div class="form-group">
-												<label>Apellido2</label>
-												<input type="text" class="form-control" id="" placeholder="Apellido2">
+												<label>Lastname 2</label>
+												<input type="text" class="form-control" id="lastname2" placeholder="Lastname2" value="{{contact.lastnaem2}}">
 											</div>
 											<div class="form-group">
-												<label>Sexo</label>
-												<input type="text" class="form-control" id="" placeholder="Nombre">
+												<label>Gender</label>
+												<input type="text" class="form-control" id="gender" placeholder="Gender" value="{{contact.gender}}">
 											</div>
 											<div class="form-group">
-												<label>Fecha nacimiento</label>
-												<input type="date" class="form-control" id="" placeholder="Fecha nacimiento">
+												<label>Birthdate</label>
+												<input type="date" class="form-control" id="birthdate" placeholder="Birthdate" value="{{contact.birthdate | date:'yyyy-MM-dd'}}">
 											</div>
 											<div class="form-group">
-												<label>Dirección</label>
-												<input type="text" class="form-control" id="" placeholder="Dirección">
+												<label>Address</label>
+												<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact.address['addressName']}}">
 											</div>	
 											<div class="form-group">
-												<label>Idioma comunicación</label>
-												<input type="text" class="form-control" id="" placeholder="Idioma comunicación">
+												<label>Communication language</label>
+												<input type="text" class="form-control" id="comlanguage" placeholder="Language" value="{{contact.language['name']}}">
 											</div>																		
 										</form>
 									</div>
 									<div class="col-sm-4">
 										<form>
 											<div class="form-group">
-												<label>Tel. Oficina:</label>
-												<input type="number" class="form-control" id="" placeholder="Tel. Oficina">
+												<label>Office telephone</label>
+												<input type="text" class="form-control" id="offtelephone" placeholder="Office telephone" value="{{contact.telephoneoffice}}">
 											</div>
 											<div class="form-group">
-												<label>Tel. Personal</label>
-												<input type="number" class="form-control" id="" placeholder="Tel. Personal">
+												<label>Personal telephone</label>
+												<input type="text" class="form-control" id="pertelephone" placeholder="Personal telephone" value="{{contact.telephonepersonal}}">
 											</div>
 											<div class="form-group">
-												<label>Móvil</label>
-												<input type="number" class="form-control" id="" placeholder="Móvil">
+												<label>Mobile</label>
+												<input type="text" class="form-control" id="mobile" placeholder="Mobile" value="{{contact.mobile}}">
 											</div>
 											<div class="form-group">
 												<label>Skype</label>
-												<input type="text" class="form-control" id="" placeholder="Skype">
+												<input type="text" class="form-control" id="skype" placeholder="Skype" value="{{contact.skype}}">
 											</div>
 											<div class="form-group">
-												<label>Email oficina</label>
-												<input type="text" class="form-control" id="" placeholder="Email oficina">
+												<label>Office email</label>
+												<input type="text" class="form-control" id="offemail" placeholder="Office email" value="{{contact.emailoffice}}">
 											</div>
 											<div class="form-group">
-												<label>Email personal</label>
-												<input type="date" class="form-control" id="" placeholder="Email personal">
+												<label>Personal email</label>
+												<input type="text" class="form-control" id="peremail" placeholder="Personal email" value="{{contact.emailpersonal}}">
 											</div>
 											<div class="form-group">
-												<label>Observaciones</label>
-												<input type="text" class="form-control" id="" placeholder="Observaciones">
+												<label>Observations</label>
+												<input type="text" class="form-control" id="observations" placeholder="Observations" value="{{contact.observations}}">
 											</div>	
 											<div class="form-group">
-												<label>Usuario ALEX</label>
-												<input type="text" class="form-control" id="" placeholder="Usuario ALEX">
+												<label>ALEX user</label>
+												<input type="text" class="form-control" id="alexuser" placeholder="ALEXuser" value="{{contact.alexuser}}">
 											</div>
 											<div class="form-group">
-												<label>Talla camiseta</label>
-												<input type="text" class="form-control" id="" placeholder="Talla camiseta">
+												<label>Clothing size</label>
+												<input type="text" class="form-control" id="clothingsize" placeholder="Clothing size" value="{{contact.clothingsize}}">
 											</div>																		
 										</form>
 									</div>															
