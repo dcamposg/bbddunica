@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { Http, HttpModule } from '@angular/http';
+import { Http, HttpModule, BrowserXhr } from '@angular/http';
 import { Adal4Service, Adal4HTTPService } from 'adal-angular4';
+
+import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 
 import { AppRoutes } from './app.routing';
 import { AuthenticationGuard } from './common/guards/authentication-guard';
@@ -23,7 +25,9 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     AppRoutes,
 	DataTableModule,
 	FormsModule,
-	ChartsModule
+	ChartsModule,
+    HttpModule,
+    NgProgressModule
   ],
   declarations: [
     c.AppComponent,
@@ -45,7 +49,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
         useFactory: Adal4HTTPService.factory,
         deps: [Http, Adal4Service]
     },
-    AuthenticationGuard
+    AuthenticationGuard,
+	{ provide: BrowserXhr, useClass: NgProgressBrowserXhr }
   ],
   bootstrap: [c.AppComponent]
 })

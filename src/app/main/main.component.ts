@@ -11,6 +11,18 @@ import { environment } from '../../environments/environment';
 })
 export class MainComponent implements OnInit {
 
+  options = { //Opciones de la barra de progreso
+    minimum: 0.15,
+    maximum: 1,
+    ease: 'easeOutCubic',
+    speed: 200,
+    trickleSpeed: 300,
+    direction: 'leftToRightIncreased',
+	spinner: true,
+    color: '#000',
+    thick: true
+  };
+
     constructor(
     private http: Adal4HTTPService,
 	private service: Adal4Service,

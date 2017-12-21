@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import {Http} from "@angular/http";
 
-declare var myExtObject: any;
+//declare var myExtObject: any;
 
 @Component({
   selector: 'app-seguridad',
@@ -23,7 +23,7 @@ export class SeguridadComponent implements OnInit {
           this.data = data.json();
       });
 	  
-	   myExtObject.func1();
+	   //myExtObject.func1();
   }
   
   
