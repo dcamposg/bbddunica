@@ -10,6 +10,7 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 })
 export class CentrosComponent implements OnInit {
 
+  public centers: object;
   public data: object;
   public filterQuery = "";
   public rowsOnPage = 10;
@@ -22,9 +23,52 @@ export class CentrosComponent implements OnInit {
   
   showTableCenter:boolean = true;
   showCenter:boolean = false;
- 
+  showBP:boolean = true;
+  showOC:boolean = true;
 
   constructor(private _http: Http, private actroute:ActivatedRoute, private router: Router) { }
+  
+    
+  // CHART ***************************************************************************************************************
+  public lineChartData1:Array<any> = [{data: [45, 50, 70], label: 'Nº alumnos'}];
+  public lineChartLabels1:Array<any> = ['2018 / 2019', '2019 / 2020', '2020 / 2021'];
+  
+  public lineChartData2:Array<any> = [{data: [45, 50, 70, 95], label: 'Nº alumnos'}];
+  public lineChartLabels2:Array<any> = ['2014 / 2015', '2015 / 2016', '2016 / 2017', '2017 / 2018'];
+  
+  
+  
+  public lineChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+ 
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+  public lineChartLegend:boolean = true;
+  public lineChartType1:string = 'bar';
+  public lineChartType2:string = 'line';
+ 
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+  
+    // FIN CHART ***************************************************************************************************************
+  
+  
 
     ngOnInit(): void {
 	
@@ -37,17 +81,7 @@ export class CentrosComponent implements OnInit {
 			this._http.get("assets/data_center.json")
 			  .subscribe((data)=> {
 					this.data = data.json();
-					console.log(this.data);	
-					  /*var options = { 
-						fieldSeparator: ';',
-						quoteStrings: '"',
-						decimalseparator: '.',
-						showLabels: true, 
-						showTitle: false,
-						useBom: true
-					  };*/			
-					//new Angular2Csv(this.data, 'My Report', options);	
-					//Para generar el Csv llamaremos a una funcion que nos devuelva el json especifico. Con la llamada de más arriba se genera el CSV.
+					//console.log(this.data);	
 			  });
 	}
 	else{
@@ -56,8 +90,40 @@ export class CentrosComponent implements OnInit {
   }
   
   showCenterFunction(){
+  
+	this._http.get("http://212.36.69.111:99/bbddunica/api/centers/6")
+	  .subscribe((data)=> {
+			this.centers = data.json();
+			console.log(this.centers);
 	this.showCenter = true;
-	this.showTableCenter = false;
+	this.showTableCenter = false;			
+	  });
+  }
+  
+  exportCSV(expcenter, expsimplesociety, expadvancedsociety, expcoordination, expmaster){
+	//alert(expcenter + '-' + expsimplesociety + '-' + expadvancedsociety + '-' + expcoordination + '-' + expmaster );
+		var options = { 
+			fieldSeparator: ';',
+			quoteStrings: '"',
+			decimalseparator: '.',
+			showLabels: true, 
+			showTitle: false,
+			useBom: true
+		  };
+		this._http.get("assets/data_center.json")
+			  .subscribe((data)=> {
+					this.data = data.json();
+				new Angular2Csv(this.data, 'My Report', options);					
+			  });	
+		//Para generar el Csv llamaremos a una funcion que nos devuelva el json especifico. Con la llamada de más arriba se genera el CSV.
+  }
+  
+    showBPFunction(){
+			this.showBP = !this.showBP;
+  }
+  
+    showOCFunction(){
+			this.showOC = !this.showOC;
   }
 
 }

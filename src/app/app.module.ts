@@ -11,6 +11,7 @@ import { DataFilterCentroPipe } from './pipes/data-filter-centro.pipe';
 import { DataFilterContactoPipe } from './pipes/data-filter-contacto.pipe';
 import { DataTableModule } from 'angular2-datatable';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 
 
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     HttpModule,
     AppRoutes,
 	DataTableModule,
-	FormsModule
+	FormsModule,
+	ChartsModule
   ],
   declarations: [
     c.AppComponent,

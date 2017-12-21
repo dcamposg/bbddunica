@@ -1,5 +1,8 @@
 <div class="container" *ngIf="showTableCenter">
- <button style="float:right" class="btn btn-success btn-md" data-toggle="modal" data-target="#exportcsv" >Add center&nbsp;<span class="glyphicon glyphicon-export" (click)="addCenterFunction()"></span></button>
+
+ <button style="float:right; margin:10px;" class="btn btn-info btn-md" data-toggle="modal" data-target="#importcsvcoordinadores" >Import CSV Coordinadores&nbsp;<span class="glyphicon glyphicon-import"></span></button>
+ 
+ <button style="float:right; margin:10px;" class="btn btn-success btn-md" data-toggle="modal" data-target="#exportcsv" >Export CSV General&nbsp;<span class="glyphicon glyphicon-export"></span></button>
   <table
     class="table table-hover"
     [mfData]="data | dataFilterCentro : filterQueryId : filterQueryName : filterQueryCif : filterQueryCountry"
@@ -90,7 +93,7 @@
 																<form>
 																	<div class="form-group">
 																		<label>Nombre LEGAL:</label>
-																		<input type="text" class="form-control" id="franchisename" placeholder="Nombre LEGAL">
+																		<input type="text" class="form-control" id="franchisename" placeholder="Nombre LEGAL" value="{{centers['franchisename']}}">
 																	</div>
 																	<div class="form-group">
 																		<label>CIF</label>
@@ -182,7 +185,7 @@
 																<form>
 																	<div class="form-group">
 																		<label>Teléfono principal</label>
-																		<input type="number" class="form-control" id="telephone" placeholder="Tel.">
+																		<input type="text" class="form-control" id="telephone" placeholder="Tel." value="{{centers['telephonefirst']}}">
 																	</div>
 																	<div class="form-group">
 																		<label>Fax</label>
@@ -1215,58 +1218,64 @@
 														</div>	
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
 														    <div class="panel panel-default">
-															  <div class="panel-heading">Business plan</div>
-															  <div class="panel-body">
+															  <div class="panel-heading">Business plan (Alumnos / curso)<button type="button" class="btn" (click)="showBPFunction()" style="background:transparent; float:right; margin-top:-7px"><span class="glyphicon glyphicon-signal" *ngIf="showBP"></span><span class="glyphicon glyphicon-th-list" *ngIf="!showBP"></span></button></div>
+															  <div *ngIf="showBP" class="panel-body">
 																	<table class="table table-hover">
 																			<thead>
 																			  <tr>
-																				<th>Año</th>
-																				<th>Nºalumnos</th>
+																				<th *ngFor="let year of lineChartLabels1">{{year}}</th>
 																			  </tr>
 																			</thead>
 																			<tbody>
-																			  <tr>
-																				<td>2020</td>
-																				<td>70</td>
-																			  </tr>
-																			  <tr>
-																				<td>2019</td>
-																				<td>50</td>
-																			  </tr>	
-																			  <tr>
-																				<td>2018</td>
-																				<td>45</td>
-																			  </tr>																			  
+																			  <tr *ngFor="let alumno of lineChartData1">
+																				<td  *ngFor="let year of lineChartLabels1; let j=index">{{alumno.data[j]}}</td>
+																			  </tr>																		  
 																			</tbody>
 																		 </table>															  
 															  </div>
+															  <div *ngIf="!showBP" class="panel-body">
+																<div style="display: block;">
+																<canvas baseChart width="auto" height="auto"
+																			[datasets]="lineChartData1"
+																			[labels]="lineChartLabels1"
+																			[options]="lineChartOptions"
+																			[colors]="lineChartColors"
+																			[legend]="lineChartLegend"
+																			[chartType]="lineChartType1"
+																			(chartHover)="chartHovered($event)"
+																			(chartClick)="chartClicked($event)"></canvas>
+																</div>
+															  </div>															  
 															</div>
 														    <div class="panel panel-default">
-															  <div class="panel-heading">Objetivo coordinación</div>
-															  <div class="panel-body">
+															  <div class="panel-heading">Objetivo coordinación (Alumnos / curso)<button type="button" class="btn" (click)="showOCFunction()" style="background:transparent; float:right; margin-top:-7px"><span class="glyphicon glyphicon-signal" *ngIf="showOC"></span><span class="glyphicon glyphicon-th-list" *ngIf="!showOC"></span></button></div>
+															  <div *ngIf="showOC" class="panel-body">
 																	<table class="table table-hover">
 																			<thead>
 																			  <tr>
-																				<th>Año</th>
-																				<th>Nºalumnos</th>
+																				<th *ngFor="let year of lineChartLabels2">{{year}}</th>
 																			  </tr>
 																			</thead>
 																			<tbody>
-																			  <tr>
-																				<td>2016</td>
-																				<td>70</td>
-																			  </tr>
-																			  <tr>
-																				<td>2015</td>
-																				<td>50</td>
-																			  </tr>	
-																			  <tr>
-																				<td>2014</td>
-																				<td>45</td>
-																			  </tr>																			  
+																			  <tr *ngFor="let alumno of lineChartData2">
+																				<td  *ngFor="let year of lineChartLabels2; let j=index">{{alumno.data[j]}}</td>
+																			  </tr>																		  
 																			</tbody>
 																		 </table>															  
 															  </div>
+															  <div *ngIf="!showOC" class="panel-body">
+																<div style="display: block;">
+																<canvas baseChart width="auto" height="auto"
+																			[datasets]="lineChartData2"
+																			[labels]="lineChartLabels2"
+																			[options]="lineChartOptions"
+																			[colors]="lineChartColors"
+																			[legend]="lineChartLegend"
+																			[chartType]="lineChartType2"
+																			(chartHover)="chartHovered($event)"
+																			(chartClick)="chartClicked($event)"></canvas>
+																</div>
+															  </div>															  
 															</div>
 														</div>	
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
@@ -1278,7 +1287,7 @@
 																		  <tr>
 																			<th>Mini KIDS</th>
 																			<th>KIDS</th>
-																			<th>TandT</th>
+																			<th>T&amp;T</th>
 																		  </tr>
 																		</thead>
 																		<tbody>
@@ -1475,24 +1484,41 @@
 								<div class="modal-body"> 
 								<div class="alert alert-info">
 												<div class="checkbox">
-												  <label><input type="checkbox" value="">Centro</label>
+												  <label><input type="checkbox" value="expcenter" #expcenter>Centro</label>
 												</div>
 												<div class="checkbox">
-												  <label><input type="checkbox" value="">Sociedad simple</label>
+												  <label><input type="checkbox" value="expsimplesociety" #expsimplesociety>Sociedad simple</label>
 												</div>
 												<div class="checkbox">
-												  <label><input type="checkbox" value="">Sociedad avanzado</label>
+												  <label><input type="checkbox" value="expadvancedsociety" #expadvancedsociety>Sociedad avanzado</label>
 												</div>
 												<div class="checkbox">
-												  <label><input type="checkbox" value="">Coordinación</label>
+												  <label><input type="checkbox" value="expcoordination" #expcoordination>Coordinación</label>
 												</div>
 												<div class="checkbox">
-												  <label><input type="checkbox" value="">Master</label>
+												  <label><input type="checkbox" value="expmaster" #expmaster>Master</label>
 												</div>												
 								</div>
 								</div>
 								<div class="modal-footer ">
-									<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Export</button>
+									<button type="button" class="btn btn-success" (click)="exportCSV(expcenter.checked, expsimplesociety.checked, expadvancedsociety.checked, expcoordination.checked, expmaster.checked)" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Export</button>
+								</div>
+					</div>
+			</div>
+	</div>
+	
+	<div class="modal fade" id="importcsvcoordinadores" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+			  <div class="modal-dialog">
+					<div class="modal-content">
+								 <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 class="modal-title custom_align" id="Heading">Select file</h4>
+								</div>
+								<div class="modal-body"> 
+									<input type="file" name="myfile" #filecoordinadores>
+								</div>
+								<div class="modal-footer ">
+									<button type="button" class="btn btn-success" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Export</button>
 								</div>
 					</div>
 			</div>
