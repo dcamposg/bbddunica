@@ -265,3 +265,11 @@ li.active span.round-tabs.five{
 	left: 43px;
 }
 
+.socialbtn{
+	width: 90% !important;
+    height: 25px !important;
+    margin-left: 25px !important;
+    background: transparent !important;
+    color: white !important;
+}
+

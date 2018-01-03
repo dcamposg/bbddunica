@@ -25,6 +25,7 @@ export class CentrosComponent implements OnInit {
   showCenter:boolean = false;
   showBP:boolean = true;
   showOC:boolean = true;
+  showAddress:boolean = true;
 
   constructor(private _http: Http, private actroute:ActivatedRoute, private router: Router) { }
   
@@ -97,7 +98,8 @@ export class CentrosComponent implements OnInit {
 			//this.centers['kids'] = 'N'; //Con esto vemos que podemos acceder al valor de un campo concreto. A partir de ello tendremos que hacer una funcion para interpretar los checkbox.
 			console.log(this.centers);
 	this.showCenter = true;
-	this.showTableCenter = false;			
+	this.showTableCenter = false;
+	if(this.centers['addressSame'] == 'Y') this.showAddress = false;	
 	  });
   }
   
@@ -125,6 +127,10 @@ export class CentrosComponent implements OnInit {
   
     showOCFunction(){
 			this.showOC = !this.showOC;
+  }
+  
+  sameAddress(){
+			this.showAddress = !this.showAddress;
   }
 
 }

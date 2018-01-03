@@ -93,7 +93,7 @@
 																<form>
 																	<div class="form-group">
 																		<label>Legal name</label>
-																		<input type="text" class="form-control" id="franchisename" placeholder="Nombre LEGAL" value="{{centers['franchisename']}}">
+																		<input type="text" class="form-control" id="franchisename" placeholder="Legal name" value="{{centers['franchisename']}}">
 																	</div>
 																	<div class="form-group">
 																		<label>CIF</label>
@@ -122,15 +122,15 @@
 																	</div>
 																	<div class="form-group">
 																		<label>Country</label>
-																		<input type="text" class="form-control" id="country" placeholder="País" value="{{centers['addresslocal'].country}}">
+																		<input type="text" class="form-control" id="country" placeholder="Country" value="{{centers['addresslocal'].country}}">
 																	</div>
 																	<div class="form-group">
 																		<label>Opening date</label>
-																		<input type="date" class="form-control" id="opendate" placeholder="Fecha apertura" value="{{centers['opendate'] | date:'yyyy-MM-dd'}}">
+																		<input type="date" class="form-control" id="opendate" placeholder="Opening date" value="{{centers['opendate'] | date:'yyyy-MM-dd'}}">
 																	</div>
 																	<div class="form-group">
 																		<label>Opening course</label>
-																		<input type="date" class="form-control" id="coursedate" placeholder="Curso apertura">
+																		<input type="date" class="form-control" id="coursedate" placeholder="Opening course">
 																	</div>								
 																</form>	   
 												   </div>
@@ -138,7 +138,7 @@
 																<form>
 																	<div class="form-group">
 																		<label>KIDS coordinator</label>
-																		<input type="text" class="form-control" id="" placeholder="Coordinador KIDS" value="{{centers['coordinatorkids']}}">
+																		<input type="text" class="form-control" id="" placeholder="KIDS coordinator" value="{{centers['coordinatorkids']}}">
 																	</div>
 																	<div class="row" style="padding:0px;">
 																		<div class="col-sm-6">
@@ -162,12 +162,12 @@
 																		<input type="number" class="form-control" id="" placeholder="Código único">
 																	</div>-->
 																	<div class="form-group">
-																		<label>ALEX Cod</label>
-																		<input type="number" class="form-control" id="" placeholder="Código ALEX" value="{{centers['codealex']}}">
+																		<label>ALEX Code</label>
+																		<input type="number" class="form-control" id="" placeholder="ALEX" value="{{centers['codealex']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>MURANO Cod</label>
-																		<input type="number" class="form-control" id="" placeholder="Código MURANO" value="{{centers['codemurano']}}">
+																		<label>MURANO Code</label>
+																		<input type="number" class="form-control" id="" placeholder="MURANO" value="{{centers['codemurano']}}">
 																	</div>								
 																</form>  
 												   </div>											
@@ -178,35 +178,35 @@
 									<div class="row" style="padding:10px;">
 										   <div class="col-sm-6">
 										  <div class="panel panel-default">
-										  <div class="panel-heading">Datos comunicación</div>
+										  <div class="panel-heading">Communication data</div>
 										  <div class="panel-body">
 										  <div class="row" style="padding:10px;">
 												   <div class="col-sm-6">
 																<form>
 																	<div class="form-group">
-																		<label>Teléfono principal</label>
+																		<label>Main phone</label>
 																		<input type="text" class="form-control" id="telephone" placeholder="Tel." value="{{centers['telephonefirst']}}">
 																	</div>
 																	<div class="form-group">
 																		<label>Fax</label>
-																		<input type="number" class="form-control" id="fax" placeholder="Fax">
+																		<input type="number" class="form-control" id="fax" placeholder="Fax" value="{{centers['fax']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Email principal</label>
-																		<input type="date" class="form-control" id="email" placeholder="Email">
+																		<label>Main email</label>
+																		<input type="date" class="form-control" id="email" placeholder="Email" value="{{centers['emailfirst']}}">
 																	</div>								
 																</form>	 		   
 												   </div>
 												   <div class="col-sm-6">
 																<form>
 																	<div class="form-group">
-																		<label>Idioma soporte</label>
-																		<input type="text" class="form-control" id="supportlanguage" placeholder="Idioma soporte">
-																	</div>
-																	<div class="form-group">
-																		<label>Idioma comunicación</label>
-																		<input type="text" class="form-control" id="comunicationlanguage" placeholder="Idioma comunicación">
-																	</div>								
+																		<label>Communication language</label>
+																		<input type="text" class="form-control" id="comunicationlanguage" placeholder="Communication language" value="{{centers['languagecommunication'].name}}">
+																	</div>	
+																	<div class="form-group" *ngFor="let supportlan of centers['languagesupport']; let i = index">
+																		<label>Support language {{i+1}}</label>
+																		<input type="text" class="form-control" id="supportlanguage" placeholder="Support language" value="{{supportlan.name}}">
+																	</div>																	
 																</form>	 		   
 												   </div>
 													</div>
@@ -312,44 +312,48 @@
 																		 <div class="row" style="margin-bottom:20px;">
 																			   <div class="col-sm-6">
 																			       <div class="panel panel-default">
-																					  <div class="panel-heading">Direcciones</div>
+																					  <div class="panel-heading">Addresses</div>
 																					  <div class="panel-body">
 																							<form>
 																								<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
 																										<div class="form-group">									
-																											<label>Usar misma dirección</label>
+																											<label>Use same address</label>
 																										</div>
 																									</div>
 																									<div class="col-sm-6">
 																										<div class="form-group generalcustomSlide8">
-																											<input type="checkbox" value="None" id="generalcustomSlide8" name="check" />
-																											<label for="generalcustomSlide8"></label>
+																										<input type="checkbox" value="Y" id="generalcustomSlide8" name="check" [checked]="(centers['addressSame'] == 'Y') ? true : false" (change)="sameAddress()"#generalcustomSlide8 />
+																										<label for="generalcustomSlide8"></label>
 																										</div>
 																									</div>										
 																								</div>
-																								<div class="form-group">
-																									<label>Dirección fiscal:</label>
-																									<input type="text" class="form-control" id="" placeholder="Dirección fiscal">
+																								<div class="form-group" *ngIf="!showAddress">
+																									<label>Common address</label>
+																									<input type="text" class="form-control" id="" placeholder="Common address" value="{{centers['addresslocal'].addressName}}">
 																								</div>
-																								<div class="form-group">
-																									<label>Dirección local</label>
-																									<input type="text" class="form-control" id="" placeholder="Dirección local">
+																								<div class="form-group" *ngIf="showAddress">
+																									<label>Fiscal address</label>
+																									<input type="text" class="form-control" id="" placeholder="Fiscal address">
 																								</div>
-																								<div class="form-group">
-																									<label>Dirección de envío</label>
-																									<input type="text" class="form-control" id="" placeholder="Dirección de envío">
+																								<div class="form-group" *ngIf="showAddress">
+																									<label>Local address</label>
+																									<input type="text" class="form-control" id="" placeholder="Local address" value="{{centers['addresslocal'].addressName}}">
+																								</div>
+																								<div class="form-group" *ngIf="showAddress"> 
+																									<label>Shipment address</label>
+																									<input type="text" class="form-control" id="" placeholder="Shipment address" value="{{centers['addressshipment'].addressName}}">
 																								</div>
 																								<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
 																										<div class="form-group">									
-																											<label>Dirección provisional</label>
+																											<label>Tentative address</label>
 																										</div>
 																									</div>
 																									<div class="col-sm-6">
-																										<div class="form-group generalcustomSlide9">									
-																											<input type="checkbox" value="None" id="generalcustomSlide9" name="check" />
-																											<label for="generalcustomSlide9"></label>
+																										<div class="form-group generalcustomSlide9">
+																										<input type="checkbox" value="Y" id="generalcustomSlide9" name="check" [checked]="(centers['addressprovisional'] == 'Y') ? true : false" #generalcustomSlide9 />
+																										<label for="generalcustomSlide9"></label>
 																										</div>
 																									</div>										
 																								</div>
@@ -359,26 +363,26 @@
 																			   </div>
 																			   <div class="col-sm-6">
 																			       <div class="panel panel-default">
-																					  <div class="panel-heading">Redes sociales</div>
+																					  <div class="panel-heading">Social networks</div>
 																					  <div class="panel-body">
 																							<ul style="list-style-type: none;">
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-instagram"><a href="{{centers['instagram']}}" target="_blank"><span class="fa fa-instagram" style="color:white;"></span></a>
-																							  <input type="text" class="form-control" id="" placeholder="Instagram" value="{{centers['instagram']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  <input type="text" class="form-control socialbtn" id="" placeholder="Instagram" value="{{centers['instagram']}}">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-linkedin"><a href="{{centers['linkedin']}}" target="_blank"><span class="fa fa-linkedin" style="color:white;"></span></a>
-																							  <input type="text" class="form-control" id="" placeholder="Linkedin" value="{{centers['linkedin']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  <input type="text" class="form-control socialbtn" id="" placeholder="Linkedin" value="{{centers['linkedin']}}">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-facebook"><a href="{{centers['facebook']}}" target="_blank"><span class="fa fa-facebook" style="color:white;"></span></a>
-																							  <input type="text" class="form-control" id="" placeholder="Facebook" value="{{centers['facebook']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  <input type="text" class="form-control socialbtn" id="" placeholder="Facebook" value="{{centers['facebook']}}">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-twitter"><a href="{{centers['twitter']}}" target="_blank"><span class="fa fa-twitter" style="color:white;"></span></a>
-																							  <input type="text" class="form-control" id="" placeholder="Twitter" value="{{centers['twitter']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  <input type="text" class="form-control socialbtn" id="" placeholder="Twitter" value="{{centers['twitter']}}">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-youtube"><a href="{{centers['youtube']}}" target="_blank"><span class="fa fa-youtube" style="color:white;"></span></a>
-																							  <input type="text" class="form-control" id="" placeholder="Youtube" value="{{centers['youtube']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  <input type="text" class="form-control socialbtn" id="" placeholder="Youtube" value="{{centers['youtube']}}">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-soundcloud"><a href="{{centers['blog']}}" target="_blank"><span class="fa fa-soundcloud" style="color:white;"></span></a>
-																							  <input type="text" class="form-control" id="" placeholder="Blog" value="{{centers['blog']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  <input type="text" class="form-control socialbtn" id="" placeholder="Blog" value="{{centers['blog']}}">
 																							  </a></li>
 																							</ul> 																					  
 																					  </div>
@@ -388,53 +392,53 @@
 																	 
 																			<div class="row" style="margin-bottom:20px;">
 																			    <div class="panel panel-default">
-																				  <div class="panel-heading">Datos del local</div>
+																				  <div class="panel-heading">Site data</div>
 																				  <div class="panel-body">
 																			   <div class="col-sm-6">
 																							<form>
 																								<div class="form-group">
-																									<label>Capacidad total de aulas:</label>
-																									<input type="number" class="form-control" id="" placeholder="Capacidad total de aulas">
+																									<label>Total capacity of classrooms</label>
+																									<input type="number" class="form-control" id="" placeholder="Total capacity of classrooms">
 																								</div>
 																								<div class="form-group">
-																									<label>Número total de aulas</label>
-																									<input type="number" class="form-control" id="" placeholder="Número total de aulas">
+																									<label>Total number of classrooms</label>
+																									<input type="number" class="form-control" id="" placeholder="Total number of classrooms" value="{{centers['totalclassrooms']}}">
 																								</div>
 																								<div class="form-group">
-																									<label>Número de aulas TandT</label>
-																									<input type="number" class="form-control" id="" placeholder="Número de aulas T&T">
+																									<label>Number of TandT classrooms</label>
+																									<input type="number" class="form-control" id="" placeholder="Number of T&T classrooms" value="{{centers['tandtclassrooms']}}">
 																								</div>
 																								<div class="form-group">
-																									<label>Número de aulas Kids</label>
-																									<input type="number" class="form-control" id="" placeholder="Número de aulas Kids">
+																									<label>Number of Kids classrooms</label>
+																									<input type="number" class="form-control" id="" placeholder="Number of Kids classrooms" value="{{centers['kidsclassrooms']}}">
 																								</div>
 																								<div class="form-group">
-																									<label>Metros cuadrados</label>
-																									<input type="number" class="form-control" id="" placeholder="Metros cuadrados">
+																									<label>Square meter</label>
+																									<input type="number" class="form-control" id="" placeholder="Square meter" value="{{centers['squaremeters']}}">
 																								</div>
 																							</form>				   
 																				</div>
 																				<div class="col-sm-6">
 																							<form>
 																								  <div class="form-group">
-																									<label>Local definitivo:</label>
-																									<input type="date" class="form-control" id="">
+																									<label>Local final date</label>
+																									<input type="date" class="form-control" id="" value="{{centers['finallocaldate'] | date:'yyyy-MM-dd'}}">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Inicio obras:</label>
-																									<input type="date" class="form-control" id="">
+																									<label>Works start</label>
+																									<input type="date" class="form-control" id="" value="{{centers['workstart'] | date:'yyyy-MM-dd'}}">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Fin obras:</label>
-																									<input type="date" class="form-control" id="">
+																									<label>Works end</label>
+																									<input type="date" class="form-control" id="" value="{{centers['workend'] | date:'yyyy-MM-dd'}}">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Formación inicial:</label>
-																									<input type="date" class="form-control" id="">
+																									<label>Training start</label>
+																									<input type="date" class="form-control" id="" value="{{centers['traininginitial'] | date:'yyyy-MM-dd'}}">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Formación ALEX:</label>
-																									<input type="date" class="form-control" id="">
+																									<label>Training ALEX</label>
+																									<input type="date" class="form-control" id="" value="{{centers['trainingalex'] | date:'yyyy-MM-dd'}}">
 																								  </div>								  
 																							</form>			   
 																			   </div>																				  
@@ -448,8 +452,8 @@
 														  <div class="panel-body">
 																			 <div style="text-align: center;">
 																				<p><b>AREA OF TERRITORIAL EXCLUSIVITY</b></p>
-																				<p>Texto de la zona de exclusividad.</p>
-																				<img src="https://i.pinimg.com/736x/30/58/9f/30589f731f65728ddb8e207a09e48987.jpg" alt="Mountain View" width="90%">		
+																				<p>{{centers['exclusivityzone']}}</p>
+																				<img src="{{centers['imageexclusivity'][0].path}}" alt="" width="90%">		
 																			 </div>														  
 														  </div>
 														</div>
