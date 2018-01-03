@@ -87,12 +87,12 @@
 									<div class="content">
 									<div class="row" style="padding:10px;">
 									    <div class="panel panel-default">
-										  <div class="panel-heading">Datos generales del centro</div>
+										  <div class="panel-heading">General data of the center</div>
 										  <div class="panel-body">
 												   <div class="col-sm-3">
 																<form>
 																	<div class="form-group">
-																		<label>Nombre LEGAL:</label>
+																		<label>Legal name</label>
 																		<input type="text" class="form-control" id="franchisename" placeholder="Nombre LEGAL" value="{{centers['franchisename']}}">
 																	</div>
 																	<div class="form-group">
@@ -102,12 +102,12 @@
 																	<div class="row" style="padding:0px;">
 																		<div class="col-sm-6">
 																			<div class="form-group">									
-																				<label>Nombre provisional</label>
+																				<label>Tentative name</label>
 																			</div>
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide0">									
-																				<input type="checkbox" value="None" id="generalcustomSlide0" name="check" />
+																				<input type="checkbox" value="Y" id="generalcustomSlide0" name="check" [checked]="(centers['provisionalname'] == 'Y') ? true : false" #generalcustomSlide0 />
 																				<label for="generalcustomSlide0"></label>
 																			</div>
 																		</div>										
@@ -118,18 +118,18 @@
 																<form>
 																	<div class="form-group">
 																		<label>Master</label>
-																		<input type="text" class="form-control" id="master" placeholder="Master">
+																		<input type="text" class="form-control" id="master" placeholder="Master" value="{{centers['masterCenter'].centerOwned['franchisename']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>País</label>
-																		<input type="text" class="form-control" id="country" placeholder="País">
+																		<label>Country</label>
+																		<input type="text" class="form-control" id="country" placeholder="País" value="{{centers['addresslocal'].country}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Fecha apertura</label>
-																		<input type="date" class="form-control" id="opendate" placeholder="Fecha apertura">
+																		<label>Opening date</label>
+																		<input type="date" class="form-control" id="opendate" placeholder="Fecha apertura" value="{{centers['opendate'] | date:'yyyy-MM-dd'}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Curso apertura</label>
+																		<label>Opening course</label>
 																		<input type="date" class="form-control" id="coursedate" placeholder="Curso apertura">
 																	</div>								
 																</form>	   
@@ -137,8 +137,8 @@
 												   <div class="col-sm-3">
 																<form>
 																	<div class="form-group">
-																		<label>Coordinador KIDS</label>
-																		<input type="text" class="form-control" id="" placeholder="Coordinador KIDS">
+																		<label>KIDS coordinator</label>
+																		<input type="text" class="form-control" id="" placeholder="Coordinador KIDS" value="{{centers['coordinatorkids']}}">
 																	</div>
 																	<div class="row" style="padding:0px;">
 																		<div class="col-sm-6">
@@ -148,7 +148,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide1">									
-																				<input type="checkbox" value="None" id="generalcustomSlide1" name="check" />
+																				<input type="checkbox" value="M" id="generalcustomSlide1" name="check" [checked]="(centers['masterorcenter'] == 'M') ? true : false" #generalcustomSlide1 />
 																				<label for="generalcustomSlide1"></label>
 																			</div>
 																		</div>										
@@ -162,12 +162,12 @@
 																		<input type="number" class="form-control" id="" placeholder="Código único">
 																	</div>-->
 																	<div class="form-group">
-																		<label>Código ALEX</label>
-																		<input type="number" class="form-control" id="" placeholder="Código ALEX">
+																		<label>ALEX Cod</label>
+																		<input type="number" class="form-control" id="" placeholder="Código ALEX" value="{{centers['codealex']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Código MURANO</label>
-																		<input type="number" class="form-control" id="" placeholder="Código MURANO">
+																		<label>MURANO Cod</label>
+																		<input type="number" class="form-control" id="" placeholder="Código MURANO" value="{{centers['codemurano']}}">
 																	</div>								
 																</form>  
 												   </div>											
@@ -228,7 +228,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide2">									
-																				<input type="checkbox" value="None" id="generalcustomSlide2" name="check" />
+																				<input type="checkbox" value="Y" id="generalcustomSlide2" name="check" [checked]="(centers['minikids'] == 'Y') ? true : false" #generalcustomSlide2 />
 																				<label for="generalcustomSlide2"></label>
 																			</div>
 																		</div>										
@@ -241,7 +241,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide3">									
-																				<input type="checkbox" value="None" id="generalcustomSlide3" name="check" />
+																				<input type="checkbox" value="Y" id="generalcustomSlide3" name="check" [checked]="(centers['kids'] == 'Y') ? true : false" #generalcustomSlide3 />
 																				<label for="generalcustomSlide3"></label>
 																			</div>
 																		</div>										
@@ -254,7 +254,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide4">									
-																				<input type="checkbox" value="None" id="generalcustomSlide4" name="check" />
+																				<input type="checkbox" value="Y" id="generalcustomSlide4" name="check" [checked]="(centers['tandt'] == 'Y') ? true : false" #generalcustomSlide4 />
 																				<label for="generalcustomSlide4"></label>
 																			</div>
 																		</div>										
@@ -269,7 +269,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide5">									
-																				<input type="checkbox" value="None" id="generalcustomSlide5" name="check" />
+																				<input type="checkbox" value="F" id="generalcustomSlide5" name="check" [checked]="(centers['licenseorfranchise'] == 'F') ? true : false" #generalcustomSlide5 />
 																				<label for="generalcustomSlide5"></label>
 																			</div>
 																		</div>										
@@ -282,7 +282,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide6">									
-																				<input type="checkbox" value="None" id="generalcustomSlide6" name="check" />
+																				<input type="checkbox" value="I" id="generalcustomSlide6" name="check" [checked]="(centers['nationalorinternational'] == 'I') ? true : false" #generalcustomSlide6 />
 																				<label for="generalcustomSlide6"></label>
 																			</div>
 																		</div>										
@@ -295,7 +295,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide7">									
-																				<input type="checkbox" value="None" id="generalcustomSlide7" name="check" />
+																				<input type="checkbox" value="Y" id="generalcustomSlide7" name="check" [checked]="(centers['centralparticipation'] == 'Y') ? true : false" #generalcustomSlide7 />
 																				<label for="generalcustomSlide7"></label>
 																			</div>
 																		</div>										
@@ -362,12 +362,24 @@
 																					  <div class="panel-heading">Redes sociales</div>
 																					  <div class="panel-body">
 																							<ul style="list-style-type: none;">
-																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-instagram"><span class="fa fa-instagram"></span>Instagram</a></li>
-																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-linkedin"><span class="fa fa-linkedin"></span>Linkedin</a></li>
-																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-facebook"><span class="fa fa-facebook"></span>Facebook</a></li>
-																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span>Twitter</a></li>
-																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-youtube"><span class="fa fa-youtube-play"></span>Youtube</a></li>
-																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-reddit"><span class="fa fa-reddit"></span>Blog</a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-instagram"><a href="{{centers['instagram']}}" target="_blank"><span class="fa fa-instagram" style="color:white;"></span></a>
+																							  <input type="text" class="form-control" id="" placeholder="Instagram" value="{{centers['instagram']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  </a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-linkedin"><a href="{{centers['linkedin']}}" target="_blank"><span class="fa fa-linkedin" style="color:white;"></span></a>
+																							  <input type="text" class="form-control" id="" placeholder="Linkedin" value="{{centers['linkedin']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  </a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-facebook"><a href="{{centers['facebook']}}" target="_blank"><span class="fa fa-facebook" style="color:white;"></span></a>
+																							  <input type="text" class="form-control" id="" placeholder="Facebook" value="{{centers['facebook']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  </a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-twitter"><a href="{{centers['twitter']}}" target="_blank"><span class="fa fa-twitter" style="color:white;"></span></a>
+																							  <input type="text" class="form-control" id="" placeholder="Twitter" value="{{centers['twitter']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  </a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-youtube"><a href="{{centers['youtube']}}" target="_blank"><span class="fa fa-youtube" style="color:white;"></span></a>
+																							  <input type="text" class="form-control" id="" placeholder="Youtube" value="{{centers['youtube']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  </a></li>
+																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-soundcloud"><a href="{{centers['blog']}}" target="_blank"><span class="fa fa-soundcloud" style="color:white;"></span></a>
+																							  <input type="text" class="form-control" id="" placeholder="Blog" value="{{centers['blog']}}" style="width:90%; height:25px; margin-left:25px;">
+																							  </a></li>
 																							</ul> 																					  
 																					  </div>
 																					</div>			
