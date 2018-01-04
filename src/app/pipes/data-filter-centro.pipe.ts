@@ -15,10 +15,10 @@ export class DataFilterCentroPipe implements PipeTransform {
     transform(items: any[], id: string, name: string, cif: number, country: string){
         if (items && items.length){
             return items.filter(item =>{
-                if (id && item.id!=id){
+                if (id && item.code!=id){
                     return false;
                 }
-                if (name && item.name.toLowerCase().indexOf(name.toLowerCase()) === -1){
+                if (name && item.franchisename.toLowerCase().indexOf(name.toLowerCase()) === -1){
                     return false;
                 }
 				if (cif && (item.cif+'').indexOf(cif+'') === -1){

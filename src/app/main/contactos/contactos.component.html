@@ -67,28 +67,28 @@
 												<img src="https://www.w3schools.com/howto/img_avatar.png" alt="" width="100%">
 											</div>
 											<div class="panel panel-default">
-											  <div class="panel-heading">Centros</div>
+											  <div class="panel-heading">Centers</div>
 											  <div class="panel-body">
 													<table class="table table-hover">
 														<thead>
 														  <tr>
-															<th>Nombre</th>
-															<th>Cargo</th>
+															<th>Name</th>
+															<th>Position</th>
 														  </tr>
 														</thead>
 														<tbody>
-														  <tr (click)="goCenter(1)">
-															<td>Centro 1</td>
-															<td>Director</td>
+														  <tr *ngFor="let centers of contact['center_has_contact']; let i = index" (click)="goCenter(centers.center['code'])">
+															<td>{{centers.center['franchisename']}}</td>
+															<td>{{centers.contacttype}}</td>
 														  </tr>
-														  <tr (click)="goCenter(2)">
+														  <!--<tr (click)="goCenter(2)">
 															<td>Centro 2</td>
 															<td>Director</td>
 														  </tr>
 														  <tr (click)="goCenter(3)">
 															<td>Centro 3</td>
 															<td>Administrador</td>
-														  </tr>															  
+														  </tr>-->															  
 														</tbody>
 													 </table>															  
 											  </div>

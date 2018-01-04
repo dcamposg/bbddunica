@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import {Injectable} from "@angular/core";
+
+import * as MyGlobals from 'app/service/globals'; //<== Globals variables
 
 @Component({
   selector: 'app-centros',
@@ -19,6 +22,7 @@ export class CentrosComponent implements OnInit {
   private showId = false;
   
   private GoToCenter = "";
+  private GoToCenterId = "";
 
   
   showTableCenter:boolean = true;
@@ -76,23 +80,26 @@ export class CentrosComponent implements OnInit {
 	this.actroute.queryParams
     .subscribe(params => {
         this.GoToCenter = params['param']; 
+		this.GoToCenterId = params['id'];
     });
 	
 	if(this.GoToCenter == null){
-			this._http.get("assets/data_center.json")
+			//this._http.get("assets/data_center.json")
+			this._http.get(MyGlobals['apiurl'] + "centers")
 			  .subscribe((data)=> {
 					this.data = data.json();
-					//console.log(this.data);	
+					//console.log(MyGlobals['apiurl']);						
 			  });
 	}
 	else{
-			this.showCenterFunction();
+			console.log(this.GoToCenterId);
+			this.showCenterFunction(this.GoToCenterId);
 	}
   }
   
-  showCenterFunction(){
+  showCenterFunction(centerId){
   
-	this._http.get("http://212.36.69.111:99/bbddunica/api/centers/7")
+	this._http.get(MyGlobals['apiurl'] + "centers/" + centerId)
 	  .subscribe((data)=> {
 			this.centers = data.json();
 			//this.centers['kids'] = 'N'; //Con esto vemos que podemos acceder al valor de un campo concreto. A partir de ello tendremos que hacer una funcion para interpretar los checkbox.
@@ -113,7 +120,7 @@ export class CentrosComponent implements OnInit {
 			showTitle: false,
 			useBom: true
 		  };
-		this._http.get("assets/data_center.json")
+		this._http.get(MyGlobals['apiurl'] + "centers")
 			  .subscribe((data)=> {
 					this.data = data.json();
 				new Angular2Csv(this.data, 'My Report', options);					

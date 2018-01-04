@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import { Router, NavigationEnd } from '@angular/router';
 
+import * as MyGlobals from 'app/service/globals'; //<== Globals variables
+
 @Component({
   selector: 'app-contactos',
   templateUrl: './contactos.component.html',
@@ -31,7 +33,7 @@ export class ContactosComponent implements OnInit {
   
   showContactFunction(){
   
-  	this._http.get("http://212.36.69.111:99/bbddunica/api/contacts/4")
+  	this._http.get(MyGlobals['apiurl'] + "contacts/" + "7")
 	  .subscribe((data)=> {
 			this.contact = data.json();
 			console.log(this.contact);

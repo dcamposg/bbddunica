@@ -33,12 +33,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let item of mf.data">
-      <td>{{item.id}}</td>
-      <td>{{item.name}}</td>
+      <td>{{item.code}}</td>
+      <td>{{item.franchisename}}</td>
       <td>{{item.cif}}</td>
-      <td>{{item.country}}</td>
+      <td>{{item.addresslocal}}</td>
 	  <td  style="text-align:center">
-		<button style="margin-right: 15px;" class="btn btn-success btn-xs" ><span class="glyphicon glyphicon-pencil" (click)="showCenterFunction()"></span></button>
+		<button style="margin-right: 15px;" class="btn btn-success btn-xs" ><span class="glyphicon glyphicon-pencil" (click)="showCenterFunction(item.code)"></span></button>
 		<button style="margin-right: 15px;" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
 	  </td>
     </tr>
@@ -315,6 +315,10 @@
 																					  <div class="panel-heading">Addresses</div>
 																					  <div class="panel-body">
 																							<form>
+																								<div class="form-group">
+																									<label>Fiscal address</label>
+																									<input type="text" class="form-control" id="" placeholder="Fiscal address">
+																								</div>
 																								<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
 																										<div class="form-group">									
@@ -331,11 +335,7 @@
 																								<div class="form-group" *ngIf="!showAddress">
 																									<label>Common address</label>
 																									<input type="text" class="form-control" id="" placeholder="Common address" value="{{centers['addresslocal'].addressName}}">
-																								</div>
-																								<div class="form-group" *ngIf="showAddress">
-																									<label>Fiscal address</label>
-																									<input type="text" class="form-control" id="" placeholder="Fiscal address">
-																								</div>
+																								</div>																				
 																								<div class="form-group" *ngIf="showAddress">
 																									<label>Local address</label>
 																									<input type="text" class="form-control" id="" placeholder="Local address" value="{{centers['addresslocal'].addressName}}">
@@ -855,7 +855,7 @@
 												   <div class="col-sm-6">
 												   		<div class="col-sm-12"  style="padding-bottom:30px;">
 														    <div class="panel panel-default">
-															  <div class="panel-heading">Datos generales coordinación</div>
+															  <div class="panel-heading">General coordination data</div>
 															  <div class="panel-body">
 															    <form>
 																	<div class="form-group">
