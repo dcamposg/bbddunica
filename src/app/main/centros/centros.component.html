@@ -865,27 +865,27 @@
 														    <div class="panel panel-default">
 															  <div class="panel-heading">General coordination data</div>
 															  <div class="panel-body">
-															    <form>
+																<form>
 																	<div class="form-group">
-																		<label>Capacidad total de aulas</label>
-																		<input type="number" class="form-control" id="" placeholder="">
+																		<label>Total capacity of classrooms</label>
+																		<input type="number" class="form-control" id="" placeholder="Total capacity of classrooms">
 																	</div>
 																	<div class="form-group">
-																		<label>Número actual de aulas</label>
-																		<input type="number" class="form-control" id="" placeholder="">
+																		<label>Total number of classrooms</label>
+																		<input type="number" class="form-control" id="" placeholder="Total number of classrooms" value="{{centers['totalclassrooms']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Número de aulas TandT</label>
-																		<input type="number" class="form-control" id="" placeholder="">
+																		<label>Number of TandT classrooms</label>
+																		<input type="number" class="form-control" id="" placeholder="Number of T&T classrooms" value="{{centers['tandtclassrooms']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Número de aulas KIDS</label>
-																		<input type="number" class="form-control" id="" placeholder="">
+																		<label>Number of Kids classrooms</label>
+																		<input type="number" class="form-control" id="" placeholder="Number of Kids classrooms" value="{{centers['kidsclassrooms']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Metros cuadrados totales</label>
-																		<input type="number" class="form-control" id="" placeholder="">
-																	</div>																	
+																		<label>Square meter</label>
+																		<input type="number" class="form-control" id="" placeholder="Square meter" value="{{centers['squaremeters']}}">
+																	</div>
 																</form>																  
 															  </div>
 															</div>
@@ -942,12 +942,12 @@
 															  <div class="panel-body">
 																		<form>
 																			<div class="form-group">
-																				<label>Ratio de retencion del centro</label>
-																				<input type="number" class="form-control" id="" placeholder="">
+																				<label>Center ratio</label>
+																				<input type="number" class="form-control" id="" placeholder="Center ratio" value="{{centers['centerratio']}}">
 																			</div>
 																			<div class="form-group">
-																				<label>Ratio de fidelización de marca</label>
-																				<input type="number" class="form-control" id="" placeholder="">
+																				<label>Loyalty ratio</label>
+																				<input type="number" class="form-control" id="" placeholder="Loyalty ratio" value="{{centers['loyaltyratio']}}">
 																			</div>																	
 																		</form>																  
 															  </div>
@@ -997,16 +997,16 @@
 															  <div class="panel-body">
 															    <form>
 																	<div class="form-group">
-																		<label>Dirección</label>
-																		<input type="text" class="form-control" id="" placeholder="Url">
+																		<label>Url</label>
+																		<input type="text" class="form-control" id="" placeholder="Url" value="{{centers['microaddress']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Usuario</label>
-																		<input type="text" class="form-control" id="" placeholder="User">
+																		<label>User</label>
+																		<input type="text" class="form-control" id="" placeholder="User" value="{{centers['microuser']}}">
 																	</div>
 																	<div class="form-group">
 																		<label>Password</label>
-																		<input type="text" class="form-control" id="" placeholder="Password">
+																		<input type="text" class="form-control" id="" placeholder="Password" value="{{centers['micropwd']}}">
 																	</div>																	
 																</form>																  
 															  </div>
@@ -1016,32 +1016,32 @@
 												   <div class="col-sm-6">
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
 														    <div class="panel panel-default">
-															  <div class="panel-heading">Otros datos del centro</div>
+															  <div class="panel-heading">Other data</div>
 															  <div class="panel-body">
 																	<form>
 																		<div class="form-group">
-																			<label>Nº cursos centro abierto</label>
-																			<input type="number" class="form-control" id="" placeholder="">
+																			<label>Number of courses that the center has open</label>
+																			<input type="number" class="form-control" id="" placeholder="Number of courses" readonly>
 																		</div>
 																		<div class="form-group">
-																			<label>Nº alumnos actual</label>
-																			<input type="number" class="form-control" id="" placeholder="">
+																			<label>Current number of students</label>
+																			<input type="number" class="form-control" id="" placeholder="Current number of students">
 																		</div>
 																		<div class="form-group">
-																			<label>Nº centros extraescolares</label>
-																			<input type="number" class="form-control" id="" placeholder="">
+																			<label>Number of out-of-school centers</label>
+																			<input type="number" class="form-control" id="" placeholder="Number of out-of-school centers">
 																		</div>
 																		<div class="form-group">
-																			<label>Nº guarderías</label>
-																			<input type="number" class="form-control" id="" placeholder="">
+																			<label>Number of kindergarten</label>
+																			<input type="number" class="form-control" id="" placeholder="Number of kindergarten">
 																		</div>
 																		<div class="form-group">
-																			<label>Nº alumnos externos</label>
-																			<input type="number" class="form-control" id="" placeholder="">
+																			<label>Number of external students</label>
+																			<input type="number" class="form-control" id="" placeholder="Number of external students">
 																		</div>
 																		<div class="form-group">
-																			<label>Nº profesores</label>
-																			<input type="number" class="form-control" id="" placeholder="">
+																			<label>Number of teachers</label>
+																			<input type="number" class="form-control" id="" placeholder="Number of teachers">
 																		</div>																		
 																	</form>																  
 															  </div>
@@ -1111,7 +1111,7 @@
 														</div>	
 												   		<div class="col-sm-12" style="padding-bottom:30px;">
 														    <div class="panel panel-default">
-															  <div class="panel-heading">Tabla de precios curso actual</div>
+															  <div class="panel-heading">Current course price table</div>
 															  <div class="panel-body">
 																	<table class="table table-hover">
 																		<thead>
@@ -1158,21 +1158,21 @@
 									<div class="row" style="padding:10px;">
 												   <div class="col-sm-6">
 												   		<div class="panel panel-default">
-														  <div class="panel-heading">Datos generales del Master</div>
+														  <div class="panel-heading">General master data</div>
 														  <div class="panel-body">
 																<div class="col-sm-12"  style="padding-bottom:30px;">
 																		<form>
 																			<div class="form-group">
-																				<label>Fecha canon entrada</label>
-																				<input type="date" class="form-control" id="" placeholder="">
+																				<label>Entry fee date</label>
+																				<input type="date" class="form-control" id="" value="{{centers['masterCenter'].entryfeedate | date:'yyyy-MM-dd'}}">
 																			</div>
 																			<div class="form-group">
-																				<label>Importe canon entrada</label>
-																				<input type="number" class="form-control" id="" placeholder="">
+																				<label>Entry fee import</label>
+																				<input type="number" class="form-control" id="" placeholder="Entry fee import" value="{{centers['masterCenter'].entryfeeimport}}">
 																			</div>
 																			<div class="form-group">
-																			  <label>Información sobre el pago</label>
-																			  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
+																			  <label>Payment information</label>
+																			  <textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].paymentmode}}"></textarea>
 																			</div>
 																			<div class="form-group">
 																				<label>Evolución en función de los centros</label>
@@ -1208,18 +1208,18 @@
 														  </div>
 														</div>
 														    <div class="panel panel-default">
-															  <div class="panel-heading">Plan de expansión según contrato</div>
+															  <div class="panel-heading">Expansion plan</div>
 															  <div class="panel-body">
 																	<div class="form-group">
-																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
+																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].expansionplan}}"></textarea>
 																	</div>															  
 															  </div>
 															</div>
 														    <div class="panel panel-default">
-															  <div class="panel-heading">Observaciones particulares</div>
+															  <div class="panel-heading">Particular observations</div>
 															  <div class="panel-body">
 																	<div class="form-group">
-																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
+																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].observations}}"></textarea>
 																	</div>														  
 															  </div>
 															</div>																																
