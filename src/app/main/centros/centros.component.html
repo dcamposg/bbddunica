@@ -130,7 +130,7 @@
 																<form>
 																	<div class="form-group">
 																		<label>Master</label>
-																		<input type="text" class="form-control" id="master" placeholder="Master" [value]="(centers['masterCenter'] != null) ? (centers['masterCenter'].centerOwned['franchisename']) : ''">
+																		<input type="text" class="form-control" id="master" placeholder="Master" [value]="(centers['masterCenter'] != null) ? (centers['masterCenter'].centerOwned['franchisename']) : ''" readonly>
 																	</div>
 																	<div class="form-group">
 																		<label>Country</label>
@@ -215,9 +215,9 @@
 																		<label>Communication language</label>
 																		<input type="text" class="form-control" id="comunicationlanguage" placeholder="Communication language" value="{{centers['languagecommunication'].name}}">
 																	</div>	
-																	<div class="form-group" *ngFor="let supportlan of centers['languagesupport']; let i = index">
-																		<label>Support language {{i+1}}</label>
-																		<input type="text" class="form-control" id="supportlanguage" placeholder="Support language" value="{{supportlan.name}}">
+																	<div class="form-group">
+																		<label>Support language</label>
+																		<input *ngFor="let supportlan of centers['languagesupport']; let i = index" type="text" class="form-control" id="supportlanguage" placeholder="Support language" value="{{supportlan.name}}" readonly>
 																	</div>																	
 																</form>	 		   
 												   </div>
@@ -579,7 +579,7 @@
 									<div class="content">
 									<div class="row" style="padding:10px;">
 									    <div class="panel panel-default">
-										  <div class="panel-heading">Datos generales sociedad</div>
+										  <div class="panel-heading">General society data</div>
 										  <div class="panel-body">
 												   <div class="col-sm-3">
 																<form>															
@@ -588,22 +588,22 @@
 																		<input type="text" class="form-control" id="" placeholder="CIF">
 																	</div>
 																	<div class="form-group">
-																		<label>Firma precontrato</label>
-																		<input type="date" class="form-control" id="" placeholder="Firma precontrato">
+																		<label>Pre-contract signature</label>
+																		<input type="date" class="form-control" id="" placeholder="Pre-contract signature">
 																	</div>
 																	<div class="form-group">
 																		<label>Canon</label>
-																		<input type="date" class="form-control" id="" placeholder="Canon">
+																		<input type="date" class="form-control" id="" placeholder="Canon" value="{{centers['canonpayment'] | date:'yyyy-MM-dd' }}">
 																	</div>																	
 																	<div class="row" style="padding-top:10px;">
 																		<div class="col-sm-6">
 																			<div class="form-group">									
-																				<label>Nombre provisional</label>
+																				<label>Tentative name</label>
 																			</div>
 																		</div>
 																		<div class="col-sm-4">
 																			<div class="form-group sociedadcustomSlide0">									
-																				<input type="checkbox" value="None" id="sociedadcustomSlide0" name="check" />
+																				<input type="checkbox" value="Y" id="sociedadcustomSlide0" name="check" [checked]="(centers['provisionalname'] == 'Y') ? true : false" #sociedadcustomSlide0 />
 																				<label for="sociedadcustomSlide0"></label>
 																			</div>
 																		</div>										
@@ -614,31 +614,31 @@
 																<form>
 																	<div class="form-group">
 																		<label>IBAN</label>
-																		<input type="text" class="form-control" id="" placeholder="IBAN">
+																		<input type="text" class="form-control" id="" placeholder="IBAN" value="{{centers['iban']}}">
 																	</div>
 																	<div class="form-group">
-																		<label>Firma contrato inicial</label>
-																		<input type="date" class="form-control" id="" placeholder="Firma contrato inicial">
+																		<label>Starting contract signature</label>
+																		<input type="date" class="form-control" id="" placeholder="Starting contract signature" value="{{centers['contractsignature'] | date:'yyyy-MM-dd' }}">
 																	</div>
 																	<div class="form-group">
 																		<label>HRF</label>
-																		<input type="date" class="form-control" id="" placeholder="HRF">
+																		<input type="date" class="form-control" id="" placeholder="HRF" value="{{centers['hrf'] | date:'yyyy-MM-dd' }}">
 																	</div>								
 																</form>	   
 												   </div>
 												   <div class="col-sm-3">
 																<form>
 																	<div class="form-group">
-																		<label>Inicio contrato</label>
-																		<input type="date" class="form-control" id="" placeholder="Inicio contrato">
+																		<label>Contract start</label>
+																		<input type="date" class="form-control" id="" placeholder="Contract start" value="{{centers['contractstart'] | date:'yyyy-MM-dd' }}">
 																	</div>
 																	<div class="form-group">
-																		<label>Fin contrato actual</label>
-																		<input type="date" class="form-control" id="" placeholder="Fin contrato actual">
+																		<label>End current contract</label>
+																		<input type="date" class="form-control" id="" placeholder="End current contract" value="{{centers['enddate'] | date:'yyyy-MM-dd' }}">
 																	</div>
 																	<div class="form-group">
-																		<label>Fecha firma de renovaciones</label>
-																		<input type="date" class="form-control" id="" placeholder="Fecha firma de renovaciones">
+																		<label>Renewal signature date</label>
+																		<input type="date" class="form-control" id="" placeholder="Renewal signature date" value="{{centers['renovationdate'] | date:'yyyy-MM-dd' }}">
 																	</div>																		
 																</form>  
 												   </div>
@@ -647,12 +647,12 @@
 																	<div class="row" style="padding-top:10px;">
 																		<div class="col-sm-6">
 																			<div class="form-group">									
-																				<label>Activo / Inactivo</label>
+																				<label>Active / Inactive</label>
 																			</div>
 																		</div>
 																		<div class="col-sm-4">
 																			<div class="form-group sociedadcustomSlide1">									
-																				<input type="checkbox" value="None" id="sociedadcustomSlide1" name="check" />
+																				<input type="checkbox" value="A" id="sociedadcustomSlide1" name="check" [checked]="(centers['status'] == 'A') ? true : false" #sociedadcustomSlide1 />
 																				<label for="sociedadcustomSlide1"></label>
 																			</div>
 																		</div>										
@@ -679,11 +679,11 @@
 																									<input type="number" class="form-control" id="" placeholder="Royalty publicidad">
 																								</div>
 																								<div class="form-group">
-																									<label>Nueva royalty</label>
-																									<input type="number" class="form-control" id="" placeholder="Nueva royalty">
+																									<label>New royalty</label>
+																									<input type="number" class="form-control" id="" placeholder="New royalty">
 																								</div>
 																								<div class="form-group">
-																									<label>Fecha aplica nueva royalty</label>
+																									<label>New royalty date</label>
 																									<input type="date" class="form-control" id="" placeholder="">
 																								</div>		
 																							</form>				   
@@ -699,12 +699,12 @@
 																			   <div class="col-sm-4">
 																							<form>
 																								<div class="form-group">
-																									<label>Importe fianza</label>
-																									<input type="number" class="form-control" id="" placeholder="">
+																									<label>Deposit amount</label>
+																									<input type="number" class="form-control" id="" placeholder="Deposit amount">
 																								</div>
 																								<div class="form-group">
-																									<label>Importe canon</label>
-																									<input type="number" class="form-control" id="" placeholder="">
+																									<label>Canon amount</label>
+																									<input type="number" class="form-control" id="" placeholder="Canon amount">
 																								</div>
 																							</form>				
 																			   </div>																				  
@@ -714,13 +714,13 @@
 																	 
 																			<div class="row" style="margin-bottom:20px;">
 																			    <div class="panel panel-default">
-																				  <div class="panel-heading">Datos de la participación</div>
+																				  <div class="panel-heading">Participation data</div>
 																				  <div class="panel-body">
 																			   <div class="col-sm-6">
 																							<form>
 																								<div class="form-group">
-																									<label>Nombre de la sociedad</label>
-																									<input type="text" class="form-control" id="" placeholder="Nombre de la sociedad">
+																									<label>Society's name</label>
+																									<input type="text" class="form-control" id="" placeholder="Society's name">
 																								</div>
 																								<table class="table table-hover">
 																									<thead>
@@ -744,7 +744,7 @@
 																									 </tbody>
 																								  </table>
 																								<div class="form-group">
-																								  <label>Observaciones:</label>
+																								  <label>Observations</label>
 																								  <textarea class="form-control" rows="5" id="comment" style="resize:vertical"></textarea>
 																								</div>
 																							</form>				   
@@ -754,39 +754,39 @@
 																								  <div class="row" style="padding-top:10px;">
 																									<div class="col-sm-6">
 																										<div class="form-group">									
-																											<label>¿Es participada por central?</label>
+																											<label>Is it participated by central?</label>
 																										</div>
 																									</div>
 																									<div class="col-sm-4">
-																										<div class="form-group sociedadcustomSlide2">									
-																											<input type="checkbox" value="None" id="sociedadcustomSlide2" name="check" />
+																										<div class="form-group sociedadcustomSlide2"><
+																										<input type="checkbox" value="Y" id="sociedadcustomSlide2" name="check" [checked]="(centers['centralparticipation'] == 'Y') ? true : false" #sociedadcustomSlide2 />
 																											<label for="sociedadcustomSlide2"></label>
 																										</div>
 																									</div>										
 																								  </div>	
 																								  <div class="form-group">
-																									<label>Fecha contrato alquiler</label>
-																									<input type="date" class="form-control" id="">
+																									<label>Rental contract date</label>
+																									<input type="date" class="form-control" id="" value="{{centers['contractsignature'] | date:'yyyy-MM-dd' }}">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Fecha fin alquiler:</label>
-																									<input type="date" class="form-control" id="">
+																									<label>End of rental</label>
+																									<input type="date" class="form-control" id="" value="{{centers['rentalend'] | date:'yyyy-MM-dd' }}">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Precio alquiler</label>
-																									<input type="number" class="form-control" id="">
+																									<label>Rental price</label>
+																									<input type="number" class="form-control" id="" placeholder="Rental price" value="{{centers['rentalprice']}}">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Moneda alquiler</label>
-																									<input type="text" class="form-control" id="">
+																									<label>Rental currency</label>
+																									<input type="text" class="form-control" id="" placeholder="Rental currency" value="{{centers['rentalcurrency']}}">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Año entrada participación:</label>
-																									<input type="number" class="form-control" id="">
+																									<label>Entry participation year</label>
+																									<input type="number" class="form-control" id="" placeholder="Entry participation year">
 																								  </div>
 																								  <div class="form-group">
-																									<label>Año modificación participaciones:</label>
-																									<input type="number" class="form-control" id="">
+																									<label>Modification participation year</label>
+																									<input type="number" class="form-control" id="" placeholder="Modification participation year">
 																								  </div>																								  
 																							</form>			   
 																			   </div>																				  
@@ -800,8 +800,8 @@
 														  <div class="panel-body">
 																			 <div style="text-align: center;">
 																				<p><b>AREA OF TERRITORIAL EXCLUSIVITY</b></p>
-																				<p>Texto de la zona de exclusividad.</p>
-																				<img src="https://i.pinimg.com/736x/30/58/9f/30589f731f65728ddb8e207a09e48987.jpg" alt="Mountain View" width="90%">		
+																				<p>{{centers['exclusivityzone']}}</p>
+																				<img src="{{centers['imageexclusivity'][0].path}}" alt="" width="90%">		
 																			 </div>														  
 														  </div>
 														</div>
@@ -810,7 +810,7 @@
 									<div class="row" style="margin-bottom:20px;">
 									   <div class="col-sm-6">
 									       <div class="panel panel-default">
-											  <div class="panel-heading">Otros centros con mismo CIF</div>
+											  <div class="panel-heading">Other centers with the same CIF</div>
 											  <div class="panel-body">
 														<table class="table table-hover">
 															<thead>
@@ -835,24 +835,20 @@
 										</div>																		
 									   <div class="col-sm-6">
 									       <div class="panel panel-default">
-											  <div class="panel-heading">Centros vinculados</div>
+											  <div class="panel-heading">Linked centers</div>
 											  <div class="panel-body">
 														<table class="table table-hover">
 															<thead>
 															  <tr>
-																<th>Nombre del centro</th>
-																<th>Ciudad</th>
+																<th>Center name</th>
+																<th>City</th>
 															  </tr>
 															</thead>
 															<tbody>
-															  <tr>
-																<td>Kids and Us 3</td>
-																<td>Madrid</td>
-															  </tr>
-															  <tr>
-																<td>Kids and Us 4</td>
-																<td>Barcelona</td>
-															  </tr>				  
+															  <tr *ngFor="let linkedcenters of centers['masterCenter'].centerList; let i = index">
+																<td>{{linkedcenters.franchisename}}</td>
+																<td>{{linkedcenters.addresslocal['town']}} ({{linkedcenters.addresslocal['country']}})</td>
+															  </tr>			  
 															</tbody>
 														  </table>											  
 											  </div>

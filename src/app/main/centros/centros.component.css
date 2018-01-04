@@ -190,7 +190,7 @@ li.active span.round-tabs.five{
 	text-shadow: 1px 1px 0px rgba(255,255,255,.15);
 }
 
-.generalcustomSlide0:after, .generalcustomSlide2:after, .generalcustomSlide3:after, .generalcustomSlide4:after, .generalcustomSlide7:after, .generalcustomSlide8:after, .generalcustomSlide9:after, .sociedadcustomSlide0:after, .sociedadcustomSlide1:after, .sociedadcustomSlide2:after {
+.generalcustomSlide0:after, .generalcustomSlide2:after, .generalcustomSlide3:after, .generalcustomSlide4:after, .generalcustomSlide7:after, .generalcustomSlide8:after, .generalcustomSlide9:after, .sociedadcustomSlide0:after, .sociedadcustomSlide2:after {
 	content: 'NO';
 }
 
@@ -204,6 +204,10 @@ li.active span.round-tabs.five{
 	content: 'NAT';
 }
 
+.sociedadcustomSlide1:after{
+	content: 'INA';
+}
+
 .generalcustomSlide0:before, .generalcustomSlide1:before, .generalcustomSlide2:before, .generalcustomSlide3:before, .generalcustomSlide4:before, .generalcustomSlide5:before, .generalcustomSlide6:before, .generalcustomSlide7:before, .generalcustomSlide8:before, .generalcustomSlide9:before, .sociedadcustomSlide0:before, .sociedadcustomSlide1:before, .sociedadcustomSlide2:before{
 	/*content: 'YES';*/
 	font: 12px/26px Arial, sans-serif;
@@ -214,7 +218,7 @@ li.active span.round-tabs.five{
 	font-weight: bold;
 }
 
-.generalcustomSlide0:before, .generalcustomSlide2:before, .generalcustomSlide3:before, .generalcustomSlide4:before, .generalcustomSlide7:before, .generalcustomSlide8:before, .generalcustomSlide9:before, .sociedadcustomSlide0:before, .sociedadcustomSlide1:before, .sociedadcustomSlide2:before{
+.generalcustomSlide0:before, .generalcustomSlide2:before, .generalcustomSlide3:before, .generalcustomSlide4:before, .generalcustomSlide7:before, .generalcustomSlide8:before, .generalcustomSlide9:before, .sociedadcustomSlide0:before, .sociedadcustomSlide2:before{
 	content: 'YES';
 }
 
@@ -227,6 +231,10 @@ li.active span.round-tabs.five{
 .generalcustomSlide6:before{
 	content: 'INT';
 }
+
+ .sociedadcustomSlide1:before{
+	content: 'ACT';
+ }
 
 .generalcustomSlide0 label , .generalcustomSlide1 label , .generalcustomSlide2 label, .generalcustomSlide3 label, .generalcustomSlide4 label, .generalcustomSlide5 label, .generalcustomSlide6 label, .generalcustomSlide7 label, .generalcustomSlide8 label, .generalcustomSlide9 label, .sociedadcustomSlide0 label , .sociedadcustomSlide1 label, .sociedadcustomSlide2 label {
 	display: block;
