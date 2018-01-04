@@ -12,19 +12,22 @@ export class DataFilterContactoPipe implements PipeTransform {
     return array;
   }*/
   
-    transform(items: any[], id: string, name: string, lastname: string, email: string){
+    transform(items: any[], id: string, name: string, lastname1: string, lastname2: string, email: string){
         if (items && items.length){
             return items.filter(item =>{
-                if (id && item.id!=id){
+                if (id && item.idinternal && item.idinternal!=id){
                     return false;
                 }
-                if (name && item.name.toLowerCase().indexOf(name.toLowerCase()) === -1){
+                if (name && item.firstname && item.firstname.toLowerCase().indexOf(name.toLowerCase()) === -1){
                     return false;
                 }
-                if (lastname && item.lastname.toLowerCase().indexOf(lastname.toLowerCase()) === -1){
+                if (lastname1 && item.lastname1 && item.lastname1.toLowerCase().indexOf(lastname1.toLowerCase()) === -1){
                     return false;
                 }
-				if (email && item.email.toLowerCase().indexOf(email.toLowerCase()) === -1){
+                if (lastname2 && item.lastname2 && item.lastname2.toLowerCase().indexOf(lastname2.toLowerCase()) === -1){
+                    return false;
+                }				
+				if (email && item.emailoffice && item.emailoffice.toLowerCase().indexOf(email.toLowerCase()) === -1){
                     return false;
                 }
                 return true;

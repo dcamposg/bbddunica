@@ -2,7 +2,7 @@
  
   <table
     class="table table-hover"
-    [mfData]="data | dataFilterContacto : filterQueryId : filterQueryName : filterQueryLastname : filterQueryEmail"
+    [mfData]="data | dataFilterContacto : filterQueryId : filterQueryName : filterQueryLastname1 : filterQueryLastname2 : filterQueryEmail"
     #mf="mfDataTable"
     [mfRowsOnPage]="rowsOnPage"
     [(mfSortBy)]="sortBy"
@@ -10,31 +10,35 @@
   >
     <thead>
     <tr>
-      <th style="width: 5%">
-        <mfDefaultSorter by="id">ID</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryId"/>
+      <th>
+        <mfDefaultSorter by="idinternal">ID</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryId"/>
       </th>
-      <th style="width: 30%">
-        <mfDefaultSorter by="name">Name</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryName"/>
+      <th>
+        <mfDefaultSorter by="firstname">Name</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryName"/>
       </th>
-      <th style="width: 30%">
-        <mfDefaultSorter by="lastname">Last name</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryLastname"/>
+      <th>
+        <mfDefaultSorter by="lastname1">Last name 1</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryLastname1"/>
       </th>
-      <th style="width: 20%">
-        <mfDefaultSorter by="email">Email</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryEmail"/>
+      <th>
+        <mfDefaultSorter by="lastname2">Last name 2</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryLastname2"/>
       </th>
-	  <th style="width: 15%">
+      <th>
+        <mfDefaultSorter by="emailoffice">Email</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryEmail"/>
+      </th>
+	  <th style="width: 10%">
 	   <mfDefaultSorter by="delete"></mfDefaultSorter>
       </th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of mf.data">
-      <td>{{item.id}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.lastname}}</td>
-      <td>{{item.email}}</td>
+      <td>{{item.idinternal}}</td>
+      <td>{{item.firstname}}</td>
+      <td>{{item.lastname1}}</td>
+      <td>{{item.lastname2}}</td>	  
+      <td>{{item.emailoffice}}</td>
 	  <td  style="text-align:center">
-		<button style="margin-right: 15px;" class="btn btn-success btn-xs" ><span class="glyphicon glyphicon-pencil" (click)="showContactFunction()"></span></button>
+		<button style="margin-right: 15px;" class="btn btn-success btn-xs" ><span class="glyphicon glyphicon-pencil" (click)="showContactFunction(item.idinternal)"></span></button>
 		<button style="margin-right: 15px;" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
 	  </td>	  
     </tr>

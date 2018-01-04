@@ -5,7 +5,7 @@
  <button style="float:right; margin:10px;" class="btn btn-success btn-md" data-toggle="modal" data-target="#exportcsv" >Export CSV General&nbsp;<span class="glyphicon glyphicon-export"></span></button>
   <table
     class="table table-hover"
-    [mfData]="data | dataFilterCentro : filterQueryId : filterQueryName : filterQueryCif : filterQueryCountry"
+    [mfData]="data | dataFilterCentro : filterQueryId : filterQueryName : filterQueryEmail : filterQueryTelephone : filterQueryCif : filterQueryCoordinator : filterQueryOpenDate"
     #mf="mfDataTable"
     [mfRowsOnPage]="rowsOnPage"
     [(mfSortBy)]="sortBy"
@@ -14,19 +14,28 @@
   >
     <thead>
     <tr>
-      <th style="width: 5%">
-        <mfDefaultSorter by="id">ID</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryId"/>
+      <th>
+        <mfDefaultSorter by="code">ID</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryId"/>
       </th>
-      <th style="width: 50%">
-        <mfDefaultSorter by="name">Name</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryName"/>
+      <th>
+        <mfDefaultSorter by="franchisename">Name</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryName"/>
       </th>
-      <th style="width: 10%">
-        <mfDefaultSorter by="cif">CIF</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryCif"/>
+      <th>
+        <mfDefaultSorter by="emailfirst">Email</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryEmail"/>
       </th>
-      <th style="width: 20%">
-        <mfDefaultSorter by="country">Country</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryCountry"/>
+      <th>
+        <mfDefaultSorter by="telephonefirst">Telephone</mfDefaultSorter><input class="form-control" placeholder="xxx xx xx xx" [(ngModel)]="filterQueryTelephone"/>
+      </th>	  
+      <th>
+        <mfDefaultSorter by="nifcif">CIF</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryCif"/>
       </th>
-	  <th style="width: 15%">
+      <th>
+        <mfDefaultSorter by="coordinatorkids">Coordinator</mfDefaultSorter><input class="form-control" [(ngModel)]="filterQueryCoordinator"/>
+      </th>
+      <th>
+        <mfDefaultSorter by="opendate">Opening date</mfDefaultSorter><input type="date" class="form-control" [(ngModel)]="filterQueryOpenDate"/>
+      </th>
+	  <th style="width:10%">
 	   <mfDefaultSorter by="delete"></mfDefaultSorter>
       </th>
     </tr>
@@ -35,8 +44,11 @@
     <tr *ngFor="let item of mf.data">
       <td>{{item.code}}</td>
       <td>{{item.franchisename}}</td>
-      <td>{{item.cif}}</td>
-      <td>{{item.addresslocal}}</td>
+	  <td>{{item.emailfirst}}</td>
+	  <td>{{item.telephonefirst}}</td>
+      <td>{{item.nifcif}}</td>
+      <td>{{item.coordinatorkids}}</td>
+	  <td>{{item.opendate | date:'yyyy-MM-dd'}}</td>
 	  <td  style="text-align:center">
 		<button style="margin-right: 15px;" class="btn btn-success btn-xs" ><span class="glyphicon glyphicon-pencil" (click)="showCenterFunction(item.code)"></span></button>
 		<button style="margin-right: 15px;" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
@@ -118,7 +130,7 @@
 																<form>
 																	<div class="form-group">
 																		<label>Master</label>
-																		<input type="text" class="form-control" id="master" placeholder="Master" value="{{centers['masterCenter'].centerOwned['franchisename']}}">
+																		<input type="text" class="form-control" id="master" placeholder="Master" [value]="(centers['masterCenter'] != null) ? (centers['masterCenter'].centerOwned['franchisename']) : ''">
 																	</div>
 																	<div class="form-group">
 																		<label>Country</label>

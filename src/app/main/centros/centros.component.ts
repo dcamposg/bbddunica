@@ -17,7 +17,7 @@ export class CentrosComponent implements OnInit {
   public data: object;
   public filterQuery = "";
   public rowsOnPage = 10;
-  public sortBy = "id";
+  public sortBy = "code";
   public sortOrder = "asc";
   private showId = false;
   
@@ -85,10 +85,10 @@ export class CentrosComponent implements OnInit {
 	
 	if(this.GoToCenter == null){
 			//this._http.get("assets/data_center.json")
-			this._http.get(MyGlobals['apiurl'] + "centers")
+			this._http.get(MyGlobals['apiurl'] + "centers_view")
 			  .subscribe((data)=> {
 					this.data = data.json();
-					//console.log(MyGlobals['apiurl']);						
+					console.log(this.data);						
 			  });
 	}
 	else{
