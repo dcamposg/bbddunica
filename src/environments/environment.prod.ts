@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   adalConfig: {
-    tenant: 'my-tenant.onmicrosoft.com',
-    clientId: '00000000-0000-0000-0000-000000000000',
-    postLogoutRedirectUri: 'http://localhost:4200/logout',
+    tenant: 'ONISIS.onmicrosoft.com',                   // <-- ADD
+    clientId: '822a064b-e07d-4176-9588-0565e3ef2e8c',    // <-- ADD
+    postLogoutRedirectUri: 'http://212.36.69.111:99',
     endpoints: {
-      'https://adaltestapi.azurewebsites.net': 'https://adaltestapi.azurewebsites.net',
+      'https://graph.windows.net/': 'https://graph.windows.net/',
     },
   },
-  apiUrl: 'https://adaltestapi.azurewebsites.net/api/'
+  apiUrl: 'https://graph.windows.net/ONISIS.onmicrosoft.com/'
 };

@@ -329,7 +329,7 @@
 																							<form>
 																								<div class="form-group">
 																									<label>Fiscal address</label>
-																									<input type="text" class="form-control" id="" placeholder="Fiscal address">
+																									<input type="text" class="form-control" id="" placeholder="Fiscal address" readonly>
 																								</div>
 																								<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
@@ -346,15 +346,15 @@
 																								</div>
 																								<div class="form-group" *ngIf="!showAddress">
 																									<label>Common address</label>
-																									<input type="text" class="form-control" id="" placeholder="Common address" value="{{centers['addresslocal'].addressName}}">
+																									<input type="text" class="form-control" id="" placeholder="Common address" value="{{centers['addresslocal'].addressName}}" readonly>
 																								</div>																				
 																								<div class="form-group" *ngIf="showAddress">
 																									<label>Local address</label>
-																									<input type="text" class="form-control" id="" placeholder="Local address" value="{{centers['addresslocal'].addressName}}">
+																									<input type="text" class="form-control" id="" placeholder="Local address" value="{{centers['addresslocal'].addressName}}" readonly>
 																								</div>
 																								<div class="form-group" *ngIf="showAddress"> 
 																									<label>Shipment address</label>
-																									<input type="text" class="form-control" id="" placeholder="Shipment address" value="{{centers['addressshipment'].addressName}}">
+																									<input type="text" class="form-control" id="" placeholder="Shipment address" value="{{centers['addressshipment'].addressName}}" readonly>
 																								</div>
 																								<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">

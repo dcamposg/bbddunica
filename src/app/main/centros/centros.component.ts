@@ -120,7 +120,7 @@ export class CentrosComponent implements OnInit {
 			showTitle: false,
 			useBom: true
 		  };
-		this._http.get(MyGlobals['apiurl'] + "centers")
+		this._http.get(MyGlobals['apiurl'] + "centers_view")
 			  .subscribe((data)=> {
 					this.data = data.json();
 				new Angular2Csv(this.data, 'My Report', options);					

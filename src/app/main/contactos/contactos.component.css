@@ -2,3 +2,12 @@
 	margin-top: 125px;
 	width: 95% !important;
 }
+
+agm-map {
+   height: 200px;
+ }
+ 
+ .addressinfo{
+	margin-top: 40px;
+ }
+ 

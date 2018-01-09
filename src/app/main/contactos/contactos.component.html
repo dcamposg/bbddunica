@@ -46,7 +46,7 @@
     <tfoot>
 	<tr>
       <td colspan="12"  style="text-align:center">
-        <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addcontact"  >Add contact&nbsp;<span class="glyphicon glyphicon-user" (click)="addContactFunction()"></span></button>
+        <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addcontact"  >Add contact&nbsp;<span class="glyphicon glyphicon-user"></span></button>
       </td>
     </tr>	
     <tr>
@@ -127,7 +127,19 @@
 											</div>
 											<div class="form-group">
 												<label>Address</label>
-												<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact.address['addressName']}}">
+												<div class="row" style="padding-right:10px;">
+												<div class="col-sm-8">
+												<!--<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact.address['addressName']}}" readonly >-->
+												<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value=
+														"{{contact.address['addressName']}} {{contact.address['postalcode']}} 
+														{{contact.address['town']}}, ({{contact.address['province']}}) 
+														{{contact.address['country']}}" 
+												readonly></textarea>
+												</div>
+												<div class="col-sm-4">
+												<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addaddress" (click)="resizeTrigger()">Update <span class="glyphicon glyphicon-globe"></span></button>
+												</div>
+												</div>
 											</div>	
 											<div class="form-group">
 												<label>Communication language</label>
@@ -291,7 +303,84 @@
 									</div>	
 								</div>
 								<div class="modal-footer ">
-									<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Save</button>
+									<button type="button" class="btn btn-success" (click)="addContactFunction()"><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Save</button>
+								</div>
+					</div>
+			</div>
+	</div>
+	
+	
+	<div class="modal fade" id="addaddress" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+			  <div class="modal-dialog">
+					<div class="modal-content">
+								 <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 class="modal-title custom_align" id="Heading">Update contact address</h4>
+								</div>
+								<div class="modal-body"> 
+												  <div class="form-group">
+													<input placeholder="Search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search>
+												  </div>
+												  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+													<agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+												  </agm-map>
+												  
+													<div class="addressinfo">
+														<div class="form-group">															
+															<div class="row">
+																<div class="col-sm-6">
+																	<label>Address</label>
+																	<input type="text" class="form-control" placeholder="Address" [value]="(address.StreetName == null) ? '' : address.StreetName">
+																</div>
+																<div class="col-sm-2">
+																	<label>Nº</label>
+																	<input type="text" class="form-control" placeholder="N" [value]="(address.StreetNumber == null) ? '' : address.StreetNumber">
+																</div>
+																<div class="col-sm-4">
+																	<label>Postal code</label>
+																	<input type="text"  class="form-control" placeholder="Postal code" [value]="(address.Zip == null) ? '' : address.Zip">
+																</div>
+															</div>
+														</div>
+														
+														<div class="form-group">															
+															<div class="row">
+																<div class="col-sm-4">
+																	<label>Town</label>
+																	<input type="text"  class="form-control" placeholder="Town" [value]="(address.City == null) ? '' : address.City">
+																</div>
+																<div class="col-sm-4">
+																	<label>Province</label>
+																	<input type="text"  class="form-control" placeholder="Province" [value]="(address.State1 == null) ? '' : address.State1">
+																</div>
+																<div class="col-sm-4">
+																	<label>District / CCAA</label>
+																	<input type="text"  class="form-control" placeholder="District or CCAA" [value]="(address.State2 == null) ? '' : address.State2">
+																</div>
+															</div>
+														</div>
+
+														<div class="form-group">															
+															<div class="row">
+																<div class="col-sm-4">
+																	<label>Country</label>
+																	<input type="text"  class="form-control" placeholder="Country" [value]="(address.Country == null) ? '' : address.Country">
+																</div>
+																<div class="col-sm-4">
+																	<label>Latitude</label>
+																	<input type="text"  class="form-control" placeholder="Latitude" [value]="(address.Lat == null) ? '' : address.Lat" readonly>
+																</div>
+																<div class="col-sm-4">
+																	<label>Longitude</label>
+																	<input type="text"  class="form-control" placeholder="Longitude" [value]="(address.Lng == null) ? '' : address.Lng" readonly>
+																</div>
+															</div>
+														</div>
+													
+													</div>
+								</div>
+								<div class="modal-footer ">
+									<button type="button" class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Save</button>
 								</div>
 					</div>
 			</div>
