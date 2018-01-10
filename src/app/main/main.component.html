@@ -10,10 +10,10 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
 	  <ul class="nav navbar-nav">
-		<li [routerLinkActive]="['active']"><a [routerLink]="['/centros']" (click)="changeRoute('/centros')">Centros</a></li>
-		<li [routerLinkActive]="['active']"><a [routerLink]="['/contactos']" (click)="changeRoute('/contactos')">Contactos</a></li>
-		<li [routerLinkActive]="['active']"><a [routerLink]="['/entidades-fiscales']" (click)="changeRoute('/entidades-fiscales')">Entidades Fiscales</a></li>
-		<li [routerLinkActive]="['active']"><a [routerLink]="['/seguridad']" (click)="changeRoute('/seguridad')">Seguridad</a></li>
+		<li [routerLinkActive]="['active']"><a [routerLink]="['/centers']" (click)="changeRoute('/centers')">Centers</a></li>
+		<li [routerLinkActive]="['active']"><a [routerLink]="['/contacts']" (click)="changeRoute('/contacts')">Contacts</a></li>
+		<li [routerLinkActive]="['active']"><a [routerLink]="['/fiscal-entities']" (click)="changeRoute('/fiscal-entities')">Fiscal Entities</a></li>
+		<li [routerLinkActive]="['active']"><a [routerLink]="['/security']" (click)="changeRoute('/security')">Security</a></li>
 	  </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a [routerLink]="['/logout']"><span class="glyphicon glyphicon-log-in"></span> Logout <span style="font-size: 18px">{{service.userInfo.profile.name}}</span></a></li>

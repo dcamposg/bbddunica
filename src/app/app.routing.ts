@@ -10,11 +10,11 @@ const routes: Route[] = [
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LogoutComponent },
     { path: '', component: MainComponent, canActivate: [AuthenticationGuard], canActivateChild: [AuthenticationGuard], children: [
-	  { path: '', redirectTo: 'centros', pathMatch: 'full'  },
-	  { path: 'centros', component: CentrosComponent},
-	  { path: 'contactos', component: ContactosComponent},
-	  { path: 'entidades-fiscales', component: EntidadesFiscalesComponent},
-	  { path: 'seguridad', component: SeguridadComponent},
+	  { path: '', redirectTo: 'centers', pathMatch: 'full'  },
+	  { path: 'centers', component: CentrosComponent},
+	  { path: 'contacts', component: ContactosComponent},
+	  { path: 'fiscal-entities', component: EntidadesFiscalesComponent},
+	  { path: 'security', component: SeguridadComponent},
 	  { path: 'dummy', component: DummyComponent }
     ]},
     { path: '**', pathMatch: 'full', redirectTo: 'error/404' }

@@ -59,162 +59,202 @@ export class ContactosComponent implements OnInit {
       });
   }
   
-  showContactFunction(contactId){
-  
-  	this._http.get(MyGlobals['apiurl'] + "contacts/" + contactId)
-	  .subscribe((data)=> {
-			this.contact = data.json();
-			console.log(this.contact);
-			this.showContact = true;
-			this.showTableContacts = false;			
-	  });
+	  showContactFunction(contactId){
 	  
+			  if(contactId){
+					this._http.get(MyGlobals['apiurl'] + "contacts/" + contactId)
+				  .subscribe((data)=> {
+						this.contact = data.json();
+						console.log(this.contact);
+						this.showContact = true;
+						this.showTableContacts = false;			
+				  });
+			  
+			  }
 	  
-	      //set google maps defaults
-    this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+			  else{
+				this.contact = [];
+				this.showContact = true;
+				this.showTableContacts = false;	
+			  }
+	  
 
-    //create search FormControl
-    this.searchControl = new FormControl();
+			//set google maps defaults
+			this.zoom = 4;
+			this.latitude = 39.8282;
+			this.longitude = -98.5795;
 
-    //set current position
-    this.setCurrentPosition();
+			//create search FormControl
+			this.searchControl = new FormControl();
 
-    //load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          this.place = autocomplete.getPlace();
+			//set current position
+			this.setCurrentPosition();
 
-          //verify result
-          if (this.place.geometry === undefined || this.place.geometry === null) {
-            return;
-          }
-
-          //set latitude, longitude and zoom
-          this.latitude = this.place.geometry.location.lat();
-          this.longitude = this.place.geometry.location.lng();
-          this.zoom = 12;
-		  
-		  console.log(this.place);
-		  
-		  this.address = [];
-		  this.place.address_components.forEach(item => {
-				switch(item.types[0]){
-						case 'street_number':
-							this.address['StreetNumber'] = item.long_name;
-							break;
-						case 'route':
-							this.address['StreetName'] = item.long_name;
-							break;
-						case 'neighborhood': case 'locality':
-							this.address['City'] = item.long_name;
-							break;
-						case 'administrative_area_level_2':
-							this.address['State1'] = item.long_name;
-							break;							
-						case 'administrative_area_level_1':
-							this.address['State2'] = item.long_name;
-							break;
-						case 'country':
-							this.address['Country'] = item.long_name;
-							break;
-						case 'postal_code':
-							this.address['Zip'] = item.long_name;
-							break;
-            }
+			//load Places Autocomplete
+			this.mapsAPILoader.load().then(() => {
+			  let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+				types: ["address"]
 			  });
-				 this.address['Lat'] = this.latitude;
-				 this.address['Lng'] = this.longitude;
-				 console.log(this.address);
-		  
-        });
-      });
-    });
-  }
-  
-  goCenter(id_center){
-		this.router.navigate(['/centros'], { queryParams: { param: 'gotocenter', id: id_center } });
-  }
-  
-  resizeTrigger(){	  
-	  setTimeout(()=>{    //<<<---    using ()=> syntax
-				   window.dispatchEvent(new Event('resize'))
-			 },1000);
-  }
-  
-    private setCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
-  }
-  
-  
-  
-  
-  
-  
-	  addContactFunction(){
-		  let body = {
-						'idinternal': 0,
-						'dninif': "123456789A",
-						'firstname': "Pedro",
-						'lastname1': "",
-						'lastname2': "",
-						'gender': "",
-						'birthdate': "",
-						'contactaddress': "",
-						'languagecommunication': "",
-						'telephoneoffice': "",
-						'telephonepersonal': "",
-						'mobile': "",
-						'skype': "",
-						'emailoffice': "",
-						'emailpersonal': "",
-						'observations': "",
-						'alexuser': "",
-						'clothingsize': "",
-						'imagepath': ""
-			};
-			
-		  //let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
-		  
-		  //let options = new RequestOptions({headers: headers});
-		  
-		  var url = MyGlobals['apiurl'] + "contacts";
-		  
-		let headers = new Headers({
-			'Content-Type': 'application/x-www-form-urlencoded'
-		});
-		let options = new RequestOptions({
-			headers: headers
-		});
-		// TODO: Encode the values using encodeURIComponent().
-		//let body = 'email=' + 'email1' + '&password=' + 'password1';
-		
-		var query = "";		
-		for (let key in body) {
-			query += encodeURIComponent(key)+"="+encodeURIComponent(body[key])+"&";
-		}
-		  
-		this._http.post(url, query, options)
-                .map((response: Response) =>response.json())
-                .subscribe(data=>{
-					console.log(data);
-                });        
+			  autocomplete.addListener("place_changed", () => {
+				this.ngZone.run(() => {
+				  //get the place result
+				  this.place = autocomplete.getPlace();
+
+				  //verify result
+				  if (this.place.geometry === undefined || this.place.geometry === null) {
+					return;
+				  }
+
+				  //set latitude, longitude and zoom
+				  this.latitude = this.place.geometry.location.lat();
+				  this.longitude = this.place.geometry.location.lng();
+				  this.zoom = 12;
+				  
+				  console.log(this.place);
+				  
+				  this.address = [];
+				  this.place.address_components.forEach(item => {
+						switch(item.types[0]){
+								case 'street_number':
+									this.address['StreetNumber'] = item.long_name;
+									break;
+								case 'route':
+									this.address['StreetName'] = item.long_name;
+									break;
+								case 'neighborhood': case 'locality':
+									this.address['City'] = item.long_name;
+									break;
+								case 'administrative_area_level_2':
+									this.address['State1'] = item.long_name;
+									break;							
+								case 'administrative_area_level_1':
+									this.address['State2'] = item.long_name;
+									break;
+								case 'country':
+									this.address['Country'] = item.long_name;
+									break;
+								case 'postal_code':
+									this.address['Zip'] = item.long_name;
+									break;
+					}
+					  });
+						 this.address['Lat'] = this.latitude;
+						 this.address['Lng'] = this.longitude;
+						 console.log(this.address);
+				  
+				});
+			  });
+			});
 	  }
+	  
+	  saveContact(contactId){
+	  
+			if(contactId){
+				//alert('Editar contacto ' + contactId);
+				//console.log(this.address);
+				//console.log(this.contact);
+				alert(this.contact['firstname']);
+			}
+	  
+			else{
+				//alert('Nuevo contacto');
+				alert(this.contact['firstname']);
+			}	
+			
+	  }
+	  
+	  saveContactAddress(addressname, addressnumber, floordoor, postalcode, town, province, district, country, lat, lng){
+			//alert(addressname + '-' + addressnumber + '-' + floordoor + '-' + postalcode + '-' + town + '-' + province + '-' + district +'-' + country + '-' + lat + '-' + lng);
+			
+			this.contact['address'].addressName = addressname;
+	  }
+  
+  
+	  
+	  goCenter(id_center){
+			this.router.navigate(['/centers'], { queryParams: { param: 'gotocenter', id: id_center } });
+	  }
+	  
+	  
+  
+	  resizeTrigger(){	  
+		  setTimeout(()=>{    //<<<---    using ()=> syntax
+					   window.dispatchEvent(new Event('resize'))
+				 },1000);
+	  }
+	  
+	  
+  
+	  private setCurrentPosition() {
+			if ("geolocation" in navigator) {
+			  navigator.geolocation.getCurrentPosition((position) => {
+				this.latitude = position.coords.latitude;
+				this.longitude = position.coords.longitude;
+				this.zoom = 12;
+			  });
+			}
+	}
+	  
+  
+  
+  
+  
+  
+	  /*addContactFunction(){
+			  let bodyJSON = {
+							'idinternal': 0,
+							'dninif': "123456789A",
+							'firstname': "Pedro",
+							'lastname1': "",
+							'lastname2': "",
+							'gender': "",
+							'birthdate': "",
+							'contactaddress': "",
+							'languagecommunication': "",
+							'telephoneoffice': "",
+							'telephonepersonal': "",
+							'mobile': "",
+							'skype': "",
+							'emailoffice': "",
+							'emailpersonal': "",
+							'observations': "",
+							'alexuser': "",
+							'clothingsize': "",
+							'imagepath': ""
+				};
+			
+			  //let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
+			  
+			  //let options = new RequestOptions({headers: headers});
+			  
+			var url = MyGlobals['apiurl'] + "contacts";
+		  
+			let headers = new Headers({
+				'Content-Type': 'application/x-www-form-urlencoded'
+			});
+			let options = new RequestOptions({
+				headers: headers
+			});
+
+			//EXAMPLE x-www-form-urlencoded ==> 'email=' + 'email1' + '&password=' + 'password1' + ...;
+			
+			  
+			this._http.post(url, this.encodeJSON(bodyJSON), options)
+					.map((response: Response) =>response.json())
+					.subscribe(data=>{
+						console.log(data);
+					});        
+	  }*/
 
   
-  
+	  encodeJSON(bodyJSON){
+				var body = "";		
+				for (let key in bodyJSON) {
+					body += encodeURIComponent(key)+"="+encodeURIComponent(bodyJSON[key])+"&";
+				}
+				
+				return body;
+	  }
   
 
 }
