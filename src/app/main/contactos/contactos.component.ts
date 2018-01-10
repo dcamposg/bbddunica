@@ -25,25 +25,29 @@ export class ContactosComponent implements OnInit {
   
   public contact: object;
   public data: any[];
+  public languages: object;
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy = "idinternal";
   public sortOrder = "asc";
   private showId = false;
   public place: google.maps.places.PlaceResult;
-  public address : object[] = [
-								  {
-									"StreetNumber": "",
-									"StreetName ": "",
-									"City ": "",
-									"State1 ": "",
-									"State2 ": "",									
-									"Country ": "",
-									"Zip ": " ",
-									"Lat ": "",
-									"Lng ": "",
-								  }
-								];
+  public address : object = {
+									"addressNumber": "",
+									"addressName ": "",
+									"town ": "",
+									"district ": "",
+									"province ": "",									
+									"country ": "",
+									"postalcode": " ",
+									"latitude": "",
+									"longitude": "",
+									"floorDoor": ""
+								  };
+  public language : object = {
+									"id": "",
+									"name": ""
+								  };				
   
   showTableContacts:boolean = true;
   showContact:boolean = false;
@@ -57,6 +61,12 @@ export class ContactosComponent implements OnInit {
           this.data = data.json();
 		  console.log(this.data);
       });
+	
+	this._http.get(MyGlobals['apiurl'] + "languages")
+      .subscribe((data)=> {
+          this.languages = data.json();
+		  console.log(this.languages);
+      });
   }
   
 	  showContactFunction(contactId){
@@ -65,7 +75,19 @@ export class ContactosComponent implements OnInit {
 					this._http.get(MyGlobals['apiurl'] + "contacts/" + contactId)
 				  .subscribe((data)=> {
 						this.contact = data.json();
-						console.log(this.contact);
+						//console.log(this.contact);
+				
+						this.address['addressName'] = this.contact['address'].addressName;
+						this.address['addressNumber'] = this.contact['address'].addressNumber;
+						this.address['floorDoor'] = this.contact['address'].floorDoor;
+						this.address['postalcode'] = this.contact['address'].postalcode;
+						this.address['town'] = this.contact['address'].town;
+						this.address['province'] = this.contact['address'].province;
+						this.address['district'] = this.contact['address'].district;
+						this.address['country'] = this.contact['address'].country;
+						this.address['latitude'] = this.contact['address'].latitude;
+						this.address['longitude'] = this.contact['address'].longitude;
+
 						this.showContact = true;
 						this.showTableContacts = false;			
 				  });
@@ -74,6 +96,8 @@ export class ContactosComponent implements OnInit {
 	  
 			  else{
 				this.contact = [];
+				//this.contact['address'] = Object.assign(this.address);
+				this.contact['language'] = this.language;
 				this.showContact = true;
 				this.showTableContacts = false;	
 			  }
@@ -116,30 +140,30 @@ export class ContactosComponent implements OnInit {
 				  this.place.address_components.forEach(item => {
 						switch(item.types[0]){
 								case 'street_number':
-									this.address['StreetNumber'] = item.long_name;
+									this.address['addressNumber'] = item.long_name;
 									break;
 								case 'route':
-									this.address['StreetName'] = item.long_name;
+									this.address['addressName'] = item.long_name;
 									break;
 								case 'neighborhood': case 'locality':
-									this.address['City'] = item.long_name;
+									this.address['town'] = item.long_name;
 									break;
 								case 'administrative_area_level_2':
-									this.address['State1'] = item.long_name;
+									this.address['district'] = item.long_name;
 									break;							
 								case 'administrative_area_level_1':
-									this.address['State2'] = item.long_name;
+									this.address['province'] = item.long_name;
 									break;
 								case 'country':
-									this.address['Country'] = item.long_name;
+									this.address['country'] = item.long_name;
 									break;
 								case 'postal_code':
-									this.address['Zip'] = item.long_name;
+									this.address['postalcode'] = item.long_name;
 									break;
 					}
 					  });
-						 this.address['Lat'] = this.latitude;
-						 this.address['Lng'] = this.longitude;
+						 this.address['latitude'] = this.latitude;
+						 this.address['longitude'] = this.longitude;
 						 console.log(this.address);
 				  
 				});
@@ -152,21 +176,40 @@ export class ContactosComponent implements OnInit {
 			if(contactId){
 				//alert('Editar contacto ' + contactId);
 				//console.log(this.address);
-				//console.log(this.contact);
-				alert(this.contact['firstname']);
+				console.log(this.contact);
 			}
 	  
 			else{
 				//alert('Nuevo contacto');
-				alert(this.contact['firstname']);
+				console.log(this.contact);
 			}	
 			
 	  }
 	  
+	  /*genderChange(){
+		if(this.contact['gender'] == 'M'){this.contact['gender']  = 'F';}
+		else{this.contact['gender']  = 'M';}
+	  }*/
+	  
 	  saveContactAddress(addressname, addressnumber, floordoor, postalcode, town, province, district, country, lat, lng){
 			//alert(addressname + '-' + addressnumber + '-' + floordoor + '-' + postalcode + '-' + town + '-' + province + '-' + district +'-' + country + '-' + lat + '-' + lng);
 			
-			this.contact['address'].addressName = addressname;
+			if(!this.contact['address']){
+					this.contact['address'] = this.address;
+			}
+			
+				this.contact['address'].addressName = addressname;
+				this.contact['address'].addressNumber = addressnumber;
+				this.contact['address'].floorDoor = floordoor;
+				this.contact['address'].postalcode = postalcode;
+				this.contact['address'].town = town;
+				this.contact['address'].province = province;
+				this.contact['address'].district = district;
+				this.contact['address'].country = country;
+				this.contact['address'].latitude = lat;
+				this.contact['address'].longitude = lng;
+				console.log(this.contact);
+
 	  }
   
   

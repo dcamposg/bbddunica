@@ -104,19 +104,19 @@
 										<form>
 											<div class="form-group">
 												<label>DNI / NIF:</label>
-												<input type="text" class="form-control" id="dni" placeholder="DNI" [value]="(contact.dninif) ? contact.dninif : ''">
+												<input type="text" class="form-control" id="dni" placeholder="DNI" name="dni" [(ngModel)]="contact.dninif">
 											</div>
 											<div class="form-group">
 												<label>Firstname</label>
-												<input type="text" class="form-control" id="firstname" placeholder="Firstname" [value]="(contact.firstname) ? contact.firstname : ''" name="firstname">
+												<input type="text" class="form-control" id="firstname" placeholder="Firstname" name="firstname" [(ngModel)]="contact.firstname">
 											</div>
 											<div class="form-group">
 												<label>Lastname 1</label>
-												<input type="text" class="form-control" id="lastname1" placeholder="Lastname1" [value]="(contact.lastname1) ? contact.lastname1 : ''">
+												<input type="text" class="form-control" id="lastname1" placeholder="Lastname1" name="lastname1" [(ngModel)]="contact.lastname1">
 											</div>
 											<div class="form-group">
 												<label>Lastname 2</label>
-												<input type="text" class="form-control" id="lastname2" placeholder="Lastname2" [value]="(contact.lastname2) ? contact.lastname2 : ''">
+												<input type="text" class="form-control" id="lastname2" placeholder="Lastname2" name="lastname2" [(ngModel)]="contact.lastname2">
 											</div>
 											<div class="form-group">												
 												<div class="row" style="padding:10px; padding-left: 0px">
@@ -127,7 +127,7 @@
 													</div>
 													<div class="col-sm-6">
 														<div class="form-group contactcustomSlide0">									
-															<input type="checkbox" value="M" id="contactcustomSlide0" name="check" [checked]="(contact.gender == 'F') ? true : false" #contactcustomSlide0 />
+															<input type="checkbox" value="" id="contactcustomSlide0" name="check" [checked]="(contact.gender == 'F') ? true : false" (change)="(contact.gender == 'F') ? (contact.gender = 'M') : (contact.gender = 'F')" #contactcustomSlide0 />
 															<label for="contactcustomSlide0"></label>
 														</div>
 													</div>										
@@ -135,14 +135,14 @@
 											</div>
 											<div class="form-group">
 												<label>Birthdate</label>
-												<input type="date" class="form-control" id="birthdate" [value]="(contact.birthdate) ? (contact.birthdate | date:'yyyy-MM-dd') : ''">
+												<input type="date" class="form-control" id="birthdate" name="birthdate" [ngModel]="contact.birthdate | date:'yyyy-MM-dd'" (ngModelChange)="contact.birthdate=$event">
 											</div>
 											<div class="form-group">
 												<label>Address</label>
 												<div class="row" style="padding-right:10px;">
 												<div class="col-sm-8">
 												<!--<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact.address['addressName']}}" readonly >-->
-												<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(contact.address) ? (contact.address['addressName'] + ',' + contact.address['addressNumber'] + '\n' + contact.address['postalcode'] + ',' + contact.address['town'] + ',' + contact.address['district'] + '\n' + contact.address['province'] + '(' +  contact.address['province'] + ')') : ''" readonly></textarea>
+												<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(contact.address) ? (contact.address['addressName'] + ',' + contact.address['addressNumber'] + '\n' + contact.address['postalcode'] + ',' + contact.address['town'] + ',' + contact.address['district'] + '\n' + contact.address['province'] + ' (' +  contact.address['country'] + ')') : ''" readonly></textarea>
 												</div>
 												<div class="col-sm-4">
 												<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addaddress" (click)="resizeTrigger()">Address <span class="glyphicon glyphicon-globe"></span></button>
@@ -151,7 +151,10 @@
 											</div>	
 											<div class="form-group">
 												<label>Communication language</label>
-												<input type="text" class="form-control" id="comlanguage" placeholder="Language" [value]="(contact.language) ? contact.language['name'] : ''">
+												<input type="text" class="form-control" id="comlanguage" placeholder="Language" name="language" [(ngModel)]="contact.language['name']"readonly>
+												<select name="comlanguage" class="form-control" name="comlanguage" [(ngModel)]="contact.language" style="margin-top:5px">
+												  <option *ngFor="let lang of languages" [ngValue]="lang">{{lang.name}}</option>
+												</select>											
 											</div>																		
 										</form>
 									</div>
@@ -159,39 +162,39 @@
 										<form>
 											<div class="form-group">
 												<label>Office telephone</label>
-												<input type="text" class="form-control" id="offtelephone" placeholder="Office telephone" [value]="(contact.telephoneoffice) ? contact.telephoneoffice : ''">
+												<input type="text" class="form-control" id="offtelephone" placeholder="Office telephone" name="telephoneoffice" [(ngModel)]="contact.telephoneoffice">
 											</div>
 											<div class="form-group">
 												<label>Personal telephone</label>
-												<input type="text" class="form-control" id="pertelephone" placeholder="Personal telephone" [value]="(contact.telephonepersonal) ? contact.telephonepersonal : ''">
+												<input type="text" class="form-control" id="pertelephone" placeholder="Personal telephone" name="telephonepersonal" [(ngModel)]="contact.telephonepersonal">
 											</div>
 											<div class="form-group">
 												<label>Mobile</label>
-												<input type="text" class="form-control" id="mobile" placeholder="Mobile" [value]="(contact.mobile) ? contact.mobile : ''">
+												<input type="text" class="form-control" id="mobile" placeholder="Mobile" name="mobile" [(ngModel)]="contact.mobile">
 											</div>
 											<div class="form-group">
 												<label>Skype</label>
-												<input type="text" class="form-control" id="skype" placeholder="Skype" [value]="(contact.skype) ? contact.skype : ''">
+												<input type="text" class="form-control" id="skype" placeholder="Skype" name="skype" [(ngModel)]="contact.skype">
 											</div>
 											<div class="form-group">
 												<label>Office email</label>
-												<input type="text" class="form-control" id="offemail" placeholder="Office email" [value]="(contact.emailoffice) ? contact.emailoffice : ''">
+												<input type="text" class="form-control" id="offemail" placeholder="Office email" name="emailoffice" [(ngModel)]="contact.emailoffice">
 											</div>
 											<div class="form-group">
 												<label>Personal email</label>
-												<input type="text" class="form-control" id="peremail" placeholder="Personal email" [value]="(contact.emailpersonal) ? contact.emailpersonal : ''">
+												<input type="text" class="form-control" id="peremail" placeholder="Personal email" name="emailpersonal" [(ngModel)]="contact.emailpersonal">
 											</div>
 											<div class="form-group">
 												<label>Observations</label>
-												<input type="text" class="form-control" id="observations" placeholder="Observations" [value]="(contact.observations) ? contact.observations : ''">
+												<input type="text" class="form-control" id="observations" placeholder="Observations" name="observations" [(ngModel)]="contact.observations">
 											</div>	
 											<div class="form-group">
 												<label>ALEX user</label>
-												<input type="text" class="form-control" id="alexuser" placeholder="ALEXuser" [value]="(contact.alexuser) ? contact.alexuser : ''">
+												<input type="text" class="form-control" id="alexuser" placeholder="ALEXuser" name="alexuser" [(ngModel)]="contact.alexuser">
 											</div>
 											<div class="form-group">
 												<label>Clothing size</label>
-												<input type="text" class="form-control" id="clothingsize" placeholder="Clothing size" [value]="(contact.clothingsize) ? contact.clothingsize : ''">
+												<input type="text" class="form-control" id="clothingsize" placeholder="Clothing size" name="clothingsize" [(ngModel)]="contact.clothingsize">
 											</div>																		
 										</form>
 									</div>															
@@ -347,15 +350,15 @@
 															<div class="row">
 																<div class="col-sm-6">
 																	<label>Address</label>
-																	<input type="text" class="form-control" placeholder="Address" [value]="(address.StreetName == null) ? '' : address.StreetName" #addressname>
+																	<input type="text" class="form-control" placeholder="Address" [value]="(address.addressName == null) ? '' : address.addressName" #addressname>
 																</div>
 																<div class="col-sm-2">
 																	<label>Nº</label>
-																	<input type="text" class="form-control" placeholder="N" [value]="(address.StreetNumber == null) ? '' : address.StreetNumber" #addressnumber>
+																	<input type="text" class="form-control" placeholder="N" [value]="(address.addressNumber == null) ? '' : address.addressNumber" #addressnumber>
 																</div>
 																<div class="col-sm-4">
 																	<label>Floor - Door</label>
-																	<input type="text"  class="form-control" placeholder="Floor Door" [value]="(contact) ? ((contact.address) ? contact.address['floorDoor'] : '') : ''" #floordoor>
+																	<input type="text"  class="form-control" placeholder="Floor Door" [value]="(address.floorDoor == null) ? '' : address.floorDoor" #floordoor>
 																</div>
 															</div>
 														</div>
@@ -364,11 +367,11 @@
 															<div class="row">
 																<div class="col-sm-4">
 																	<label>Postal code</label>
-																	<input type="text"  class="form-control" placeholder="Postal code" [value]="(address.Zip == null) ? '' : address.Zip" #postalcode>
+																	<input type="text"  class="form-control" placeholder="Postal code" [value]="(address.postalcode == null) ? '' : address.postalcode" #postalcode>
 																</div>															
 																<div class="col-sm-4">
 																	<label>Town</label>
-																	<input type="text"  class="form-control" placeholder="Town" [value]="(address.City == null) ? '' : address.City" #town>
+																	<input type="text"  class="form-control" placeholder="Town" [value]="(address.town == null) ? '' : address.town" #town>
 																</div>
 															</div>
 														</div>
@@ -377,15 +380,15 @@
 															<div class="row">
 																<div class="col-sm-4">
 																	<label>Province</label>
-																	<input type="text"  class="form-control" placeholder="Province" [value]="(address.State1 == null) ? '' : address.State1" #province>
+																	<input type="text"  class="form-control" placeholder="Province" [value]="(address.province == null) ? '' : address.province" #province>
 																</div>
 																<div class="col-sm-4">
 																	<label>District / CCAA</label>
-																	<input type="text"  class="form-control" placeholder="District or CCAA" [value]="(address.State2 == null) ? '' : address.State2" #district>
+																	<input type="text"  class="form-control" placeholder="District or CCAA" [value]="(address.district == null) ? '' : address.district" #district>
 																</div>															
 																<div class="col-sm-4">
 																	<label>Country</label>
-																	<input type="text"  class="form-control" placeholder="Country" [value]="(address.Country == null) ? '' : address.Country" #country>
+																	<input type="text"  class="form-control" placeholder="Country" [value]="(address.country == null) ? '' : address.country" #country>
 																</div>
 															</div>
 														</div>
@@ -394,11 +397,11 @@
 															<div class="row">
 																<div class="col-sm-4">
 																	<label>Latitude</label>
-																	<input type="text"  class="form-control" placeholder="Latitude" [value]="(address.Lat == null) ? '' : address.Lat" readonly #lat>
+																	<input type="text"  class="form-control" placeholder="Latitude" [value]="(address.latitude == null) ? '' : address.latitude" readonly #lat>
 																</div>
 																<div class="col-sm-4">
 																	<label>Longitude</label>
-																	<input type="text"  class="form-control" placeholder="Longitude" [value]="(address.Lng == null) ? '' : address.Lng" readonly #lng>
+																	<input type="text"  class="form-control" placeholder="Longitude" [value]="(address.longitude == null) ? '' : address.longitude" readonly #lng>
 																</div>
 															</div>
 														</div>														
