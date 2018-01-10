@@ -164,31 +164,53 @@ export class ContactosComponent implements OnInit {
   
   
 	  addContactFunction(){
-		  let body = JSON.stringify({
-						idinternal: 0,
-						dninif: "",
-						firstname: "",
-						lastname1: "",
-						lastname2: "",
-						gender: "",
-						birthdate: "",
-						contactaddress: "",
-						languagecommunication: "",
-						telephoneoffice: "",
-						telephonepersonal: "",
-						mobile: "",
-						skype: "",
-						emailoffice: "",
-						emailpersonal: "",
-						observations: "",
-						alexuser: "",
-						clothingsize: "",
-						imagepath: ""
-			}); 
-		  let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
+		  let body = {
+						'idinternal': 0,
+						'dninif': "123456789A",
+						'firstname': "Pedro",
+						'lastname1': "",
+						'lastname2': "",
+						'gender': "",
+						'birthdate': "",
+						'contactaddress': "",
+						'languagecommunication': "",
+						'telephoneoffice': "",
+						'telephonepersonal': "",
+						'mobile': "",
+						'skype': "",
+						'emailoffice': "",
+						'emailpersonal': "",
+						'observations': "",
+						'alexuser': "",
+						'clothingsize': "",
+						'imagepath': ""
+			};
+			
+		  //let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
+		  
+		  //let options = new RequestOptions({headers: headers});
+		  
 		  var url = MyGlobals['apiurl'] + "contacts";
-		  this._http.post(url, body, {headers: headers}).map((response: Response) =>response.text()).subscribe(res => {console.log(res);});
-		  console.log(body);          
+		  
+		let headers = new Headers({
+			'Content-Type': 'application/x-www-form-urlencoded'
+		});
+		let options = new RequestOptions({
+			headers: headers
+		});
+		// TODO: Encode the values using encodeURIComponent().
+		//let body = 'email=' + 'email1' + '&password=' + 'password1';
+		
+		var query = "";		
+		for (let key in body) {
+			query += encodeURIComponent(key)+"="+encodeURIComponent(body[key])+"&";
+		}
+		  
+		this._http.post(url, query, options)
+                .map((response: Response) =>response.json())
+                .subscribe(data=>{
+					console.log(data);
+                });        
 	  }
 
   
