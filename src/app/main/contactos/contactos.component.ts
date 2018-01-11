@@ -179,15 +179,38 @@ export class ContactosComponent implements OnInit {
 	  
 	  saveContact(contactId){
 	  
-			if(contactId){
+			if(contactId != '0'){ //PUT
+			
 				//alert('Editar contacto ' + contactId);
 				//console.log(this.address);
-				console.log(this.contact);
+				console.log(this.contact['address']);
 			}
 	  
-			else{
+			else{ //POST
+			
 				//alert('Nuevo contacto');
-				console.log(this.contact);
+				console.log(this.contact['address']);
+				console.log(this.encodeJSON(this.contact));
+				
+				var url = MyGlobals['apiurl'] + "contacts";
+			  
+				let headers = new Headers({
+					'Content-Type': 'application/x-www-form-urlencoded'
+				});
+				let options = new RequestOptions({
+					headers: headers
+				});
+
+			//EXAMPLE x-www-form-urlencoded ==> 'email=' + 'email1' + '&password=' + 'password1' + ...;
+			
+			  
+			this._http.post(url, this.encodeJSON(this.contact), options)
+					.map((response: Response) =>response.json())
+					.subscribe(data=>{
+						console.log(data);
+					}); 
+				
+				
 			}	
 			
 	  }
@@ -299,14 +322,46 @@ export class ContactosComponent implements OnInit {
 	  }*/
 
   
-	  encodeJSON(bodyJSON){
+	  /*encodeJSON(bodyJSON){
 				var body = "";		
 				for (let key in bodyJSON) {
 					body += encodeURIComponent(key)+"="+encodeURIComponent(bodyJSON[key])+"&";
 				}
 				
 				return body;
-	  }
+	  }*/
+	  
+	  /*encodeJSON(toConvert) {
+		const formBody = [];
+		for (const property in toConvert) {
+			const encodedKey = encodeURIComponent(property);
+			const encodedValue = encodeURIComponent(toConvert[property]);
+			formBody.push(encodedKey + '=' + encodedValue);
+		}
+		return formBody.join('&');
+	}*/
+	
+	encodeJSON(toConvert) {
+		const formBody = [];
+		for (const property in toConvert) {
+		//console.log(toConvert[property]);
+		if(typeof toConvert[property] !== "object"){
+			const encodedKey = encodeURIComponent(property);
+			const encodedValue = encodeURIComponent(toConvert[property]);
+			formBody.push(encodedKey + '=' + encodedValue);
+		}
+		else{
+			for (const property2 in toConvert[property]) {
+				//const encodedKey =  encodeURIComponent(property) + "['" + encodeURIComponent(property2) + "']";
+				//const encodedKey =  encodeURIComponent(property) + "%5B" + encodeURIComponent(property2) + "%5D";
+				const encodedKey =  encodeURIComponent(property + '[' + property2 + ']');
+				const encodedValue = encodeURIComponent(toConvert[property][property2]);
+				formBody.push(encodedKey + '=' + encodedValue);
+			}
+		}
+		}
+		return formBody.join('&');
+	}
   
 
 }
