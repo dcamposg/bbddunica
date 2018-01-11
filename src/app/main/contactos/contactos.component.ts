@@ -34,20 +34,22 @@ export class ContactosComponent implements OnInit {
   public place: google.maps.places.PlaceResult;
   public address : object = {
 									"addressNumber": "",
-									"addressName ": "",
-									"town ": "",
-									"district ": "",
-									"province ": "",									
-									"country ": "",
+									"addressName": "",
+									"town": "",
+									"district": "",
+									"province": "",									
+									"country": "",
 									"postalcode": " ",
 									"latitude": "",
 									"longitude": "",
-									"floorDoor": ""
+									"floorDoor": "",
+									"sendName": "",
+									"sendBusinessName": ""
 								  };
-  public language : object = {
+  /*public language : object = {
 									"id": "",
 									"name": ""
-								  };				
+								  };*/	//****************************************************************************************************************				
   
   showTableContacts:boolean = true;
   showContact:boolean = false;
@@ -80,6 +82,8 @@ export class ContactosComponent implements OnInit {
 						this.address['addressName'] = this.contact['address'].addressName;
 						this.address['addressNumber'] = this.contact['address'].addressNumber;
 						this.address['floorDoor'] = this.contact['address'].floorDoor;
+						this.address['sendName'] = this.contact['address'].sendName;
+						this.address['sendBusinessName'] = this.contact['address'].sendBusinessName;
 						this.address['postalcode'] = this.contact['address'].postalcode;
 						this.address['town'] = this.contact['address'].town;
 						this.address['province'] = this.contact['address'].province;
@@ -97,7 +101,9 @@ export class ContactosComponent implements OnInit {
 			  else{
 				this.contact = [];
 				//this.contact['address'] = Object.assign(this.address);
-				this.contact['language'] = this.language;
+				//this.contact['language'] = this.language;	//**********************************************************************************************
+				this.contact['idinternal'] = "0";
+				this.contact['gender'] = "M";
 				this.showContact = true;
 				this.showTableContacts = false;	
 			  }
@@ -136,7 +142,7 @@ export class ContactosComponent implements OnInit {
 				  
 				  console.log(this.place);
 				  
-				  this.address = [];
+				  //this.address = [];
 				  this.place.address_components.forEach(item => {
 						switch(item.types[0]){
 								case 'street_number':
@@ -191,16 +197,19 @@ export class ContactosComponent implements OnInit {
 		else{this.contact['gender']  = 'M';}
 	  }*/
 	  
-	  saveContactAddress(addressname, addressnumber, floordoor, postalcode, town, province, district, country, lat, lng){
+	  saveContactAddress(addressname, addressnumber, floordoor, postalcode, town, province, district, country, sendname, sendbusinessname, lat, lng){
 			//alert(addressname + '-' + addressnumber + '-' + floordoor + '-' + postalcode + '-' + town + '-' + province + '-' + district +'-' + country + '-' + lat + '-' + lng);
 			
 			if(!this.contact['address']){
-					this.contact['address'] = this.address;
+					//this.contact['address'] = this.address;
+					this.contact['address'] = Object.assign(this.address);
 			}
 			
 				this.contact['address'].addressName = addressname;
 				this.contact['address'].addressNumber = addressnumber;
 				this.contact['address'].floorDoor = floordoor;
+				this.contact['address'].sendName = sendname;
+				this.contact['address'].sendBusinessName = sendbusinessname;
 				this.contact['address'].postalcode = postalcode;
 				this.contact['address'].town = town;
 				this.contact['address'].province = province;

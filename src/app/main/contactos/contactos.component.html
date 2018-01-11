@@ -142,7 +142,7 @@
 												<div class="row" style="padding-right:10px;">
 												<div class="col-sm-8">
 												<!--<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact.address['addressName']}}" readonly >-->
-												<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(contact.address) ? (contact.address['addressName'] + ',' + contact.address['addressNumber'] + '\n' + contact.address['postalcode'] + ',' + contact.address['town'] + ',' + contact.address['district'] + '\n' + contact.address['province'] + ' (' +  contact.address['country'] + ')') : ''" readonly></textarea>
+												<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(contact.address) ? (contact.address['addressName'] + ',' + contact.address['addressNumber'] + ',' + contact.address['floorDoor'] + '\n' + contact.address['postalcode'] + ',' + contact.address['town'] + ',' + contact.address['district'] + '\n' + contact.address['province'] + ' (' +  contact.address['country'] + ')') : ''" readonly></textarea>
 												</div>
 												<div class="col-sm-4">
 												<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addaddress" (click)="resizeTrigger()">Address <span class="glyphicon glyphicon-globe"></span></button>
@@ -151,9 +151,9 @@
 											</div>	
 											<div class="form-group">
 												<label>Communication language</label>
-												<input type="text" class="form-control" id="comlanguage" placeholder="Language" name="language" [(ngModel)]="contact.language['name']"readonly>
-												<select name="comlanguage" class="form-control" name="comlanguage" [(ngModel)]="contact.language" style="margin-top:5px">
-												  <option *ngFor="let lang of languages" [ngValue]="lang">{{lang.name}}</option>
+												<!--<input type="text" class="form-control" id="comlanguage" placeholder="Language" name="language" [(ngModel)]="contact.idlanguagecommunication"readonly>-->
+												<select name="comlanguage" class="form-control" name="comlanguage" [(ngModel)]="contact.idlanguagecommunication" style="margin-top:5px">
+												  <option *ngFor="let lang of languages" [ngValue]="lang.id">{{lang.name}}</option>
 												</select>											
 											</div>																		
 										</form>
@@ -392,6 +392,19 @@
 																</div>
 															</div>
 														</div>
+														
+														<div class="form-group">															
+															<div class="row">
+																<div class="col-sm-4">
+																	<label>Send name</label>
+																	<input type="text"  class="form-control" placeholder="Send name" [value]="(address.sendName == null) ? '' : address.sendName"  #sendname disabled>
+																</div>
+																<div class="col-sm-4">
+																	<label>Send business name</label>
+																	<input type="text"  class="form-control" placeholder="Send business name" [value]="(address.sendBusinessName == null) ? '' : address.sendBusinessName" #sendbusinessname disabled> 
+																</div>
+															</div>
+														</div>															
 
 														<div class="form-group">															
 															<div class="row">
@@ -409,7 +422,7 @@
 													</div>
 								</div>
 								<div class="modal-footer ">
-									<button type="button" class="btn btn-success" data-dismiss="modal" (click)="saveContactAddress(addressname.value, addressnumber.value, floordoor.value, postalcode.value, town.value, province.value, district.value, country.value, lat.value, lng.value)"><span class="glyphicon glyphicon-ok-sign"></span>Save</button>
+									<button type="button" class="btn btn-success" data-dismiss="modal" (click)="saveContactAddress(addressname.value, addressnumber.value, floordoor.value, postalcode.value, town.value, province.value, district.value, country.value, sendname.value, sendbusinessname.value, lat.value, lng.value)"><span class="glyphicon glyphicon-ok-sign"></span>Save</button>
 								</div>
 					</div>
 			</div>
