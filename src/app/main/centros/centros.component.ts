@@ -3,6 +3,8 @@ import {Http} from "@angular/http";
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import {Injectable} from "@angular/core";
+import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
+import { FormControl } from '@angular/forms';
 
 import * as MyGlobals from 'app/service/globals'; //<== Globals variables
 
@@ -12,6 +14,31 @@ import * as MyGlobals from 'app/service/globals'; //<== Globals variables
   styleUrls: ['./centros.component.css']
 })
 export class CentrosComponent implements OnInit {
+
+// Default selection 
+public optionsModel: number[] = [];
+ 
+// Settings configuration 
+mySettings: IMultiSelectSettings = {
+    enableSearch: false,
+    checkedStyle: 'fontawesome',
+    buttonClasses: 'btn btn-default btn-block',
+    dynamicTitleMaxItems: 3,
+    displayAllSelectedText: false
+};
+ 
+// Text configuration 
+myTexts: IMultiSelectTexts = {
+    checkAll: 'Select all',
+    uncheckAll: 'Unselect all',
+    checked: 'item selected',
+    checkedPlural: 'items selected',
+    searchPlaceholder: 'Find',
+    defaultTitle: 'Select',
+    allSelected: 'All selected',
+};
+
+
 
   public centers: any[];
   public masters: any[];
@@ -25,6 +52,11 @@ export class CentrosComponent implements OnInit {
   
   private GoToCenter = "";
   private GoToCenterId = "";
+  public supportlan : Object = {
+									"idcenter": "",
+									"idlanguage": "",
+									"comments": ""
+								  };
 
   
   showTableCenter:boolean = true;
@@ -109,6 +141,7 @@ export class CentrosComponent implements OnInit {
 			console.log(this.GoToCenterId);
 			this.showCenterFunction(this.GoToCenterId);
 	}
+	
   }
   
   showCenterFunction(centerId){
@@ -118,12 +151,49 @@ export class CentrosComponent implements OnInit {
 			this.centers = data.json();
 			//this.centers['kids'] = 'N'; //Con esto vemos que podemos acceder al valor de un campo concreto. A partir de ello tendremos que hacer una funcion para interpretar los checkbox.
 			console.log(this.centers);
+			//console.log(this.data['languagesupport']);
+					for(var i =0; i<this.centers['languagesupport'].length; i++){
+						this.optionsModel.push(this.centers['languagesupport'][i].idlanguage);
+					}
 	this.showCenter = true;
 	this.showTableCenter = false;
-	if(this.centers['addressSame'] == 'Y') this.showAddress = false;	
+	//if(this.centers['addressSame'] == 'Y') this.showAddress = false;	
 	  });
   }
   
+  supportlanguage(newValue){
+		newValue = newValue.sort((a, b) => a - b);
+		//console.log(newValue);
+		this.centers['languagesupport'] = [];
+		for(var w = 0; w < newValue.length; w++){
+		//console.log(newValue[w]);
+						this.supportlan['idcenter'] = this.centers['code'];
+						this.supportlan['idlanguage'] = newValue[w];
+						this.supportlan['comments'] = null;
+						//console.log(this.supportlan);
+						this.centers['languagesupport'].push(this.supportlan);
+						//console.log(this.centers['languagesupport']);
+						this.supportlan	= {
+									"idcenter": "",
+									"idlanguage": "",
+									"comments": ""
+								  };					
+					}
+  }
+  
+  	  saveCenter(centerId){
+	  
+			if(centerId != '0'){ //PUT					
+				console.log(this.centers);
+			}
+	  
+			else{ //POST
+				
+			}	
+			
+	  }
+  
+
   exportCSV(expcenter, expsimplesociety, expadvancedsociety, expcoordination, expmaster){
 	//alert(expcenter + '-' + expsimplesociety + '-' + expadvancedsociety + '-' + expcoordination + '-' + expmaster );
 		var options = { 

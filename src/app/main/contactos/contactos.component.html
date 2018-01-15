@@ -244,15 +244,15 @@
 															<div class="row">
 																<div class="col-sm-6">
 																	<label>Address</label>
-																	<input type="text" class="form-control" placeholder="Address" [value]="(address.addressName == null) ? '' : address.addressName" #addressname>
+																	<input type="text" class="form-control" placeholder="Address" [value]="(address['addressName'] == null) ? '' : address['addressName']" #addressname>
 																</div>
 																<div class="col-sm-2">
 																	<label>Nº</label>
-																	<input type="text" class="form-control" placeholder="N" [value]="(address.addressNumber == null) ? '' : address.addressNumber" #addressnumber>
+																	<input type="text" class="form-control" placeholder="N" [value]="(address['addressNumber'] == null) ? '' : address['addressNumber']" #addressnumber>
 																</div>
 																<div class="col-sm-4">
 																	<label>Floor - Door</label>
-																	<input type="text"  class="form-control" placeholder="Floor Door" [value]="(address.floorDoor == null) ? '' : address.floorDoor" #floordoor>
+																	<input type="text"  class="form-control" placeholder="Floor Door" [value]="(address['floorDoor'] == null) ? '' : address['floorDoor']" #floordoor>
 																</div>
 															</div>
 														</div>
@@ -261,11 +261,11 @@
 															<div class="row">
 																<div class="col-sm-4">
 																	<label>Postal code</label>
-																	<input type="text"  class="form-control" placeholder="Postal code" [value]="(address.postalcode == null) ? '' : address.postalcode" #postalcode>
+																	<input type="text"  class="form-control" placeholder="Postal code" [value]="(address['postalcode'] == null) ? '' : address['postalcode']" #postalcode>
 																</div>															
 																<div class="col-sm-4">
 																	<label>Town</label>
-																	<input type="text"  class="form-control" placeholder="Town" [value]="(address.town == null) ? '' : address.town" #town>
+																	<input type="text"  class="form-control" placeholder="Town" [value]="(address['town'] == null) ? '' : address['town']" #town>
 																</div>
 															</div>
 														</div>
@@ -274,15 +274,15 @@
 															<div class="row">
 																<div class="col-sm-4">
 																	<label>Province</label>
-																	<input type="text"  class="form-control" placeholder="Province" [value]="(address.province == null) ? '' : address.province" #province>
+																	<input type="text"  class="form-control" placeholder="Province" [value]="(address['province'] == null) ? '' : address['province']" #province>
 																</div>
 																<div class="col-sm-4">
 																	<label>District / CCAA</label>
-																	<input type="text"  class="form-control" placeholder="District or CCAA" [value]="(address.district == null) ? '' : address.district" #district>
+																	<input type="text"  class="form-control" placeholder="District or CCAA" [value]="(address['district'] == null) ? '' : address['district']" #district>
 																</div>															
 																<div class="col-sm-4">
 																	<label>Country</label>
-																	<input type="text"  class="form-control" placeholder="Country" [value]="(address.country == null) ? '' : address.country" #country>
+																	<input type="text"  class="form-control" placeholder="Country" [value]="(address['country'] == null) ? '' : address['country']" #country>
 																</div>
 															</div>
 														</div>
@@ -291,11 +291,11 @@
 															<div class="row">
 																<div class="col-sm-4">
 																	<label>Send name</label>
-																	<input type="text"  class="form-control" placeholder="Send name" [value]="(address.sendName == null) ? '' : address.sendName"  #sendname disabled>
+																	<input type="text"  class="form-control" placeholder="Send name" [value]="(address['sendName'] == null) ? '' : address['sendName']"  #sendname disabled>
 																</div>
 																<div class="col-sm-4">
 																	<label>Send business name</label>
-																	<input type="text"  class="form-control" placeholder="Send business name" [value]="(address.sendBusinessName == null) ? '' : address.sendBusinessName" #sendbusinessname disabled> 
+																	<input type="text"  class="form-control" placeholder="Send business name" [value]="(address['sendBusinessName'] == null) ? '' : address['sendBusinessName']" #sendbusinessname disabled> 
 																</div>
 															</div>
 														</div>															
@@ -304,11 +304,11 @@
 															<div class="row">
 																<div class="col-sm-4">
 																	<label>Latitude</label>
-																	<input type="text"  class="form-control" placeholder="Latitude" [value]="(address.latitude == null) ? '' : address.latitude" readonly #lat>
+																	<input type="text"  class="form-control" placeholder="Latitude" [value]="(address['latitude'] == null) ? '' : address['latitude']" readonly #lat>
 																</div>
 																<div class="col-sm-4">
 																	<label>Longitude</label>
-																	<input type="text"  class="form-control" placeholder="Longitude" [value]="(address.longitude == null) ? '' : address.longitude" readonly #lng>
+																	<input type="text"  class="form-control" placeholder="Longitude" [value]="(address['longitude'] == null) ? '' : address['longitude']" readonly #lng>
 																</div>
 															</div>
 														</div>														
@@ -329,7 +329,7 @@
 									<h2 class="modal-title custom_align" id="Heading">Are you sure?</h2>
 								</div>
 								<div class="modal-footer ">
-									<button class="btn btn-success btn-lg" data-dismiss="modal" (click)="saveContact(contact.idinternal)">Yes&nbsp;<span class="glyphicon glyphicon-ok-circle"></span></button>								
+									<button class="btn btn-success btn-lg" data-dismiss="modal" (click)="saveContact(contact['idinternal'])">Yes&nbsp;<span class="glyphicon glyphicon-ok-circle"></span></button>								
 									<button class="btn btn-danger btn-lg" data-dismiss="modal">No&nbsp;<span class="glyphicon glyphicon-remove-circle"></span></button>
 								</div>
 					</div>

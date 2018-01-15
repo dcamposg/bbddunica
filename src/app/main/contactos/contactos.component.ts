@@ -80,7 +80,7 @@ public agmMap: AgmMap
 					this._http.get(MyGlobals['apiurl'] + "contacts/" + contactId)
 				  .subscribe((data)=> {
 						this.contact = data.json();
-						//console.log(this.contact);
+						console.log(this.contact);
 						
 						if(this.contact['address']){
 							this.address['addressName'] = this.contact['address'].addressName;
@@ -189,14 +189,14 @@ public agmMap: AgmMap
 			
 				//alert('Editar contacto ' + contactId);
 				//console.log(this.address);
-				console.log(this.contact);
+				//console.log(this.contact);
 				//console.log(this.contact['address']);
 				//console.log(this.encodeJSON(this.contact));
 				//console.log(this.encodeJSON(this.contact['address']));
 				//console.log(this.encodeJSON(this.contact['address']));
 				//this.contact['address'].idAuxCenter = "";
 				//this.contact['idcontactaddress'] = null;
-				console.log(this.encodeJSON(this.contact));
+				//console.log(this.encodeJSON(this.contact));
 				
 				var urlupdatecontactaddress = MyGlobals['apiurl'] + "addresses/" + this.contact['address'].id;
 				var urlupdatecontact = MyGlobals['apiurl'] + "contacts/" +this.contact['idinternal'];
@@ -208,7 +208,7 @@ public agmMap: AgmMap
 					headers: headers
 				});
 					  
-			this._http.post(urlupdatecontactaddress, this.encodeJSON(this.contact['address']), options)
+			/*this._http.post(urlupdatecontactaddress, this.encodeJSON(this.contact['address']), options)
 					.map((response: Response) =>response.json())
 					.subscribe(data=>{
 						console.log(data);
@@ -220,7 +220,13 @@ public agmMap: AgmMap
 								}); 
 							
 						
-					}); 
+					});*/
+					
+					this._http.post(urlupdatecontact, this.encodeJSON(this.contact), options)
+					.map((response: Response) =>response.json())
+					.subscribe(data=>{
+						console.log(data);
+					}); 					
 				
 			}
 	  

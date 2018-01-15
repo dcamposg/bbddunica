@@ -218,14 +218,22 @@
 																	<div class="form-group">
 																		<label>Communication language</label>
 																		<!--<input type="text" class="form-control" id="comlanguage" placeholder="Language" name="language" [(ngModel)]="contact.idlanguagecommunication"readonly>-->
-																		<select name="comlanguage" class="form-control" name="comlanguage" [(ngModel)]="centers.idlanguagecommunication" style="margin-top:5px">
+																		<select class="form-control" name="comlanguage" [(ngModel)]="centers.idlanguagecommunication" style="margin-top:5px">
 																		  <option *ngFor="let lang of languages" [ngValue]="lang.id">{{lang.name}}</option>
 																		</select>											
-																	</div>																		
-																	<div class="form-group">
+																	</div>																	
+																	<!--<div class="form-group">
 																		<label>Support language</label>
 																		<input *ngFor="let supportlan of centers['languagesupport']; let i = index" type="text" class="form-control" id="supportlanguage" placeholder="Support language" value="{{supportlan.name}}" readonly>
-																	</div>																	
+																	</div>-->	
+																	<div class="form-group">
+																		<label>Support language</label>
+																		<!--<input type="text" class="form-control" id="comlanguage" placeholder="Language" name="language" [(ngModel)]="contact.idlanguagecommunication"readonly>-->
+																		<select class="form-control" name="supportlanguage" [(ngModel)]="centers.languagesupport['idlanguage']" style="margin-top:5px" multiple>
+																		  <option *ngFor="let lang2 of languages" [ngValue]="lang2.id">{{lang2.name}}</option>
+																		</select>
+																		<ss-multiselect-dropdown name="supportlanguage" [options]="languages" [texts]="myTexts" [settings]="mySettings" [ngModel]="optionsModel" (ngModelChange)="supportlanguage($event)"></ss-multiselect-dropdown>															
+																	</div>																		
 																</form>	 		   
 												   </div>
 													</div>
@@ -247,7 +255,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide2">									
-																				<input type="checkbox" value="Y" id="generalcustomSlide2" name="check" [checked]="(centers['minikids'] == 'Y') ? true : false" #generalcustomSlide2 />
+																				<input type="checkbox" value="" id="generalcustomSlide2" name="check" [checked]="(centers.minikids == 'Y') ? true : false" (change)="(centers.minikids == 'Y') ? (centers.minikids = 'N') : (centers.minikids = 'Y')" #generalcustomSlide2 />
 																				<label for="generalcustomSlide2"></label>
 																			</div>
 																		</div>										
@@ -260,7 +268,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide3">									
-																				<input type="checkbox" value="Y" id="generalcustomSlide3" name="check" [checked]="(centers['kids'] == 'Y') ? true : false" #generalcustomSlide3 />
+																				<input type="checkbox" value="" id="generalcustomSlide3" name="check" [checked]="(centers.kids == 'Y') ? true : false" (change)="(centers.kids == 'Y') ? (centers.kids = 'N') : (centers.kids = 'Y')" #generalcustomSlide3 />
 																				<label for="generalcustomSlide3"></label>
 																			</div>
 																		</div>										
@@ -273,7 +281,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide4">									
-																				<input type="checkbox" value="Y" id="generalcustomSlide4" name="check" [checked]="(centers['tandt'] == 'Y') ? true : false" #generalcustomSlide4 />
+																				<input type="checkbox" value="" id="generalcustomSlide4" name="check" [checked]="(centers.tandt == 'Y') ? true : false" (change)="(centers.tandt == 'Y') ? (centers.tandt = 'N') : (centers.tandt = 'Y')" #generalcustomSlide4 />
 																				<label for="generalcustomSlide4"></label>
 																			</div>
 																		</div>										
@@ -288,7 +296,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide5">									
-																				<input type="checkbox" value="F" id="generalcustomSlide5" name="check" [checked]="(centers['licenseorfranchise'] == 'F') ? true : false" #generalcustomSlide5 />
+																				<input type="checkbox" value="" id="generalcustomSlide5" name="check" [checked]="(centers.licenseorfranchise == 'L') ? true : false" (change)="(centers.licenseorfranchise == 'L') ? (centers.licenseorfranchise = 'F') : (centers.licenseorfranchise = 'L')" #generalcustomSlide5 />																				
 																				<label for="generalcustomSlide5"></label>
 																			</div>
 																		</div>										
@@ -301,7 +309,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide6">									
-																				<input type="checkbox" value="I" id="generalcustomSlide6" name="check" [checked]="(centers['nationalorinternational'] == 'I') ? true : false" #generalcustomSlide6 />
+																				<input type="checkbox" value="" id="generalcustomSlide6" name="check" [checked]="(centers.nationalorinternational == 'I') ? true : false" (change)="(centers.nationalorinternational == 'I') ? (centers.nationalorinternational = 'N') : (centers.nationalorinternational = 'I')" #generalcustomSlide6 />																				
 																				<label for="generalcustomSlide6"></label>
 																			</div>
 																		</div>										
@@ -314,7 +322,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide7">									
-																				<input type="checkbox" value="Y" id="generalcustomSlide7" name="check" [checked]="(centers['centralparticipation'] == 'Y') ? true : false" #generalcustomSlide7 />
+																				<input type="checkbox" value="" id="generalcustomSlide7" name="check" [checked]="(centers.centralparticipation == 'Y') ? true : false" (change)="(centers.centralparticipation == 'Y') ? (centers.centralparticipation = 'N') : (centers.centralparticipation = 'Y')" #generalcustomSlide7 />																				
 																				<label for="generalcustomSlide7"></label>
 																			</div>
 																		</div>										
@@ -336,7 +344,7 @@
 																							<form>
 																								<div class="form-group">
 																									<label>Fiscal address</label>
-																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="" readonly></textarea>
+																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(centers.addressFiscal) ? (centers.addressFiscal['addressName'] + ',' + centers.addressFiscal['addressNumber'] + ',' + centers.addressFiscal['floorDoor'] + '\n' + centers.addressFiscal['postalcode'] + ',' + centers.addressFiscal['town'] + ',' + centers.addressFiscal['district'] + '\n' + centers.addressFiscal['province'] + ' (' +  centers.addressFiscal['country'] + ')') : ''" readonly></textarea>
 																								</div>
 																								<!--<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
@@ -365,11 +373,11 @@
 																								</div>-->				
 																								<div class="form-group">
 																									<label>Local address</label>
-																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="" readonly></textarea>
+																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(centers.addressLocal) ? (centers.addressLocal['addressName'] + ',' + centers.addressLocal['addressNumber'] + ',' + centers.addressLocal['floorDoor'] + '\n' + centers.addressLocal['postalcode'] + ',' + centers.addressLocal['town'] + ',' + centers.addressLocal['district'] + '\n' + centers.addressLocal['province'] + ' (' +  centers.addressLocal['country'] + ')') : ''" readonly></textarea>
 																								</div>
 																								<div class="form-group"> 
 																									<label>Shipment address</label>
-																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="" readonly></textarea>
+																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(centers.addressShipment) ? (centers.addressShipment['addressName'] + ',' + centers.addressShipment['addressNumber'] + ',' + centers.addressShipment['floorDoor'] + '\n' + centers.addressShipment['postalcode'] + ',' + centers.addressShipment['town'] + ',' + centers.addressShipment['district'] + '\n' + centers.addressShipment['province'] + ' (' +  centers.addressShipment['country'] + ')') : ''" readonly></textarea>
 																								</div>
 																								<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
@@ -379,7 +387,7 @@
 																									</div>
 																									<div class="col-sm-6">
 																										<div class="form-group generalcustomSlide9">
-																										<input type="checkbox" value="Y" id="generalcustomSlide9" name="check" [checked]="(centers['addressprovisional'] == 'Y') ? true : false" #generalcustomSlide9 />
+																										<input type="checkbox" value="" id="generalcustomSlide9" name="check" [checked]="(centers.addressprovisional == 'Y') ? true : false" (change)="(centers.addressprovisional == 'Y') ? (centers.addressprovisional = 'N') : (centers.addressprovisional = 'Y')" #generalcustomSlide9 />
 																										<label for="generalcustomSlide9"></label>
 																										</div>
 																									</div>										
@@ -394,22 +402,22 @@
 																					  <div class="panel-body">
 																							<ul style="list-style-type: none;">
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-instagram"><a href="{{centers['instagram']}}" target="_blank"><span class="fa fa-instagram" style="color:white;"></span></a>
-																							  <input type="text" class="form-control socialbtn" id="" placeholder="Instagram" value="{{centers['instagram']}}">
+																							  <input type="text" class="form-control socialbtn" id="instagram" placeholder="Instagram" name="instagram" [(ngModel)]="centers.instagram">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-linkedin"><a href="{{centers['linkedin']}}" target="_blank"><span class="fa fa-linkedin" style="color:white;"></span></a>
-																							  <input type="text" class="form-control socialbtn" id="" placeholder="Linkedin" value="{{centers['linkedin']}}">
+																							  <input type="text" class="form-control socialbtn" id="linkedin" placeholder="Linkedin" name="linkedin" [(ngModel)]="centers.linkedin">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-facebook"><a href="{{centers['facebook']}}" target="_blank"><span class="fa fa-facebook" style="color:white;"></span></a>
-																							  <input type="text" class="form-control socialbtn" id="" placeholder="Facebook" value="{{centers['facebook']}}">
+																							  <input type="text" class="form-control socialbtn" id="facebook" placeholder="Facebook" name="facebook" [(ngModel)]="centers.facebook">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-twitter"><a href="{{centers['twitter']}}" target="_blank"><span class="fa fa-twitter" style="color:white;"></span></a>
-																							  <input type="text" class="form-control socialbtn" id="" placeholder="Twitter" value="{{centers['twitter']}}">
+																							  <input type="text" class="form-control socialbtn" id="twitter" placeholder="Twitter" name="twitter" [(ngModel)]="centers.twitter">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-youtube"><a href="{{centers['youtube']}}" target="_blank"><span class="fa fa-youtube" style="color:white;"></span></a>
-																							  <input type="text" class="form-control socialbtn" id="" placeholder="Youtube" value="{{centers['youtube']}}">
+																							  <input type="text" class="form-control socialbtn" id="youtube" placeholder="Youtube" name="youtube" [(ngModel)]="centers.youtube">
 																							  </a></li>
 																							  <li style="margin-bottom:10px; margin-left:-40px;"><a class="btn btn-block btn-social btn-soundcloud"><a href="{{centers['blog']}}" target="_blank"><span class="fa fa-soundcloud" style="color:white;"></span></a>
-																							  <input type="text" class="form-control socialbtn" id="" placeholder="Blog" value="{{centers['blog']}}">
+																							  <input type="text" class="form-control socialbtn" id="blog" placeholder="Blog" name="blog" [(ngModel)]="centers.blog">
 																							  </a></li>
 																							</ul> 																					  
 																					  </div>
@@ -425,23 +433,23 @@
 																							<form>
 																								<div class="form-group">
 																									<label>Total capacity of classrooms</label>
-																									<input type="number" class="form-control" id="" placeholder="Total capacity of classrooms">
+																									<input type="number" class="form-control" id="totalcapacity" placeholder="Total capacity of classrooms" name="blog">
 																								</div>
 																								<div class="form-group">
 																									<label>Total number of classrooms</label>
-																									<input type="number" class="form-control" id="" placeholder="Total number of classrooms" value="{{centers['totalclassrooms']}}">
+																									<input type="number" class="form-control" id="totalclassrooms" placeholder="Total number of classrooms" name="totalclassrooms" [(ngModel)]="centers.totalclassrooms">
 																								</div>
 																								<div class="form-group">
 																									<label>Number of TandT classrooms</label>
-																									<input type="number" class="form-control" id="" placeholder="Number of T&T classrooms" value="{{centers['tandtclassrooms']}}">
+																									<input type="number" class="form-control" id="tandtclassrooms" placeholder="Number of T&T classrooms" name="tandtclassrooms" [(ngModel)]="centers.tandtclassrooms">
 																								</div>
 																								<div class="form-group">
 																									<label>Number of Kids classrooms</label>
-																									<input type="number" class="form-control" id="" placeholder="Number of Kids classrooms" value="{{centers['kidsclassrooms']}}">
+																									<input type="number" class="form-control" id="kidsclassrooms" placeholder="Number of Kids classrooms" name="kidsclassrooms" [(ngModel)]="centers.kidsclassrooms">
 																								</div>
 																								<div class="form-group">
 																									<label>Square meter</label>
-																									<input type="number" class="form-control" id="" placeholder="Square meter" value="{{centers['squaremeters']}}">
+																									<input type="number" class="form-control" id="squaremeters" placeholder="Square meter" name="squaremeters" [(ngModel)]="centers.squaremeters">
 																								</div>
 																							</form>				   
 																				</div>
@@ -449,23 +457,23 @@
 																							<form>
 																								  <div class="form-group">
 																									<label>Local final date</label>
-																									<input type="date" class="form-control" id="" value="{{centers['finallocaldate'] | date:'yyyy-MM-dd'}}">
+																									<input type="date" class="form-control" id="finallocaldate" name="finallocaldate" [ngModel]="centers.finallocaldate | date:'yyyy-MM-dd'" (ngModelChange)="centers.finallocaldate=$event">
 																								  </div>
 																								  <div class="form-group">
 																									<label>Works start</label>
-																									<input type="date" class="form-control" id="" value="{{centers['workstart'] | date:'yyyy-MM-dd'}}">
+																									<input type="date" class="form-control" id="workstart" name="workstart" [ngModel]="centers.workstart | date:'yyyy-MM-dd'" (ngModelChange)="centers.workstart=$event">
 																								  </div>
 																								  <div class="form-group">
 																									<label>Works end</label>
-																									<input type="date" class="form-control" id="" value="{{centers['workend'] | date:'yyyy-MM-dd'}}">
+																									<input type="date" class="form-control" id="workend" name="workend" [ngModel]="centers.workend | date:'yyyy-MM-dd'" (ngModelChange)="centers.workend=$event">
 																								  </div>
 																								  <div class="form-group">
 																									<label>Training start</label>
-																									<input type="date" class="form-control" id="" value="{{centers['traininginitial'] | date:'yyyy-MM-dd'}}">
+																									<input type="date" class="form-control" id="traininginitial" name="traininginitial" [ngModel]="centers.traininginitial | date:'yyyy-MM-dd'" (ngModelChange)="centers.traininginitial=$event">
 																								  </div>
 																								  <div class="form-group">
 																									<label>Training ALEX</label>
-																									<input type="date" class="form-control" id="" value="{{centers['trainingalex'] | date:'yyyy-MM-dd'}}">
+																									<input type="date" class="form-control" id="trainingalex" name="trainingalex" [ngModel]="centers.trainingalex | date:'yyyy-MM-dd'" (ngModelChange)="centers.trainingalex=$event">
 																								  </div>								  
 																							</form>			   
 																			   </div>																				  
@@ -495,95 +503,106 @@
 												   		<div class="panel panel-default">
 														  <div class="panel-heading">{{contact['contact'].firstname}} {{contact['contact'].lastname1}} {{contact['contact'].lastname2}}</div>
 														  <div class="panel-body">
-														<div class="row" style="padding:10px;">
-															<div class="col-sm-4">
-																<form>
-																	<div class="form-group">
-																		<img src="https://www.w3schools.com/howto/img_avatar.png" alt="" width="100%">
-																	</div>																	
-																</form>
-															</div>
-															<div class="col-sm-4">
-																<form>
-																	<div class="form-group">
-																		<label>Position</label>
-																		<input type="text" class="form-control" id="position" placeholder="Position" value="{{contact['contacttype']}}">
-																	</div>
-																	<div class="form-group">
-																		<label>DNI / NIF:</label>
-																		<input type="text" class="form-control" id="dni" placeholder="DNI" value="{{contact['contact'].dninif}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Firstname</label>
-																		<input type="text" class="form-control" id="firstname" placeholder="Firstname" value="{{contact['contact'].firstname}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Lastname 1</label>
-																		<input type="text" class="form-control" id="lastname1" placeholder="Lastname1" value="{{contact['contact'].lastname1}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Lastname 2</label>
-																		<input type="text" class="form-control" id="lastname2" placeholder="Lastname2" value="{{contact['contact'].lastnaem2}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Gender</label>
-																		<input type="text" class="form-control" id="gender" placeholder="Gender" value="{{contact['contact'].gender}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Birthdate</label>
-																		<input type="date" class="form-control" id="birthdate" placeholder="Birthdate" value="{{contact['contact'].birthdate | date:'yyyy-MM-dd'}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Address</label>
-																		<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact['contact'].address['addressName']}}">
-																	</div>	
-																	<div class="form-group">
-																		<label>Communication language</label>
-																		<input type="text" class="form-control" id="comlanguage" placeholder="Language" value="{{contact['contact'].language['name']}}">
-																	</div>																		
-																</form>
-															</div>
-															<div class="col-sm-4">
-																<form>
-																	<div class="form-group">
-																		<label>Office telephone</label>
-																		<input type="text" class="form-control" id="offtelephone" placeholder="Office telephone" value="{{contact['contact'].telephoneoffice}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Personal telephone</label>
-																		<input type="text" class="form-control" id="pertelephone" placeholder="Personal telephone" value="{{contact['contact'].telephonepersonal}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Mobile</label>
-																		<input type="text" class="form-control" id="mobile" placeholder="Mobile" value="{{contact['contact'].mobile}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Skype</label>
-																		<input type="text" class="form-control" id="skype" placeholder="Skype" value="{{contact['contact'].skype}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Office email</label>
-																		<input type="text" class="form-control" id="offemail" placeholder="Office email" value="{{contact['contact'].emailoffice}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Personal email</label>
-																		<input type="text" class="form-control" id="peremail" placeholder="Personal email" value="{{contact['contact'].emailpersonal}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Observations</label>
-																		<input type="text" class="form-control" id="observations" placeholder="Observations" value="{{contact['contact'].observations}}">
-																	</div>	
-																	<div class="form-group">
-																		<label>ALEX user</label>
-																		<input type="text" class="form-control" id="alexuser" placeholder="ALEXuser" value="{{contact['contact'].alexuser}}">
-																	</div>
-																	<div class="form-group">
-																		<label>Clothing size</label>
-																		<input type="text" class="form-control" id="clothingsize" placeholder="Clothing size" value="{{contact['contact'].clothingsize}}">
-																	</div>																		
-																</form>
-															</div>															
-														</div>														  
+															<div class="row" style="padding:10px;">
+																<div class="col-sm-6">
+																	<form>
+																		<div class="form-group">
+																			<label>DNI / NIF:</label>
+																			<input type="text" class="form-control" id="dni" placeholder="DNI" name="dni" [(ngModel)]="contact.dninif">
+																		</div>
+																		<div class="form-group">
+																			<label>Firstname</label>
+																			<input type="text" class="form-control" id="firstname" placeholder="Firstname" name="firstname" [(ngModel)]="contact.firstname">
+																		</div>
+																		<div class="form-group">
+																			<label>Lastname 1</label>
+																			<input type="text" class="form-control" id="lastname1" placeholder="Lastname1" name="lastname1" [(ngModel)]="contact.lastname1">
+																		</div>
+																		<div class="form-group">
+																			<label>Lastname 2</label>
+																			<input type="text" class="form-control" id="lastname2" placeholder="Lastname2" name="lastname2" [(ngModel)]="contact.lastname2">
+																		</div>
+																		<div class="form-group">												
+																			<div class="row" style="padding:10px; padding-left: 0px">
+																				<div class="col-sm-6">
+																					<div class="form-group">									
+																						<label>Gender</label>
+																					</div>
+																				</div>
+																				<div class="col-sm-6">
+																					<div class="form-group contactcustomSlide0">									
+																						<input type="checkbox" value="" id="contactcustomSlide0" name="check" [checked]="(contact.gender == 'F') ? true : false" (change)="(contact.gender == 'F') ? (contact.gender = 'M') : (contact.gender = 'F')" #contactcustomSlide0 />
+																						<label for="contactcustomSlide0"></label>
+																					</div>
+																				</div>										
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<label>Birthdate</label>
+																			<input type="date" class="form-control" id="birthdate" name="birthdate" [ngModel]="contact.birthdate | date:'yyyy-MM-dd'" (ngModelChange)="contact.birthdate=$event">
+																		</div>
+																		<div class="form-group">
+																			<label>Address</label>
+																			<div class="row" style="padding-right:10px;">
+																			<div class="col-sm-8">
+																			<!--<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact.address['addressName']}}" readonly >-->
+																			<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(contact.address) ? (contact.address['addressName'] + ',' + contact.address['addressNumber'] + ',' + contact.address['floorDoor'] + '\n' + contact.address['postalcode'] + ',' + contact.address['town'] + ',' + contact.address['district'] + '\n' + contact.address['province'] + ' (' +  contact.address['country'] + ')') : ''" readonly></textarea>
+																			</div>
+																			<div class="col-sm-4">
+																			<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addaddress" (click)="resizeTrigger()">Address <span class="glyphicon glyphicon-globe"></span></button>
+																			</div>
+																			</div>
+																		</div>	
+																		<div class="form-group">
+																			<label>Communication language</label>
+																			<!--<input type="text" class="form-control" id="comlanguage" placeholder="Language" name="language" [(ngModel)]="contact.idlanguagecommunication"readonly>-->
+																			<select name="comlanguage" class="form-control" name="comlanguage" [(ngModel)]="contact.idlanguagecommunication" style="margin-top:5px">
+																			  <option *ngFor="let lang of languages" [ngValue]="lang.id">{{lang.name}}</option>
+																			</select>											
+																		</div>																		
+																	</form>
+																</div>
+																<div class="col-sm-6">
+																	<form>
+																		<div class="form-group">
+																			<label>Office telephone</label>
+																			<input type="text" class="form-control" id="offtelephone" placeholder="Office telephone" name="telephoneoffice" [(ngModel)]="contact.telephoneoffice">
+																		</div>
+																		<div class="form-group">
+																			<label>Personal telephone</label>
+																			<input type="text" class="form-control" id="pertelephone" placeholder="Personal telephone" name="telephonepersonal" [(ngModel)]="contact.telephonepersonal">
+																		</div>
+																		<div class="form-group">
+																			<label>Mobile</label>
+																			<input type="text" class="form-control" id="mobile" placeholder="Mobile" name="mobile" [(ngModel)]="contact.mobile">
+																		</div>
+																		<div class="form-group">
+																			<label>Skype</label>
+																			<input type="text" class="form-control" id="skype" placeholder="Skype" name="skype" [(ngModel)]="contact.skype">
+																		</div>
+																		<div class="form-group">
+																			<label>Office email</label>
+																			<input type="text" class="form-control" id="offemail" placeholder="Office email" name="emailoffice" [(ngModel)]="contact.emailoffice">
+																		</div>
+																		<div class="form-group">
+																			<label>Personal email</label>
+																			<input type="text" class="form-control" id="peremail" placeholder="Personal email" name="emailpersonal" [(ngModel)]="contact.emailpersonal">
+																		</div>
+																		<div class="form-group">
+																			<label>Observations</label>
+																			<input type="text" class="form-control" id="observations" placeholder="Observations" name="observations" [(ngModel)]="contact.observations">
+																		</div>	
+																		<div class="form-group">
+																			<label>ALEX user</label>
+																			<input type="text" class="form-control" id="alexuser" placeholder="ALEXuser" name="alexuser" [(ngModel)]="contact.alexuser">
+																		</div>
+																		<div class="form-group">
+																			<label>Clothing size</label>
+																			<input type="text" class="form-control" id="clothingsize" placeholder="Clothing size" name="clothingsize" [(ngModel)]="contact.clothingsize">
+																		</div>																		
+																	</form>
+																</div>															
+															</div>													  
 														  </div>
 														</div>
 												   </div>												   												   
@@ -1179,19 +1198,19 @@
 																		<form>
 																			<div class="form-group">
 																				<label>Entry fee date</label>
-																				<input type="date" class="form-control" id="" value="{{centers['masterCenter'].entryfeedate | date:'yyyy-MM-dd'}}">
+																				<!--<input type="date" class="form-control" id="entryfeedate"  name="entryfeedate" [ngModel]="centers.masterCenter['entryfeedate'] | date:'yyyy-MM-dd'" (ngModelChange)="centers.masterCenter['entryfeedate']=$event">-->
 																			</div>
 																			<div class="form-group">
 																				<label>Entry fee import</label>
-																				<input type="number" class="form-control" id="" placeholder="Entry fee import" value="{{centers['masterCenter'].entryfeeimport}}">
+																				<!--<input type="number" class="form-control" id="" placeholder="Entry fee import" value="{{centers['masterCenter'].entryfeeimport}}">-->
 																			</div>
 																			<div class="form-group">
 																			  <label>Payment information</label>
-																			  <textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].paymentmode}}"></textarea>
+																			  <!--<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].paymentmode}}"></textarea>-->
 																			</div>
 																			<div class="form-group">
 																				<label>Evolución en función de los centros</label>
-																				<input type="text" class="form-control" id="" placeholder="?????????">
+																				<!--<input type="text" class="form-control" id="" placeholder="?????????">-->
 																			</div>																	
 																		</form>	
 																</div>														  
@@ -1226,7 +1245,7 @@
 															  <div class="panel-heading">Expansion plan</div>
 															  <div class="panel-body">
 																	<div class="form-group">
-																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].expansionplan}}"></textarea>
+																	  <!--<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].expansionplan}}"></textarea>-->
 																	</div>															  
 															  </div>
 															</div>
@@ -1234,7 +1253,7 @@
 															  <div class="panel-heading">Particular observations</div>
 															  <div class="panel-body">
 																	<div class="form-group">
-																	  <textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].observations}}"></textarea>
+																	  <!--<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="{{centers['masterCenter'].observations}}"></textarea>-->
 																	</div>														  
 															  </div>
 															</div>																																
@@ -1281,6 +1300,8 @@
 								   </div>
 							  </div>							  
 					 </div>
+					 
+		<div style="text-align:center; margin-top:15px"><button class="btn btn-info btn-lg" (click)="saveCenter(centers.code)">Save center&nbsp;<span class="glyphicon glyphicon-save"></span></button></div>						 
 
 </div>
 

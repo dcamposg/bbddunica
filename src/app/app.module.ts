@@ -17,6 +17,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { AgmCoreModule } from '@agm/core';
 
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: "AIzaSyBWOTxR1xlSvm6nqvaYjNi-WLMwGhwa1LA",
       libraries: ["places"]
     }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+	MultiselectDropdownModule,
   ],
   declarations: [
     c.AppComponent,
