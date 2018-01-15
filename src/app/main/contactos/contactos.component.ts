@@ -28,7 +28,7 @@ public agmMap: AgmMap
   
   public contact: any[];
   public data: any[];
-  public languages: object;
+  public languages: any[];
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy = "idinternal";
@@ -189,11 +189,14 @@ public agmMap: AgmMap
 			
 				//alert('Editar contacto ' + contactId);
 				//console.log(this.address);
-				//console.log(this.contact);
+				console.log(this.contact);
 				//console.log(this.contact['address']);
 				//console.log(this.encodeJSON(this.contact));
 				//console.log(this.encodeJSON(this.contact['address']));
-				//this.contact['address'].idAuxCenter = "0";
+				//console.log(this.encodeJSON(this.contact['address']));
+				//this.contact['address'].idAuxCenter = "";
+				//this.contact['idcontactaddress'] = null;
+				console.log(this.encodeJSON(this.contact));
 				
 				var urlupdatecontactaddress = MyGlobals['apiurl'] + "addresses/" + this.contact['address'].id;
 				var urlupdatecontact = MyGlobals['apiurl'] + "contacts/" +this.contact['idinternal'];
@@ -322,9 +325,16 @@ public agmMap: AgmMap
 		}
 		else{	
 			for (const property2 in toConvert[property]) {
-				const encodedKey =  encodeURIComponent(property + '[' + property2 + ']');
-				const encodedValue = encodeURIComponent(toConvert[property][property2]);
-				formBody.push(encodedKey + '=' + encodedValue);
+					if(toConvert[property][property2] == null){	
+						const encodedKey = encodeURIComponent(property + '[' + property2 + ']');
+						const encodedValue = encodeURIComponent("");
+						formBody.push(encodedKey + '=' + encodedValue);
+						}
+					else{
+						const encodedKey =  encodeURIComponent(property + '[' + property2 + ']');
+						const encodedValue = encodeURIComponent(toConvert[property][property2]);
+						formBody.push(encodedKey + '=' + encodedValue);
+						}
 			}
 		}
 		}

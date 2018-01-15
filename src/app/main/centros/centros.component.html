@@ -138,7 +138,7 @@
 																	</div>
 																	<div class="form-group">
 																		<label>Opening date</label>
-																		<input type="date" class="form-control" id="opendate" placeholder="Opening date" name="opendate" [ngModel]="contact.opendate | date:'yyyy-MM-dd'" (ngModelChange)="contact.opendate=$event">
+																		<input type="date" class="form-control" id="opendate" placeholder="Opening date" name="opendate" [ngModel]="centers.opendate | date:'yyyy-MM-dd'" (ngModelChange)="centers.opendate=$event">
 																	</div>
 																	<div class="form-group">
 																		<label>Opening course</label>
@@ -175,11 +175,11 @@
 																	</div>-->
 																	<div class="form-group">
 																		<label>ALEX Code</label>
-																		<input type="number" class="form-control" id="" placeholder="ALEX" value="{{centers['codealex']}}">
+																		<input type="number" class="form-control" id="codealex" placeholder="ALEX" name="codealex" [(ngModel)]="centers.codealex">
 																	</div>
 																	<div class="form-group">
 																		<label>MURANO Code</label>
-																		<input type="number" class="form-control" id="" placeholder="MURANO" value="{{centers['codemurano']}}">
+																		<input type="number" class="form-control" id="codemurano" placeholder="MURANO" name="codemurano" [(ngModel)]="centers.codemurano">
 																	</div>								
 																</form>  
 												   </div>											
@@ -197,24 +197,31 @@
 																<form>
 																	<div class="form-group">
 																		<label>Main phone</label>
-																		<input type="text" class="form-control" id="telephone" placeholder="Tel." value="{{centers['telephonefirst']}}">
+																		<input type="text" class="form-control" id="telephone" placeholder="Tel." name="telephone" [(ngModel)]="centers.telephonefirst">
 																	</div>
 																	<div class="form-group">
 																		<label>Fax</label>
-																		<input type="number" class="form-control" id="fax" placeholder="Fax" value="{{centers['fax']}}">
+																		<input type="number" class="form-control" id="fax" placeholder="Fax" name="fax" [(ngModel)]="centers.fax">
 																	</div>
 																	<div class="form-group">
 																		<label>Main email</label>
-																		<input type="date" class="form-control" id="email" placeholder="Email" value="{{centers['emailfirst']}}">
+																		<input type="date" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="centers.emailfirst">
 																	</div>								
 																</form>	 		   
 												   </div>
 												   <div class="col-sm-6">
 																<form>
-																	<div class="form-group">
+																	<!--<div class="form-group">
 																		<label>Communication language</label>
 																		<input type="text" class="form-control" id="comunicationlanguage" placeholder="Communication language" value="{{centers['languagecommunication'].name}}">
-																	</div>	
+																	</div>-->	
+																	<div class="form-group">
+																		<label>Communication language</label>
+																		<!--<input type="text" class="form-control" id="comlanguage" placeholder="Language" name="language" [(ngModel)]="contact.idlanguagecommunication"readonly>-->
+																		<select name="comlanguage" class="form-control" name="comlanguage" [(ngModel)]="centers.idlanguagecommunication" style="margin-top:5px">
+																		  <option *ngFor="let lang of languages" [ngValue]="lang.id">{{lang.name}}</option>
+																		</select>											
+																	</div>																		
 																	<div class="form-group">
 																		<label>Support language</label>
 																		<input *ngFor="let supportlan of centers['languagesupport']; let i = index" type="text" class="form-control" id="supportlanguage" placeholder="Support language" value="{{supportlan.name}}" readonly>

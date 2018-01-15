@@ -13,9 +13,10 @@ import * as MyGlobals from 'app/service/globals'; //<== Globals variables
 })
 export class CentrosComponent implements OnInit {
 
-  public centers: object;
-  public masters: object;
-  public data: object;
+  public centers: any[];
+  public masters: any[];
+  public data: any[];
+  public languages: any[];
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy = "code";
@@ -83,6 +84,12 @@ export class CentrosComponent implements OnInit {
         this.GoToCenter = params['param']; 
 		this.GoToCenterId = params['id'];
     });
+	
+	this._http.get(MyGlobals['apiurl'] + "languages")
+	  .subscribe((data)=> {
+		  this.languages = data.json();
+		  console.log(this.languages);
+	  });
 	
 	if(this.GoToCenter == null){
 			//this._http.get("assets/data_center.json")
