@@ -4,7 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
-import { MapsAPILoader } from '@agm/core';
+import { MapsAPILoader, AgmMap } from '@agm/core';
 
 import * as MyGlobals from 'app/service/globals'; //<== Globals variables
 
@@ -23,7 +23,10 @@ export class ContactosComponent implements OnInit {
   @ViewChild("search")
   public searchElementRef: ElementRef;
   
-  public contact: object;
+  @ViewChild(AgmMap)
+public agmMap: AgmMap
+  
+  public contact: any[];
   public data: any[];
   public languages: object;
   public filterQuery = "";
@@ -78,20 +81,22 @@ export class ContactosComponent implements OnInit {
 				  .subscribe((data)=> {
 						this.contact = data.json();
 						//console.log(this.contact);
-				
-						this.address['addressName'] = this.contact['address'].addressName;
-						this.address['addressNumber'] = this.contact['address'].addressNumber;
-						this.address['floorDoor'] = this.contact['address'].floorDoor;
-						this.address['sendName'] = this.contact['address'].sendName;
-						this.address['sendBusinessName'] = this.contact['address'].sendBusinessName;
-						this.address['postalcode'] = this.contact['address'].postalcode;
-						this.address['town'] = this.contact['address'].town;
-						this.address['province'] = this.contact['address'].province;
-						this.address['district'] = this.contact['address'].district;
-						this.address['country'] = this.contact['address'].country;
-						this.address['latitude'] = this.contact['address'].latitude;
-						this.address['longitude'] = this.contact['address'].longitude;
-
+						
+						if(this.contact['address']){
+							this.address['addressName'] = this.contact['address'].addressName;
+							this.address['addressNumber'] = this.contact['address'].addressNumber;
+							this.address['floorDoor'] = this.contact['address'].floorDoor;
+							this.address['sendName'] = this.contact['address'].sendName;
+							this.address['sendBusinessName'] = this.contact['address'].sendBusinessName;
+							this.address['postalcode'] = this.contact['address'].postalcode;
+							this.address['town'] = this.contact['address'].town;
+							this.address['province'] = this.contact['address'].province;
+							this.address['district'] = this.contact['address'].district;
+							this.address['country'] = this.contact['address'].country;
+							this.address['latitude'] = this.contact['address'].latitude;
+							this.address['longitude'] = this.contact['address'].longitude;
+						}
+						
 						this.showContact = true;
 						this.showTableContacts = false;			
 				  });
@@ -103,6 +108,7 @@ export class ContactosComponent implements OnInit {
 				//this.contact['address'] = Object.assign(this.address);
 				//this.contact['language'] = this.language;	//**********************************************************************************************
 				this.contact['idinternal'] = "0";
+				this.contact['idlanguagecommunication'] = MyGlobals['idLanguage'];
 				this.contact['gender'] = "M";
 				this.showContact = true;
 				this.showTableContacts = false;	
@@ -110,9 +116,9 @@ export class ContactosComponent implements OnInit {
 	  
 
 			//set google maps defaults
-			this.zoom = 4;
-			this.latitude = 39.8282;
-			this.longitude = -98.5795;
+			this.zoom = 10;
+			this.latitude = 41.7291693;
+			this.longitude = 1.8209664;
 
 			//create search FormControl
 			this.searchControl = new FormControl();
@@ -183,13 +189,42 @@ export class ContactosComponent implements OnInit {
 			
 				//alert('Editar contacto ' + contactId);
 				//console.log(this.address);
-				console.log(this.contact['address']);
+				//console.log(this.contact);
+				//console.log(this.contact['address']);
+				//console.log(this.encodeJSON(this.contact));
+				//console.log(this.encodeJSON(this.contact['address']));
+				//this.contact['address'].idAuxCenter = "0";
+				
+				var urlupdatecontactaddress = MyGlobals['apiurl'] + "addresses/" + this.contact['address'].id;
+				var urlupdatecontact = MyGlobals['apiurl'] + "contacts/" +this.contact['idinternal'];
+			  
+				let headers = new Headers({
+					'Content-Type': 'application/x-www-form-urlencoded'
+				});
+				let options = new RequestOptions({
+					headers: headers
+				});
+					  
+			this._http.post(urlupdatecontactaddress, this.encodeJSON(this.contact['address']), options)
+					.map((response: Response) =>response.json())
+					.subscribe(data=>{
+						console.log(data);
+						//this.contact['address'] = [];
+								this._http.post(urlupdatecontact, this.encodeJSON(this.contact), options)
+								.map((response: Response) =>response.json())
+								.subscribe(data=>{
+									console.log(data);
+								}); 
+							
+						
+					}); 
+				
 			}
 	  
 			else{ //POST
 			
 				//alert('Nuevo contacto');
-				console.log(this.contact['address']);
+				console.log(this.contact);
 				console.log(this.encodeJSON(this.contact));
 				
 				var url = MyGlobals['apiurl'] + "contacts";
@@ -253,8 +288,8 @@ export class ContactosComponent implements OnInit {
 	  
   
 	  resizeTrigger(){	  
-		  setTimeout(()=>{    //<<<---    using ()=> syntax
-					   window.dispatchEvent(new Event('resize'))
+		  setTimeout(()=>{
+					   this.agmMap.triggerResize();
 				 },1000);
 	  }
 	  
@@ -270,76 +305,6 @@ export class ContactosComponent implements OnInit {
 			}
 	}
 	  
-  
-  
-  
-  
-  
-	  /*addContactFunction(){
-			  let bodyJSON = {
-							'idinternal': 0,
-							'dninif': "123456789A",
-							'firstname': "Pedro",
-							'lastname1': "",
-							'lastname2': "",
-							'gender': "",
-							'birthdate': "",
-							'contactaddress': "",
-							'languagecommunication': "",
-							'telephoneoffice': "",
-							'telephonepersonal': "",
-							'mobile': "",
-							'skype': "",
-							'emailoffice': "",
-							'emailpersonal': "",
-							'observations': "",
-							'alexuser': "",
-							'clothingsize': "",
-							'imagepath': ""
-				};
-			
-			  //let headers = new Headers({'Content-Type': 'application/json; charset=utf-8'});
-			  
-			  //let options = new RequestOptions({headers: headers});
-			  
-			var url = MyGlobals['apiurl'] + "contacts";
-		  
-			let headers = new Headers({
-				'Content-Type': 'application/x-www-form-urlencoded'
-			});
-			let options = new RequestOptions({
-				headers: headers
-			});
-
-			//EXAMPLE x-www-form-urlencoded ==> 'email=' + 'email1' + '&password=' + 'password1' + ...;
-			
-			  
-			this._http.post(url, this.encodeJSON(bodyJSON), options)
-					.map((response: Response) =>response.json())
-					.subscribe(data=>{
-						console.log(data);
-					});        
-	  }*/
-
-  
-	  /*encodeJSON(bodyJSON){
-				var body = "";		
-				for (let key in bodyJSON) {
-					body += encodeURIComponent(key)+"="+encodeURIComponent(bodyJSON[key])+"&";
-				}
-				
-				return body;
-	  }*/
-	  
-	  /*encodeJSON(toConvert) {
-		const formBody = [];
-		for (const property in toConvert) {
-			const encodedKey = encodeURIComponent(property);
-			const encodedValue = encodeURIComponent(toConvert[property]);
-			formBody.push(encodedKey + '=' + encodedValue);
-		}
-		return formBody.join('&');
-	}*/
 	
 	encodeJSON(toConvert) {
 		const formBody = [];
@@ -350,10 +315,13 @@ export class ContactosComponent implements OnInit {
 			const encodedValue = encodeURIComponent(toConvert[property]);
 			formBody.push(encodedKey + '=' + encodedValue);
 		}
-		else{
+		else if(toConvert[property] == null){	
+			const encodedKey = encodeURIComponent(property);
+			const encodedValue = encodeURIComponent("");
+			formBody.push(encodedKey + '=' + encodedValue);
+		}
+		else{	
 			for (const property2 in toConvert[property]) {
-				//const encodedKey =  encodeURIComponent(property) + "['" + encodeURIComponent(property2) + "']";
-				//const encodedKey =  encodeURIComponent(property) + "%5B" + encodeURIComponent(property2) + "%5D";
 				const encodedKey =  encodeURIComponent(property + '[' + property2 + ']');
 				const encodedValue = encodeURIComponent(toConvert[property][property2]);
 				formBody.push(encodedKey + '=' + encodedValue);
@@ -362,6 +330,17 @@ export class ContactosComponent implements OnInit {
 		}
 		return formBody.join('&');
 	}
+	
+		/*encodeJSON(toConvert) {
+		const formBody = [];
+		for (const property in toConvert) {
+			//console.log(toConvert[property]);
+			//const encodedKey = encodeURIComponent(property);
+			//const encodedValue = encodeURIComponent(toConvert[property]);
+			formBody.push(property + '-' + toConvert[property] + '-' + typeof toConvert[property]);
+		}
+		return formBody.join('&&&&&&&&');
+	}*/
   
 
 }

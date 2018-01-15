@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
 
     constructor(
     private http: Adal4HTTPService,
-	private service: Adal4Service,
+	public service: Adal4Service,
 	private router: Router
   ) { }
   

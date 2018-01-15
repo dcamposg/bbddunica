@@ -105,11 +105,11 @@
 																<form>
 																	<div class="form-group">
 																		<label>Legal name</label>
-																		<input type="text" class="form-control" id="franchisename" placeholder="Legal name" value="{{centers['franchisename']}}">
+																		<input type="text" class="form-control" id="franchisename" placeholder="Legal name" name="franchisename" [(ngModel)]="centers.franchisename">
 																	</div>
 																	<div class="form-group">
 																		<label>CIF</label>
-																		<input type="text" class="form-control" id="cif" placeholder="CIF">
+																		<input type="text" class="form-control" id="cif" placeholder="CIF" name="cif" [(ngModel)]="centers.fiscalentity['nifcif']">
 																	</div>
 																	<div class="row" style="padding:0px;">
 																		<div class="col-sm-6">
@@ -119,26 +119,26 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide0">									
-																				<input type="checkbox" value="Y" id="generalcustomSlide0" name="check" [checked]="(centers['provisionalname'] == 'Y') ? true : false" #generalcustomSlide0 />
+																				<input type="checkbox" value="" id="generalcustomSlide0" name="check" [checked]="(centers.provisionalname == 'Y') ? true : false" (change)="(centers.provisionalname == 'Y') ? (centers.provisionalname = 'N') : (centers.provisionalname = 'Y')" #generalcustomSlide0 />
 																				<label for="generalcustomSlide0"></label>
 																			</div>
 																		</div>										
-																	</div>
+																	</div>	
 																</form>			   
 												   </div>
 												   <div class="col-sm-3">
 																<form>
 																	<div class="form-group">
 																		<label>Master</label>
-																		<input type="text" class="form-control" id="master" placeholder="Master" [value]="(centers['masterCenter'] != null) ? (centers['masterCenter'].centerOwned['franchisename']) : ''" readonly>
+																		<input type="text" class="form-control" id="master" placeholder="Master" name="master" [(ngModel)]="centers.masterOwned" readonly>
 																	</div>
 																	<div class="form-group">
 																		<label>Country</label>
-																		<input type="text" class="form-control" id="country" placeholder="Country" value="{{centers['addresslocal'].country}}">
+																		<input type="text" class="form-control" id="country" placeholder="Country" name="country" [(ngModel)]="centers.addressLocal['country']">
 																	</div>
 																	<div class="form-group">
 																		<label>Opening date</label>
-																		<input type="date" class="form-control" id="opendate" placeholder="Opening date" value="{{centers['opendate'] | date:'yyyy-MM-dd'}}">
+																		<input type="date" class="form-control" id="opendate" placeholder="Opening date" name="opendate" [ngModel]="contact.opendate | date:'yyyy-MM-dd'" (ngModelChange)="contact.opendate=$event">
 																	</div>
 																	<div class="form-group">
 																		<label>Opening course</label>
@@ -150,7 +150,7 @@
 																<form>
 																	<div class="form-group">
 																		<label>KIDS coordinator</label>
-																		<input type="text" class="form-control" id="" placeholder="KIDS coordinator" value="{{centers['coordinatorkids']}}">
+																		<input type="text" class="form-control" id="coordinatorkids" placeholder="KIDS coordinator" name="coordinatorkids" [(ngModel)]="centers.coordinatorkids">
 																	</div>
 																	<div class="row" style="padding:0px;">
 																		<div class="col-sm-6">
@@ -160,7 +160,7 @@
 																		</div>
 																		<div class="col-sm-6">
 																			<div class="form-group generalcustomSlide1">									
-																				<input type="checkbox" value="M" id="generalcustomSlide1" name="check" [checked]="(centers['masterorcenter'] == 'M') ? true : false" #generalcustomSlide1 />
+																				<input type="checkbox" value="" id="generalcustomSlide1" name="check" [checked]="(centers.masterorcenter == 'M') ? true : false" (change)="(centers.masterorcenter == 'C') ? (centers.masterorcenter = 'M') : (centers.masterorcenter = 'C')" #generalcustomSlide1 />
 																				<label for="generalcustomSlide1"></label>
 																			</div>
 																		</div>										
@@ -329,12 +329,12 @@
 																							<form>
 																								<div class="form-group">
 																									<label>Fiscal address</label>
-																									<input type="text" class="form-control" id="" placeholder="Fiscal address" readonly>
+																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="" readonly></textarea>
 																								</div>
-																								<div class="row" style="padding:0px;">
+																								<!--<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
-																										<div class="form-group">									
-																											<label>Use same address</label>
+																										<div class="form-group">
+																										<label>Use same address</label>
 																										</div>
 																									</div>
 																									<div class="col-sm-6">
@@ -343,22 +343,30 @@
 																										<label for="generalcustomSlide8"></label>
 																										</div>
 																									</div>										
-																								</div>
-																								<div class="form-group" *ngIf="!showAddress">
+																								</div>-->
+																								<!--<div class="form-group" *ngIf="!showAddress">
 																									<label>Common address</label>
-																									<input type="text" class="form-control" id="" placeholder="Common address" value="{{centers['addresslocal'].addressName}}" readonly>
-																								</div>																				
-																								<div class="form-group" *ngIf="showAddress">
+																									<div class="row" style="padding-right:10px;">
+																									<div class="col-sm-8">
+																									<!--<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact.address['addressName']}}" readonly >
+																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="" readonly></textarea>
+																									</div>
+																									<div class="col-sm-4">
+																									<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addaddress" (click)="resizeTrigger()">Address <span class="glyphicon glyphicon-globe"></span></button>
+																									</div>
+																									</div>
+																								</div>-->				
+																								<div class="form-group">
 																									<label>Local address</label>
-																									<input type="text" class="form-control" id="" placeholder="Local address" value="{{centers['addresslocal'].addressName}}" readonly>
+																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="" readonly></textarea>
 																								</div>
-																								<div class="form-group" *ngIf="showAddress"> 
+																								<div class="form-group"> 
 																									<label>Shipment address</label>
-																									<input type="text" class="form-control" id="" placeholder="Shipment address" value="{{centers['addressshipment'].addressName}}" readonly>
+																									<textarea class="form-control" rows="5" id="comment" style="resize:vertical" value="" readonly></textarea>
 																								</div>
 																								<div class="row" style="padding:0px;">
 																									<div class="col-sm-6">
-																										<div class="form-group">									
+																										<div class="form-group">
 																											<label>Tentative address</label>
 																										</div>
 																									</div>
@@ -465,7 +473,7 @@
 																			 <div style="text-align: center;">
 																				<p><b>AREA OF TERRITORIAL EXCLUSIVITY</b></p>
 																				<p>{{centers['exclusivityzone']}}</p>
-																				<img src="{{centers['imageexclusivity'][0].path}}" alt="" width="90%">		
+																				<!--<img src="{{centers['imageexclusivity'][0].path}}" alt="" width="90%">-->		
 																			 </div>														  
 														  </div>
 														</div>
@@ -801,7 +809,7 @@
 																			 <div style="text-align: center;">
 																				<p><b>AREA OF TERRITORIAL EXCLUSIVITY</b></p>
 																				<p>{{centers['exclusivityzone']}}</p>
-																				<img src="{{centers['imageexclusivity'][0].path}}" alt="" width="90%">		
+																				<!--<img src="{{centers['imageexclusivity'][0].path}}" alt="" width="90%">-->		
 																			 </div>														  
 														  </div>
 														</div>
@@ -845,7 +853,7 @@
 															  </tr>
 															</thead>
 															<tbody>
-															  <tr *ngFor="let linkedcenters of centers['masterCenter'].centerList; let i = index">
+															  <tr *ngFor="let linkedcenters of centers.master; let i = index">
 																<td>{{linkedcenters.franchisename}}</td>
 																<td>{{linkedcenters.addresslocal['town']}} ({{linkedcenters.addresslocal['country']}})</td>
 															  </tr>			  

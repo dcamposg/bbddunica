@@ -14,6 +14,7 @@ import * as MyGlobals from 'app/service/globals'; //<== Globals variables
 export class CentrosComponent implements OnInit {
 
   public centers: object;
+  public masters: object;
   public data: object;
   public filterQuery = "";
   public rowsOnPage = 10;
@@ -90,6 +91,12 @@ export class CentrosComponent implements OnInit {
 					this.data = data.json();
 					console.log(this.data);						
 			  });
+			  
+			/*this._http.get(MyGlobals['apiurl'] + "masters")
+			  .subscribe((data)=> {
+					this.masters = data.json();
+					console.log(this.masters);						
+			  });*/
 	}
 	else{
 			console.log(this.GoToCenterId);
