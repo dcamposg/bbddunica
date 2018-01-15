@@ -83,3 +83,12 @@
  .pac-container{
     z-index: 3000 !important;
 }
+
+.dropdown, .dropup {
+    position: relative;
+    width: 100% !important;
+}
+
+.dropdown, .btn {
+    text-align: left !important;
+}

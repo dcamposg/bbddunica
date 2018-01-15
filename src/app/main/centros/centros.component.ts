@@ -24,7 +24,7 @@ mySettings: IMultiSelectSettings = {
     checkedStyle: 'fontawesome',
     buttonClasses: 'btn btn-default btn-block',
     dynamicTitleMaxItems: 3,
-    displayAllSelectedText: false
+    displayAllSelectedText: true
 };
  
 // Text configuration 

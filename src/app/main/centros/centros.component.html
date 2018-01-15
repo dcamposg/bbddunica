@@ -229,10 +229,12 @@
 																	<div class="form-group">
 																		<label>Support language</label>
 																		<!--<input type="text" class="form-control" id="comlanguage" placeholder="Language" name="language" [(ngModel)]="contact.idlanguagecommunication"readonly>-->
-																		<select class="form-control" name="supportlanguage" [(ngModel)]="centers.languagesupport['idlanguage']" style="margin-top:5px" multiple>
+																		<!--<select class="form-control" name="supportlanguage" [(ngModel)]="centers.languagesupport['idlanguage']" style="margin-top:5px" multiple>
 																		  <option *ngFor="let lang2 of languages" [ngValue]="lang2.id">{{lang2.name}}</option>
-																		</select>
-																		<ss-multiselect-dropdown name="supportlanguage" [options]="languages" [texts]="myTexts" [settings]="mySettings" [ngModel]="optionsModel" (ngModelChange)="supportlanguage($event)"></ss-multiselect-dropdown>															
+																		</select>-->
+																		<div>
+																		<ss-multiselect-dropdown name="supportlanguage" [options]="languages" [texts]="myTexts" [settings]="mySettings" [ngModel]="optionsModel" (ngModelChange)="supportlanguage($event)"></ss-multiselect-dropdown>
+																		</div>
 																	</div>																		
 																</form>	 		   
 												   </div>
