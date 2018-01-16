@@ -142,7 +142,7 @@
 												<div class="row" style="padding-right:10px;">
 												<div class="col-sm-8">
 												<!--<input type="text" class="form-control" id="address" placeholder="Address" value="{{contact.address['addressName']}}" readonly >-->
-												<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(contact.address) ? (contact.address['addressName'] + ',' + contact.address['addressNumber'] + ',' + contact.address['floorDoor'] + '\n' + contact.address['postalcode'] + ',' + contact.address['town'] + ',' + contact.address['district'] + '\n' + contact.address['province'] + ' (' +  contact.address['country'] + ')') : ''" readonly></textarea>
+												<textarea class="form-control" rows="5" id="comment" style="resize:vertical" [value]="(contact.address) ? (((contact.address['addressName']) ? contact.address['addressName'] + ',' : '') + ((contact.address['addressNumber']) ? contact.address['addressNumber'] + ',' : '') + ((contact.address['floorDoor']) ? contact.address['floorDoor']: '') + '\n' + ((contact.address['postalcode']) ? contact.address['postalcode'] + ',' : '') + ((contact.address['town']) ? contact.address['town'] + ',' : '') + ((contact.address['district']) ? contact.address['district'] : '')+ '\n' + ((contact.address['province']) ? contact.address['province'] : '') + ((contact.address['country']) ? ' (' + contact.address['country'] + ')' : '')) : ''" readonly></textarea>
 												</div>
 												<div class="col-sm-4">
 												<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addaddress" (click)="resizeTrigger()">Address <span class="glyphicon glyphicon-globe"></span></button>
@@ -202,7 +202,7 @@
 						   </div>												   
 			</div>	
 				<!--<button class="btn btn-success btn-lg" (click)="saveContact(contact.idinternal)">Save contact&nbsp;<span class="glyphicon glyphicon-save"></span></button>-->
-				<div style="text-align:center; margin-top:15px"><button class="btn btn-info btn-lg" data-toggle="modal" data-target="#saveContact">Save contact&nbsp;<span class="glyphicon glyphicon-save"></span></button></div>				
+				<div style="text-align:center; margin-top:15px"><button class="btn btn-info btn-lg" (click)="saveContact(contact.idinternal)">Save contact&nbsp;<span class="glyphicon glyphicon-save"></span></button></div>				
 		</div>
 </div>
 
@@ -322,7 +322,7 @@
 			</div>
 	</div>
 	
-	<div class="modal fade" id="saveContact" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	<!--<div class="modal fade" id="saveContact" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
 			  <div class="modal-dialog">
 					<div class="modal-content">
 								 <div class="modal-header">
@@ -334,4 +334,4 @@
 								</div>
 					</div>
 			</div>
-	</div>
+	</div>-->

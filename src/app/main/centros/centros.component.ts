@@ -23,7 +23,7 @@ mySettings: IMultiSelectSettings = {
     enableSearch: false,
     checkedStyle: 'fontawesome',
     buttonClasses: 'btn btn-default btn-block',
-    dynamicTitleMaxItems: 3,
+    dynamicTitleMaxItems: 0,
     displayAllSelectedText: true
 };
  
@@ -145,20 +145,47 @@ myTexts: IMultiSelectTexts = {
   }
   
   showCenterFunction(centerId){
+	
+	 if(centerId){
   
-	this._http.get(MyGlobals['apiurl'] + "centers/" + centerId)
-	  .subscribe((data)=> {
-			this.centers = data.json();
-			//this.centers['kids'] = 'N'; //Con esto vemos que podemos acceder al valor de un campo concreto. A partir de ello tendremos que hacer una funcion para interpretar los checkbox.
-			console.log(this.centers);
-			//console.log(this.data['languagesupport']);
-					for(var i =0; i<this.centers['languagesupport'].length; i++){
-						this.optionsModel.push(this.centers['languagesupport'][i].idlanguage);
-					}
-	this.showCenter = true;
-	this.showTableCenter = false;
-	//if(this.centers['addressSame'] == 'Y') this.showAddress = false;	
-	  });
+				this._http.get(MyGlobals['apiurl'] + "centers/" + centerId)
+				  .subscribe((data)=> {
+						this.centers = data.json();
+						//this.centers['kids'] = 'N'; //Con esto vemos que podemos acceder al valor de un campo concreto. A partir de ello tendremos que hacer una funcion para interpretar los checkbox.
+						console.log(this.centers);
+						//console.log(this.data['languagesupport']);
+								for(var i =0; i<this.centers['languagesupport'].length; i++){
+									this.optionsModel.push(this.centers['languagesupport'][i].idlanguage);
+								}
+				this.showCenter = true;
+				this.showTableCenter = false;
+				//if(this.centers['addressSame'] == 'Y') this.showAddress = false;	
+				  });
+	  
+	  }
+	  
+	 else{
+				this.centers = [];
+				//this.contact['address'] = Object.assign(this.address);
+				//this.contact['language'] = this.language;	//**********************************************************************************************
+				this.centers['code'] = "0";
+				this.centers['idlanguagecommunication'] = MyGlobals['idLanguage'];
+				this.centers['provisionalname'] = "N";
+				this.centers['masterorcenter'] = "C";
+				this.centers['minikids'] = "N";
+				this.centers['kids'] = "N";
+				this.centers['tandt'] = "N";
+				this.centers['licenseorfranchise'] = "F";
+				this.centers['nationalorinternational'] = "N";
+				this.centers['centralparticipation'] = "N";
+				this.centers['addressprovisional'] = "N";
+				this.centers['status'] = "A";
+				this.showCenter = true;
+				this.showTableCenter = false;	
+	 
+	 
+	 
+	 }
   }
   
   supportlanguage(newValue){
@@ -181,17 +208,22 @@ myTexts: IMultiSelectTexts = {
 					}
   }
   
-  	  saveCenter(centerId){
+  saveCenter(centerId){
+  
+		if(centerId != '0'){ //PUT					
+			console.log(this.centers);
+		}
+  
+		else{ //POST
+			console.log(this.centers);
+		}	
+		
+  }
 	  
-			if(centerId != '0'){ //PUT					
-				console.log(this.centers);
-			}
 	  
-			else{ //POST
-				
-			}	
-			
-	  }
+editContactCenter(id_contact){
+	this.router.navigate(['/contacts'], { queryParams: { param: 'gotocontact', id: id_contact } });
+}
   
 
   exportCSV(expcenter, expsimplesociety, expadvancedsociety, expcoordination, expmaster){

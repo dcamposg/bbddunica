@@ -92,3 +92,39 @@
 .dropdown, .btn {
     text-align: left !important;
 }
+
+.dropdown-toggle{
+	color: #555 !important;
+}
+
+.caret{
+	float:right !important;
+	color: #555 !important;
+	margin-top: 9px !important;
+	margin-right: -8px !important;
+}
+
+.dropdown-menu{
+	width: 100% !important;
+}
+
+.comlanguage:hover{
+	background-color: #E6E6E6 !important;
+}
+
+.modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,.5) !important;
+}
+
+.modal-footer {
+    padding: 10px !important;
+    text-align: center !important;
+    border-top: 0px solid #e5e5e5 !important;
+}
+
+.modal-header {
+    padding: 5px !important;
+    border-bottom: 0px solid #e5e5e5 !important;
+    text-align: center !important;
+}
