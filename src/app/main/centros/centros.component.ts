@@ -5,6 +5,7 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import {Injectable} from "@angular/core";
 import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
 import { FormControl } from '@angular/forms';
+import { Adal4HTTPService, Adal4Service } from 'adal-angular4';
 
 import * as MyGlobals from 'app/service/globals'; //<== Globals variables
 
@@ -23,7 +24,7 @@ mySettings: IMultiSelectSettings = {
     enableSearch: false,
     checkedStyle: 'fontawesome',
     buttonClasses: 'btn btn-default btn-block',
-    dynamicTitleMaxItems: 0,
+    dynamicTitleMaxItems: 5,
     displayAllSelectedText: true
 };
  
@@ -65,7 +66,7 @@ myTexts: IMultiSelectTexts = {
   showOC:boolean = true;
   showAddress:boolean = true;
 
-  constructor(private _http: Http, private actroute:ActivatedRoute, private router: Router) { }
+  constructor(private _http: Http, private actroute:ActivatedRoute, private router: Router, public service: Adal4Service) { }
   
     
   // CHART ***************************************************************************************************************

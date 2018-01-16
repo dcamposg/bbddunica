@@ -1,6 +1,7 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import {Http,  Headers, RequestOptions, Response} from "@angular/http";
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Adal4HTTPService, Adal4Service } from 'adal-angular4';
 
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
@@ -62,7 +63,7 @@ export class ContactosComponent implements OnInit {
   public formBody2 = [];
 
   constructor(private _http: Http, private router: Router, private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone, private actroute:ActivatedRoute) { }
+    private ngZone: NgZone, private actroute:ActivatedRoute, public service: Adal4Service) { }
 
     ngOnInit(): void {
 	
@@ -213,7 +214,7 @@ export class ContactosComponent implements OnInit {
 				//this.contact['idcontactaddress'] = null;
 				
 				//var urlupdatecontactaddress = MyGlobals['apiurl'] + "addresses/" + this.contact['address'].id;
-				var urlupdatecontact = MyGlobals['apiurl'] + "contacts/" +this.contact['idinternal'];
+				var urlupdatecontact = MyGlobals['apiurl'] + "contactslog/" +this.contact['idinternal'] + '/' + this.service.userInfo.profile.name;
 			  
 				let headers = new Headers({
 					//'Content-Type': 'application/x-www-form-urlencoded'
@@ -241,7 +242,8 @@ export class ContactosComponent implements OnInit {
 				this.contact = Object.assign({}, this.contact);
 				console.log(JSON.stringify(this.contact));
 				
-				var url = MyGlobals['apiurl'] + "contacts";
+				var url = MyGlobals['apiurl'] + "contactslog" + '/' + this.service.userInfo.profile.name;
+				//var url = MyGlobals['apiurl'] + "contacts";
 			  
 				let headers = new Headers({
 					'Content-Type': 'application/json'

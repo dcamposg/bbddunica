@@ -91,6 +91,8 @@
 
 .dropdown, .btn {
     text-align: left !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .dropdown-toggle{
