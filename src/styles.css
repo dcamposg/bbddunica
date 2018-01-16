@@ -91,12 +91,12 @@
 
 .dropdown, .btn {
     text-align: left !important;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 
 .dropdown-toggle{
 	color: #555 !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .caret{
