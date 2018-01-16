@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild, Renderer } from '@angular/core';
 import { Adal4HTTPService, Adal4Service } from 'adal-angular4';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -26,7 +26,9 @@ export class MainComponent implements OnInit {
     constructor(
     private http: Adal4HTTPService,
 	public service: Adal4Service,
-	private router: Router
+	private router: Router,
+	private navbarElementRef: ElementRef, 
+	private renderer: Renderer
   ) { }
   
   private allGroups: Array<any[]> = new Array();
@@ -95,6 +97,7 @@ export class MainComponent implements OnInit {
 	changeRoute(link){ // Function 'reload' --> cuando se vuelve a pulsar sobre el link recarga el html. Pasa por el componet DUMMY y vulve al link pulsado
 		 this.router.navigateByUrl('/dummy', { skipLocationChange: true });
 		 setTimeout(()=>this.router.navigate([link]));
+		 this.renderer.setElementClass(this.navbarElementRef.nativeElement.querySelector('.collapse'), 'in', false);   
 	}
 
 
