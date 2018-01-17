@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from "@angular/http";
+import {Http,  Headers, RequestOptions, Response} from "@angular/http";
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import {Injectable} from "@angular/core";
@@ -45,6 +45,8 @@ myTexts: IMultiSelectTexts = {
   public masters: any[];
   public data: any[];
   public languages: any[];
+  public contacts: any[];
+  public contact: any[];
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy = "code";
@@ -57,6 +59,12 @@ myTexts: IMultiSelectTexts = {
 									"idcenter": "",
 									"idlanguage": "",
 									"comments": ""
+								  };
+  public center_has_contact : Object = {
+  									"contact": 0,
+									"idcenter": 0,
+									"idcontact": "",
+									"contacttype": ""
 								  };
 
   
@@ -122,6 +130,12 @@ myTexts: IMultiSelectTexts = {
 	  .subscribe((data)=> {
 		  this.languages = data.json();
 		  console.log(this.languages);
+	  });
+
+	this._http.get(MyGlobals['apiurl'] + "contacts_view")
+	  .subscribe((data)=> {
+		  this.contacts = data.json();
+		  console.log(this.contacts);
 	  });
 	
 	if(this.GoToCenter == null){
@@ -224,6 +238,23 @@ myTexts: IMultiSelectTexts = {
 	  
 editContactCenter(id_contact){
 	this.router.navigate(['/contacts'], { queryParams: { param: 'gotocontact', id: id_contact } });
+}
+
+addContactToCenter(id_center: number, id_contact: number, position){
+	//alert(id_center + '----' + id_contact + '----' + position);	
+				this._http.get(MyGlobals['apiurl'] + "contacts/" + id_contact)
+				  .subscribe((data)=> {
+						this.contact = data.json();
+						//console.log(this.contact);
+							this.center_has_contact = [];
+							this.center_has_contact['contact'] = Object.assign(this.contact);							
+							this.center_has_contact['idcenter'] = id_center;
+							this.center_has_contact['idcontact'] = Number(id_contact);
+							this.center_has_contact['contacttype'] = position;
+							this.center_has_contact = Object.assign({}, this.center_has_contact);
+							this.centers['center_has_contact'].push(this.center_has_contact);
+							console.log(this.centers);		
+				  });
 }
   
 

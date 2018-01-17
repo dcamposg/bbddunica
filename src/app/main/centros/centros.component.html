@@ -500,11 +500,12 @@
 									</div>	
 							  </div>
 							  <div class="tab-pane fade" id="contacts">
-								  <div class="content">			
+								  <div class="content">	
+								<div style="text-align:center; margin-bottom: 25px;"><button class="btn btn-warning btn-lg" data-title="addcontactocenter" data-toggle="modal" data-target="#addcontactocenter" >Add contact&nbsp;<span class="glyphicon glyphicon-plus"></span></button></div>										  
 									<div class="row" style="padding:10px;">
 												   <div class="col-sm-6" *ngFor="let contact of centers['center_has_contact']; let i = index">
 												   		<div class="panel panel-default">
-														  <div class="panel-heading"  style="height: 50px">{{contact['contact'].firstname}} {{contact['contact'].lastname1}} {{contact['contact'].lastname2}}<button class="btn btn-info btn-sm" (click)="editContactCenter(contact['contact'].idinternal)" style="float: right; margin-bottom:5px">Edit Contact&nbsp;<span class="glyphicon glyphicon-user"></span></button></div>
+														  <div class="panel-heading"  style="height: 120px"><h3>{{contact['contact'].firstname}} {{contact['contact'].lastname1}} {{contact['contact'].lastname2}}</h3><button class="btn btn-success btn-sm" (click)="editContactCenter(contact['contact'].idinternal)" style="float: right; margin-bottom:15px; margin-top:-40px">Edit contact&nbsp;<span class="glyphicon glyphicon-user"></span></button><input type="text" class="form-control" id="contactposition" placeholder="Position" name="contactposition" [(ngModel)]="contact['contacttype']"></div>
 														  <div class="panel-body">
 															<div class="row" style="padding:10px;">
 																<div class="col-sm-6">
@@ -608,7 +609,7 @@
 																<form>															
 																	<div class="form-group">
 																		<label>CIF</label>
-																		<input type="text" class="form-control" id="" placeholder="CIF">
+																		<input type="text" class="form-control" id="cifentity" placeholder="CIF" name="cifentity" [ngModel]="(centers.fiscalentity) ? centers.fiscalentity['nifcif'] : ''" (ngModelChange)="centers.fiscalentity['nifcif']=$event">
 																	</div>
 																	<div class="form-group">
 																		<label>Pre-contract signature</label>
@@ -616,7 +617,7 @@
 																	</div>
 																	<div class="form-group">
 																		<label>Canon</label>
-																		<input type="date" class="form-control" id="" placeholder="Canon" value="{{centers['canonpayment'] | date:'yyyy-MM-dd' }}">
+																		<input type="date" class="form-control" id="canonpayment" placeholder="Canon payment" name="canonpayment" [ngModel]="centers.canonpayment | date:'yyyy-MM-dd'" (ngModelChange)="centers.canonpayment=$event">
 																	</div>																	
 																	<div class="row" style="padding-top:10px;">
 																		<div class="col-sm-6">
@@ -1312,23 +1313,31 @@
 			</div>
 	</div>
 	
-	<!--<div class="modal fade" id="addcenter" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	<div class="modal fade" id="addcontactocenter" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
 			  <div class="modal-dialog">
 					<div class="modal-content">
 								 <div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-									<h4 class="modal-title custom_align" id="Heading">New center</h4>
+									<h4 class="modal-title custom_align" id="Heading">Select new contact of the list</h4>
 								</div>
-								<div class="modal-body"> 
-									<div class="alert alert-info"><span class="glyphicon glyphicon-indent-left"></span>&nbsp;What is the name of the new center?</div>
-									<input type="text" class="form-control" id="" placeholder="New name">
+								<div class="modal-body">
+									<div class="form-group">
+										<label>Contact</label>								
+										<select class="form-control" name="contacts" style="margin-top:5px" #contactId>
+										  <option *ngFor="let cont of contacts" [value]="cont.idinternal">{{cont.firstname}} {{cont.lastname1}} {{cont.lastname2}}</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Position in the center</label>
+										<input type="text" class="form-control" id="positionincenter" placeholder="Position" name="positionincenter" #positionincenter>
+									</div>									
 								</div>
 								<div class="modal-footer ">
-									<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Save</button>
+									<button type="button" class="btn btn-success" data-dismiss="modal" (click)="addContactToCenter(centers.code, contactId.value, positionincenter.value)"><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;Save</button>
 								</div>
 					</div>
 			</div>
-	</div>-->
+	</div>
 	
 	<div class="modal fade" id="exportcsv" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
 			  <div class="modal-dialog">

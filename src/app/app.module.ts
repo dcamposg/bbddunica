@@ -11,6 +11,7 @@ import { AuthenticationGuard } from './common/guards/authentication-guard';
 import * as c from './';
 import { DataFilterCentroPipe } from './pipes/data-filter-centro.pipe';
 import { DataFilterContactoPipe } from './pipes/data-filter-contacto.pipe';
+import { DataFilterFiscalEntitiesPipe } from './pipes/data-filter-fiscalEntities.pipe';
 import { DataTableModule } from 'angular2-datatable';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -50,7 +51,8 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 	c.SeguridadComponent,
 	c.DummyComponent,
 	DataFilterCentroPipe,
-	DataFilterContactoPipe
+	DataFilterContactoPipe,
+	DataFilterFiscalEntitiesPipe
   ],
   providers: [
     Adal4Service,
